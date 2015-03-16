@@ -14,11 +14,6 @@ class UsersController extends AppController
 
 	public $uses = array("User", "Company", "Country");
 
-	/**
-	 * For users sign_up with company detail page validation and storage of data
-	 *
-	 */
-
 	public function sign_up()
 	{
 		$countries = $this->Country->getCountryList();
@@ -30,12 +25,17 @@ class UsersController extends AppController
 			$userFields = array('prefix', 'first_name', 'last_name', 'address', 'city', 'postal_code',
 				'state', 'country_id');
 			$companyFields = array('company_name', 'job_function', 'industry', 'web_url', 'vat_id',);
-			$userFlag = $this->User->validates(array('fieldList' => $userFields));
-			$companyFlag = $this->Company->validates(array('fieldList' => $companyFields));
-			if ($userFlag) {
+			if($userFlag = $this->User->validates(array('fieldList' => $userFields))){
+
 			}else{
-				$this->render('users/sign_up');
+				$errors = $this->User->validationErrors;
 			}
+			$companyFlag = $this->Company->validates(array('fieldList' => $companyFields));
+
 		}
+	}
+
+	public function login(){
+
 	}
 }

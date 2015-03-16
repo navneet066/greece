@@ -13,6 +13,7 @@
 	echo $this->Html->script('/bootstrap/js/bootstrap.min.js');
 	echo $this->Html->script('/captcha/js/gen_validatorv31.js');
 	?>
+	<?php echo $this->fetch('script');?>
 </head>
 <body>
 <div class="container-fluid">

@@ -97,11 +97,5 @@ class User extends AppModel
 		return false;
 	}
 
-	public function getHelloMessage()
-	{
-
-		$results = $this->find("all");
-		return $results;
-	}
 }
 
