@@ -23,10 +23,10 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="job_function" class="col-sm-2 control-label">Job Function(*)</label>
+			<label for="jobFunction" class="col-sm-2 control-label">Job Function(*)</label>
 
 			<div class="col-sm-5">
-				<input type="text" class="form-control" name="job_function" placeholder="Job Function">
+				<input id="jobFunction" size="50" type="text" class="form-control" name="job_function" placeholder="Job Function">
 			</div>
 		</div>
 		<div class="form-group">
@@ -65,21 +65,21 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="city" class="col-sm-2 control-label">City(*)</label>
+			<label class="col-sm-2 control-label">City(*)</label>
 
 			<div class="col-sm-5">
 				<input type="text" class="form-control" name="country" placeholder="city">
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="postal_code" class="col-sm-2 control-label">Postal Code</label>
+			<label class="col-sm-2 control-label">Postal Code</label>
 
 			<div class="col-sm-5">
 				<input type="text" class="form-control" name="postal_code" placeholder="pstal code">
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="state" class="col-sm-2 control-label">State or Province(*)</label>
+			<label class="col-sm-2 control-label">State or Province(*)</label>
 
 			<div class="col-sm-5">
 				<input type="text" class="form-control" name="state" placeholder="state">
