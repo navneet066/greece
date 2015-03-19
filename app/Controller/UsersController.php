@@ -6,44 +6,49 @@
  * Date: 2015-03-13
  */
 App::uses('AppController', 'Controller');
+
 class UsersController extends AppController
 {
-    public $name = 'Users';
+	public $name = 'Users';
 
-    public $layout = "users";
+	public $layout = "users";
 
-    public $uses = array("User", "Company", "Country", "JobFunction");
+	public $uses = array("User", "Company", "Country", "JobFunction");
 
-    public function sign_up()
-    {
-        $countries = $this->Country->getCountryList();
-        $this->set('countries', $countries);
-        if ($this->request->is('post')) {
-            $data = $this->request->data;
-            $this->User->set($data);
-            $this->Company->set($data);
-            $userFields = array('prefix', 'first_name', 'last_name', 'address', 'city', 'postal_code',
-                'state', 'country_id');
-            $companyFields = array('company_name', 'job_function', 'industry', 'web_url', 'vat_id',);
-            if ($userFlag = $this->User->validates(array('fieldList' => $userFields))) {
+	public function sign_up()
+	{
+		$countries = $this->Country->getCountryList();
+		$this->set('countries', $countries);
 
-            } else {
-                $errors = $this->User->validationErrors;
-            }
-            $companyFlag = $this->Company->validates(array('fieldList' => $companyFields));
+		if ($this->request->is('post')) {
+			$data = $this->request->data;
+			$this->User->set($data);
+			$this->Company->set($data);
+			$userFields = array('prefix', 'first_name', 'last_name', 'username', 'email','password');
+			$companyFields = array('company_name', 'email', 'job_function', 'industry_id', 'web_url', 'vat_id',
+				'address', 'city', 'postal_code', 'state', 'country_id');
+			$userFlag = $this->User->validates(array('fieldList' => $userFields));
+			$companyFlag = $this->Company->validates(array('fieldList' => $companyFields));
+			if ($userFlag && $companyFlag) {
+				$profileSaved = $this->Company->save($data);
+				if ($profileSaved) {
+					$companyId = $this->Company->id;
+					$data['User']['company_id'] = $companyId;
+					$userSaved = $this->User->save($data);
+				}
+			}
+		}
+	}
 
-        }
-    }
+	public function login()
+	{
 
-    public function login()
-    {
+	}
 
-    }
-
-    public function getJobFunctionList()
-    {
-        $this->autoRender = false;
-        $results = $this->JobFunction->getList();
-        return $results;
-    }
+	public function getJobFunctionList()
+	{
+		$this->autoRender = false;
+		$results = $this->JobFunction->getList();
+		return $results;
+	}
 }

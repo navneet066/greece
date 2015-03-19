@@ -10,16 +10,23 @@ class User extends AppModel
 
 	public $validate = array(
 
+		'prefix' => array(
+			'mustNotEmpty' => array(
+				'rule' => 'notEmpty',
+				'message' => "Please select any prefix",
+				"last" => true
+			),
+		),
 		'first_name' => array(
 			'mustNotEmpty' => array(
 				'rule' => 'notEmpty',
 				'message' => "First name must not be blank",
 				"last" => true
 			),
-			'alphabet' => array(
+			/*'alphabet' => array(
 				'rule' => 'alphanumeric',
 				'message' => 'First name should be a alphabet or numbers'
-			)
+			)*/
 		),
 		'last_name' => array(
 			'mustNotEmpty' => array(
@@ -27,58 +34,51 @@ class User extends AppModel
 				'message' => "Last name must not be blank",
 				"last" => true
 			),
-			'alphabet' => array(
+			/*'alphabet' => array(
 				'rule' => 'alphanumeric',
 				'message' => 'Last name should be a alphabet or numbers'
-			)
-		),
-		'address' => array(
+			)*/
+		), 'username' => array(
 			'mustNotEmpty' => array(
 				'rule' => 'notEmpty',
-				'message' => "Address must not be blank",
+				'message' => "Username must not be blank",
 				"last" => true
 			),
-			'alphabet' => array(
+			/*'alphabet' => array(
 				'rule' => 'alphanumeric',
-				'message' => 'Address should be a alphabet or numbers'
-			)
+				'message' => 'Username should be a alphabet or numbers'
+			)*/
 		),
-		'city' => array(
-			'mustNotEmpty' => array(
+		'email' => array(
+			'notEmpty' => array(
 				'rule' => 'notEmpty',
-				'message' => 'City must not be empty'
+				'message' => 'Email address should not empty',
+				'last' => true
 			),
-			'alphabet' => array(
-				'rule' => 'alphanumeric',
-				'message' => 'City should be a alphabet or numbers'
-			)
-		),
-		'postal_code' => array(
-			'mustNotEmpty' => array(
-				'rule' => 'notEmpty',
-				'message' => 'Postal must not be empty'
+			'email' => array(
+				'rule' => 'email',
+				'message' => 'Please choose valid email address',
+				'last' => true
 			),
-			'alphabet' => array(
-				'rule' => 'alphanumeric',
-				'message' => 'Postal should be a alphabet or numbers'
+			'unique' => array(
+				'rule' => 'isUnique',
+				'required' => 'create',
+				'message' => 'Email address already exists. Please fill another email address',
 			)
 		),
-		'state' => array(
-			'mustNotEmpty' => array(
+		'password' => array(
+			'notEmpty' => array(
 				'rule' => 'notEmpty',
-				'message' => 'State/Province must not be empty'
+				'message' => 'Password should not be empty',
+				'last' => true,
 			),
-			'alphabet' => array(
-				'rule' => 'alphanumeric',
-				'message' => 'State/Province should be a alphabet or numbers'
+			'minimum' => array(
+				'rule' => array('minLength', '6'),
+				'message' => 'Password should be minimum of 6 characters'
 			)
 		),
-		'country' => array(
-			'mustNotEmpty' => array(
-				'rule' => 'notEmpty',
-				'message' => 'Country field should not empty'
-			)
-		),
+
+
 		'is_agree' => array(
 			'mustNotEmpty' => array(
 				'rule' => array('comparison', '!=', 0),

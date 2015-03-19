@@ -18,71 +18,84 @@
 			<label for="company_name" class="col-sm-2 control-label">Company(*)</label>
 
 			<div class="col-sm-5">
-				<?php $this->Form->input("company_name", array("class" => " form-control", "type" => "text")); ?>
-				<input type="text" class="form-control" name="company_name" placeholder="Company name">
+				<?php echo $this->Form->input("Company.company_name", array("class" => "form-control",
+					"type" => "text", "placeholder" => "Company Name")); ?>
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="jobFunction" class="col-sm-2 control-label">Job Function(*)</label>
 
 			<div class="col-sm-5">
-				<input id="jobFunction" size="50" type="text" class="form-control" name="job_function" placeholder="Job Function">
+				<?php echo $this->Form->input("Company.job_function", array("class" => "form-control",
+					"placeholder" => "Job Function", "size" => "50", "id" => "jobFunction", "type" => "text")); ?>
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="industry" class="col-sm-2 control-label">Industry(*)</label>
 
 			<div class="col-sm-5">
-				<select class="form-control" name="industry">
-					<option>Select</option>
-					<option>1</option>
-					<option>2</option>
-					<option>3</option>
-					<option>4</option>
-					<option>5</option>
-				</select>
+				<?php echo $this->Form->input('Company.industry_id', array(
+					'type' => 'select',
+					'options' => array('1', '2', '3', '4', '5'),
+					'empty' => '(Choose Country)',
+					"class" => 'form-control'
+				));
+				?>
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="web_url" class="col-sm-2 control-label">Website(*)</label>
 
 			<div class="col-sm-5">
-				<input type="text" class="form-control" name="web_url" placeholder="Website Url">
+				<?php echo $this->Form->input("Company.web_url", array("class" => "form-control",
+					"placeholder" => "Web Url", "type" => "text")); ?>
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="website" class="col-sm-2 control-label">VAT ID(*)</label>
 
 			<div class="col-sm-5">
-				<input type="text" class="form-control" name="website" placeholder="For company within the EU">
+				<?php echo $this->Form->input("Company.vat_id", array("class" => "form-control",
+					"placeholder" => "Vat Id", "type" => "text")); ?>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="email" class="col-sm-2 control-label">Company Email(*)</label>
+
+			<div class="col-sm-5">
+				<?php echo $this->Form->input("Company.email", array("class" => "form-control",
+					"placeholder" => "company@email.com", "type" => "email")); ?>
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="address" class="col-sm-2 control-label">Address(*)</label>
 
 			<div class="col-sm-5">
-				<input type="text" class="form-control" name="address" placeholder="address">
+				<?php echo $this->Form->input("Company.address", array("class" => "form-control",
+					"placeholder" => "address", "type" => "text")); ?>
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-sm-2 control-label">City(*)</label>
 
 			<div class="col-sm-5">
-				<input type="text" class="form-control" name="country" placeholder="city">
+				<?php echo $this->Form->input("Company.city", array("class" => "form-control",
+					"placeholder" => "city", "type" => "text")); ?>
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-sm-2 control-label">Postal Code</label>
 
 			<div class="col-sm-5">
-				<input type="text" class="form-control" name="postal_code" placeholder="pstal code">
+				<?php echo $this->Form->input("Company.postal_code", array("class" => "form-control",
+					"placeholder" => "Ppstal code", "type" => "text")); ?>
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-sm-2 control-label">State or Province(*)</label>
 
 			<div class="col-sm-5">
-				<input type="text" class="form-control" name="state" placeholder="state">
+				<?php echo $this->Form->input("Company.state", array("class" => " form-control", "type" => "text")); ?>
 			</div>
 		</div>
 		<div class="form-group">
@@ -90,7 +103,7 @@
 
 			<div class="col-sm-5">
 				<?php
-				echo $this->Form->input('User.country_id', array(
+				echo $this->Form->input('Company.country_id', array(
 					'type' => 'select',
 					'options' => $countries,
 					'empty' => '(Choose Country)',
@@ -114,49 +127,54 @@
 					<label for="telephone" class="col-sm-2 control-label">Telephone</label>
 
 					<div class="col-sm-5">
-						<input type="text" class="form-control" name="telephone" placeholder="company telephone">
+						<?php echo $this->Form->input("Company.telephone", array("class" => "form-control",
+							"placeholder" => "Company Telephone", "type" => "text")); ?>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="fax" class="col-sm-2 control-label">Fax</label>
 
 					<div class="col-sm-5">
-						<input type="text" class="form-control" name="fax" placeholder="fax">
+						<?php echo $this->Form->input("Company.fax", array("class" => "form-control",
+							"placeholder" => "Fax No", "type" => "text")); ?>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="alias" class="col-sm-2 control-label">Alias</label>
 
 					<div class="col-sm-5">
-						<input type="text" class="form-control" name="fax" placeholder="alias">
+						<?php echo $this->Form->input("Company.alias", array("class" => "form-control",
+							"placeholder" => "Alias", "type" => "text")); ?>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="timezone" class="col-sm-2 control-label">Timezone</label>
 
 					<div class="col-sm-5">
-						<select class="form-control" name="timezone">
-							<option>Select</option>
-							<option>1</option>
-							<option>2</option>
-							<option>3</option>
-							<option>4</option>
-							<option>5</option>
-						</select>
+						<?php
+						echo $this->Form->input('Company.timezone', array(
+							'type' => 'select',
+							'options' => array('1', '2', '3', '4', '5'),
+							'empty' => '(Choose Country)',
+							"class" => 'form-control'
+						));
+						?>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="working_hours" class="col-sm-2 control-label">Working Hours</label>
 
 					<div class="col-sm-5">
-						<input type="text" class="form-control" name="working_hours" placeholder="working hours">
+						<?php echo $this->Form->input("Company.working_hour", array("class" => "form-control",
+							"placeholder" => "Working Hour", "type" => "text")); ?>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="cattools" class="col-sm-2 control-label">Cat Tools</label>
 
 					<div class="col-sm-5">
-						<input type="text" class="form-control" name="cattools" placeholder="cat tools">
+						<?php echo $this->Form->input("Company.cat_tools", array("class" => "form-control",
+							"placeholder" => "Category Tools", "type" => "text")); ?>
 					</div>
 				</div>
 			</div>
@@ -170,31 +188,53 @@
 			<label for="prefix" class="col-sm-2 control-label">Prefix(*)</label>
 
 			<div class="col-sm-5">
-				<select class="form-control">
-					<option>Mr.</option>
-					<option>Mrs</option>
-				</select>
+				<?php
+				echo $this->Form->input('User.prefix', array(
+					'type' => 'select',
+					'options' => array('Mr', 'Mrs'),
+					'empty' => '(Choose Country)',
+					"class" => 'form-control'
+				));
+				?>
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="first_name" class="col-sm-2 control-label">First name(*)</label>
 
 			<div class="col-sm-5">
-				<input type="text" class="form-control" name="first_name" placeholder="first name">
+				<?php echo $this->Form->input("User.first_name", array("class" => "form-control",
+					"placeholder" => "First Name", "type" => "text")); ?>
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="last_name" class="col-sm-2 control-label">Last Name(*)</label>
 
 			<div class="col-sm-5">
-				<input type="text" class="form-control" name="last_name" placeholder="last name">
+				<?php echo $this->Form->input("User.last_name", array("class" => "form-control",
+					"placeholder" => "Last Name", "type" => "text")); ?>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="username" class="col-sm-2 control-label">Username(*)</label>
+
+			<div class="col-sm-5">
+				<?php echo $this->Form->input("User.username", array("class" => "form-control",
+					"placeholder" => "Username", "type" => "text")); ?>
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="email_address" class="col-sm-2 control-label">Email(*)</label>
 
 			<div class="col-sm-5">
-				<input type="email" class="form-control" name="email_address" placeholder="email@email.com">
+				<?php echo $this->Form->input("User.email", array("class" => "form-control",
+					"placeholder" => "email@email.com", "type" => "email")); ?>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="email_address" class="col-sm-2 control-label">Password(*)</label>
+
+			<div class="col-sm-5">
+				<?php echo $this->Form->input("User.password", array("class" => "form-control", "type" => "password")); ?>
 			</div>
 		</div>
 	</div>
@@ -211,35 +251,40 @@
 					<label for="user_alias" class="col-sm-2 control-label">Alias</label>
 
 					<div class="col-sm-5">
-						<input type="text" class="form-control" name="user_alias" placeholder="alias">
+						<?php echo $this->Form->input("User.alias", array("class" => "form-control",
+							"placeholder" => "Alias", "type" => "text")); ?>
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="contactteleexternal" class="col-sm-2 control-label">Contact External</label>
+					<label for="external_number" class="col-sm-2 control-label">External Number</label>
 
 					<div class="col-sm-5">
-						<input type="text" class="form-control" name="contactteleexternal" placeholder="external telephone">
+						<?php echo $this->Form->input("User.external_number", array("class" => "form-control",
+							"placeholder" => "External Number", "type" => "text")); ?>
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="contactmobilephone" class="col-sm-2 control-label">Contact External</label>
+					<label for="mobile_number" class="col-sm-2 control-label">Mobile Phone</label>
 
 					<div class="col-sm-5">
-						<input type="text" class="form-control" name="contactmobilephone" placeholder="mobile number">
+						<?php echo $this->Form->input("User.mobile_number", array("class" => "form-control",
+							"placeholder" => "Mobile Phone", "type" => "text")); ?>
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="skypeId" class="col-sm-2 control-label">Skype Id</label>
+					<label for="skype_id" class="col-sm-2 control-label">Skype Id</label>
 
 					<div class="col-sm-5">
-						<input type="text" class="form-control" name="skypeId" placeholder="skype id">
+						<?php echo $this->Form->input("User.skype_id", array("class" => "form-control",
+							"placeholder" => "Skype Id", "type" => "text")); ?>
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="linkedinid" class="col-sm-2 control-label">Linkedin Id</label>
+					<label for="linkedin_id" class="col-sm-2 control-label">Linkedin Id</label>
 
 					<div class="col-sm-5">
-						<input type="text" class="form-control" name="linkedinid" placeholder="linkedin id">
+						<?php echo $this->Form->input("User.linked_id", array("class" => "form-control",
+							"placeholder" => "Linkedin Id", "type" => "text")); ?>
 					</div>
 				</div>
 			</div>
@@ -285,14 +330,15 @@
 	</div>
 	<div style=" max-height: 150px;overflow-y: scroll; border: 2px solid darkgrey">
 		<div class="container" style="max-width:98%;">
-			<?php include('t&c.ctp');?>
+			<?php include('t&c.ctp'); ?>
 		</div>
 	</div>
 	<div class="form-group" style="margin-top: 20px;">
 		<div class="col-md-7">
 			<div class="checkbox">
 				<label>
-					<input name="is_agree" type="checkbox"> I accept all the terms and conditions
+					<?php echo $this->Form->input("is_agree", array("type" => "checkbox")); ?>
+					I accept all the terms and conditions
 				</label>
 			</div>
 		</div>

@@ -1,14 +1,20 @@
-var HOST = "http://127.0.0.1/greece/";
-//var HOST = "http://localhost/greece";
+//var HOST = "http://127.0.0.1/greece/";
+var HOST = "http://localhost/greece/";
 jQuery(function() {
-   /* function getJobFunction(){
+    function getJobFunction(){
         jQuery.ajax({
             type:"get",
             url:HOST + "users/getJobFunctionList"
 
         });
     }
-    var jobs = getJobFunction();*/
+   /* var jobs = getJobFunction();
+	jobs.count
+	var  i = 0;
+	for(i=0; i == jobs.length; i++){
+
+		var availableTags = jobs;*/
+
     //console.log(jobs);
     var availableTags = [
         "ActionScript",
@@ -34,6 +40,7 @@ jQuery(function() {
         "Scala",
         "Scheme"
     ];
+	/*}*/
     function split( val ) {
         return val.split( /,\s*/ );
     }
