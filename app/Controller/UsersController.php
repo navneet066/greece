@@ -42,7 +42,22 @@ class UsersController extends AppController
 
 	public function login()
 	{
+		if ($this->Auth->loggedIn()) {
+			$url = array("controller" => "users", "action" => "dashboard", "plugin" => null);
+			return $this->redirect($url);
+			//return $this->redirect($this->Auth->redirectUrl());
+		}
+		if ($this->request->is('post')) {
+			$data = $this->request->data;
+			$this->User->set($data);
+			if ($this->User->validateLogin()) {
+				$user = $data["User"]["email"];
+				if ($this->Auth->login($data)) {
 
+				}
+			}
+
+		}
 	}
 
 	public function getJobFunctionList()
