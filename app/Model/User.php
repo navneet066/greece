@@ -1,6 +1,7 @@
 <?php
 
 App::uses('AppModel', 'Model');
+App::uses('BlowfishPasswordHasher', 'Controller/Component/Auth');
 
 class User extends AppModel
 {
@@ -88,6 +89,46 @@ class User extends AppModel
 
 	);
 
+	function validateLogin()
+	{
+		$validateLogin = array(
+			'email' => array(
+				'mustNotEmpty' => array(
+					'rule' => 'notEmpty',
+					'message' => __("Please enter email."),
+					'last' => true
+				),
+				'minimum' => array(
+					'rule' => array('minLength', '6'),
+					'message' => __('User Name should be minimum of 6 characters'),
+					"last" => true
+				),
+				'alphanumeric' => array(
+					'rule' => 'alphanumeric',
+					'message' => __('User name should be a alphabet or numbers'),
+					"last" => true
+				),
+				"validUser" => array(
+					'rule' => 'getValidUser'
+				)
+			),
+			'password' => array(
+				'mustNotEmpty' => array(
+					'rule' => 'notEmpty',
+					'message' => __("Please enter password"),
+					"last" => true
+				),
+				'minimum' => array(
+					'rule' => array('minLength', '6'),
+					'message' => __('Password should be minimum of 6 characters')
+				)
+			)
+		);
+		$this->validate = $validateLogin;
+		return $this->validates();
+	}
+
+
 
 	public function checkEmptyFile($data)
 	{
@@ -95,6 +136,15 @@ class User extends AppModel
 			return true;
 		}
 		return false;
+	}
+
+	public function beforeSave($options = array())
+	{
+		if (!empty($this->data[$this->alias]['password'])) {
+			$passwordHasher = new BlowfishPasswordHasher();
+			$this->data[$this->alias]['password'] = $passwordHasher->hash($this->data[$this->alias]['password']);
+		}
+		return true;
 	}
 
 }

@@ -37,6 +37,36 @@ class AppController extends Controller {
 		"Session",
 		"Acl",
 		//"Security",
+		'Auth' => array(
+			/*'authorize' => array(
+                'Actions' => array('actionPath' => 'controllers/')
+            ),*/
+			'authenticate' => array(
+				'Form' => array(
+					'fields' => array('email' => 'email', 'password' => 'password'),
+					'userModel' => 'User',
+					'passwordHasher' => array(
+						'className' => 'Blowfish'
+					),
+					/*"scope" => array("User.status" => true)*/
+				)
+			),
+			'loginAction' => array(
+				'controller' => 'users',
+				'action' => 'login',
+				'plugin' => null
+			),
+			'loginRedirect' => array(
+				'controller' => 'users',
+				'action' => 'profile',
+				'plugin' => null
+			),
+			'logoutRedirect' => array(
+				'controller' => 'users',
+				'action' => 'logout',
+				'plugin' => null
+			),
+			'authError' => 'Did you really think you are allowed to see that?',)
 	);
 
 }
