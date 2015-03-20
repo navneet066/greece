@@ -30,7 +30,7 @@
 			<?php echo $this->fetch('content'); ?>
 		</div>
 	</div>
-	<div class="row" style="background: darkgrey">
+	<div class="row" style="background: darkgrey; padding: 8px;margin-top: 20px">
 		<?php echo $this->element('bread_footer');?>
 	</div>
 	<div class="row">

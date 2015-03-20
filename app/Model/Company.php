@@ -93,11 +93,11 @@ class Company extends  AppModel{
 		'postal_code' => array(
 			'mustNotEmpty' => array(
 				'rule' => 'notEmpty',
-				'message' => 'Postal must not be empty'
+				'message' => 'Postal/Zip must not be empty'
 			),
 			'alphabet' => array(
 				'rule' => 'alphanumeric',
-				'message' => 'Postal should be a alphabet or numbers'
+				'message' => 'Postal/Zip should be a alphabet or numbers'
 			)
 		),
 		'email' => array(

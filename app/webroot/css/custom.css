@@ -2,3 +2,66 @@ div.margin_list ul li {
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
+form .error-message {
+    color: #9E2424;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    -ms-box-shadow: none;
+    -o-box-shadow: none;
+    box-shadow: none;
+    text-shadow: none;
+}
+.social-img-size{
+    width: 21px;
+    height: 21px;
+}
+div.checker {
+    margin-left: 0;
+}
+.btn-blue {
+   border: 2px solid #398439;
+   color: #ffffff;
+}
+.btn-hover : hover{
+   color: #ffffff;
+}
+div.social-group-button{
+    margin-bottom: 20px;
+    margin-top: 20px;
+    padding-top: 20px;
+    margin-left: 0px;
+    padding-left: 0px;
+    padding-bottom: 20px;
+}
+div.social-group-button div p{
+    color: #ffffff;
+}
+div.social-group-button div{
+    margin-left: 20px;
+}
+
+div.footer-body{
+    background:#003d4c
+}
+div.footer-link div{
+    margin-left: 50px;
+}
+div.footer-link div a{
+    text-decoration: none;
+    color: #ffffff;
+}
+div.footer-link div ul li a {
+    color: #808080;
+}
+
+div.footer-link{
+    margin-bottom: 20px;
+    margin-top: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+div.footer-link  div  ul  li  {
+    text-decoration: none;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
