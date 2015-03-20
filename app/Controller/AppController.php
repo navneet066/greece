@@ -27,46 +27,18 @@ App::uses('Controller', 'Controller');
  * Add your application-wide methods in the class below, your controllers
  * will inherit them.
  *
- * @package		app.Controller
- * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
+ * @package        app.Controller
+ * @link        http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
-class AppController extends Controller {
+class AppController extends Controller
+{
 
 	public $components = array(
 		"RequestHandler",
 		"Session",
 		"Acl",
 		//"Security",
-		'Auth' => array(
-			/*'authorize' => array(
-                'Actions' => array('actionPath' => 'controllers/')
-            ),*/
-			'authenticate' => array(
-				'Form' => array(
-					'fields' => array('email' => 'email', 'password' => 'password'),
-					'userModel' => 'User',
-					'passwordHasher' => array(
-						'className' => 'Blowfish'
-					),
-					/*"scope" => array("User.status" => true)*/
-				)
-			),
-			'loginAction' => array(
-				'controller' => 'users',
-				'action' => 'login',
-				'plugin' => null
-			),
-			'loginRedirect' => array(
-				'controller' => 'users',
-				'action' => 'profile',
-				'plugin' => null
-			),
-			'logoutRedirect' => array(
-				'controller' => 'users',
-				'action' => 'logout',
-				'plugin' => null
-			),
-			'authError' => 'Did you really think you are allowed to see that?',)
+
 	);
 
 }
