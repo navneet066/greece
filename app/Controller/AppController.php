@@ -37,8 +37,51 @@ class AppController extends Controller
 		"RequestHandler",
 		"Session",
 		"Acl",
-		//"Security",
+		"Security",
+		'Auth' => array(
+			/*'authorize' => array(
+                'Actions' => array('actionPath' => 'controllers/')
+            ),*/
+			'authenticate' => array(
+				'Form' => array(
+					'fields' => array('email' => 'email', 'password' => 'password'),
+					'userModel' => 'User',
+					'passwordHasher' => array(
+						'className' => 'Blowfish'
+					),
+					"scope" => array("User.status" => true)
+				)
+			),
+			'loginAction' => array(
+				'controller' => 'users',
+				'action' => 'admin_login',
+				'plugin' => null
+			),
+			'loginRedirect' => array(
+				'controller' => 'users',
+				'action' => 'dashboard',
+				'plugin' => null
+			),
+			'logoutRedirect' => array(
+				'controller' => 'users',
+				'action' => 'logout',
+				'plugin' => null
+			),
+			'authError' => 'Did you really think you are allowed to see that?',)
+
 
 	);
+
+	public function beforeFilter()
+	{
+		parent::beforeFilter();
+		$this->Security->blackHoleCallback = 'black_hole';
+	}
+
+	public function black_hole($type)
+	{
+		CakeLog::error(json_encode($type));
+		$this->redirect($this->referer());
+	}
 
 }

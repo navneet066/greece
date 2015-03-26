@@ -39,37 +39,37 @@
  */
 class EmailConfig {
 
-	public $default = array(
+	/*public $default = array(
 		'transport' => 'Mail',
-		'from' => 'you@localhost',
-		//'charset' => 'utf-8',
-		//'headerCharset' => 'utf-8',
-	);
+		'from' => 'no-reply@sazpin.com',
+		'charset' => 'utf-8',
+		'headerCharset' => 'utf-8',
+	);*/
 
 	/*public $smtp = array(
 		'transport' => 'Smtp',
-		'from' => array('site@localhost' => 'My Site'),
-		'host' => 'localhost',
-		'port' => 25,
-		'timeout' => 30,
-		'username' => 'mail78412@gmail.com',
-		'password' => 'Test@testingmail',
-		'client' => null,
+		'from' => array('himanshu15990@gmail.com' => 'greece Project'),
+		'host' => 'ssl://smtp.gmail.com',
+		'port' => 465,
+		'timeout' => 100,
+		'emailFormat' => 'html',
+		'username' => 'himanshu15990@gmail.com',
+		'password' => 'Hmishra.1509',
+		'tls' => false,
 		'log' => false,
-		//'charset' => 'utf-8',
-		//'headerCharset' => 'utf-8',
+		'charset' => 'utf-8',
+		'headerCharset' => 'utf-8',
 	);*/
 
-    public $gmail = array(
-        'host' => 'ssl://smtp.gmail.com',
-        'port' => 465,
-        'username' => 'mail78412@gmail.com',
-        'password' => 'Test@testingmail',
-        'transport' => 'Smtp',
-        'tls' => true
-    );
+	public $gmail = array(
+		'host' => 'ssl://smtp.gmail.com',
+		'port' => 465,
+		'username' => 'mail78412@gmail.com',
+		'password' => 'Test@testingmail',
+		'transport' => 'Smtp'
+	);
 
-	public $fast = array(
+	/*public $fast = array(
 		'from' => 'you@localhost',
 		'sender' => null,
 		'to' => null,
@@ -98,6 +98,6 @@ class EmailConfig {
 		'log' => true,
 		//'charset' => 'utf-8',
 		//'headerCharset' => 'utf-8',
-	);
+	);*/
 
 }
