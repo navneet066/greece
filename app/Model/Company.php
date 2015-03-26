@@ -5,11 +5,22 @@
  *
  */
 
-class Company extends  AppModel{
+class Company extends AppModel
+{
 
 	public $name = 'Company';
 
 	public $useTable = 'companies';
+
+	public $recursive = 1;
+
+	public $belongsTo = array(
+
+		'Country'=>array(
+			'className'=>'Country',
+			'foreignKey'=>'country_id'
+		)
+	);
 
 	public $validate = array(
 
@@ -51,24 +62,14 @@ class Company extends  AppModel{
 				'message' => 'Please choose an Industry',
 				'last' => true
 			)
-		),'vat_id' => array(
+		), 'vat_id' => array(
 			'notEmpty' => array(
 				'rule' => 'notEmpty',
 				'message' => 'Vat id field can not be null',
 				'last' => true
 			)
 		),
-		'web_url' => array(
-			'notEmpty' => array(
-				'rule' => 'notEmpty',
-				'message' => 'Url cannot be left blank',
-				'last' => true
-			),
-			'url' => array(
-				'rule' => array("url", true),
-				'message' => 'Url must be proper'
-			)
-		),
+
 		'address' => array(
 			'mustNotEmpty' => array(
 				'rule' => 'notEmpty',
@@ -134,4 +135,41 @@ class Company extends  AppModel{
 			)
 		),
 	);
+
+	public function validateExtraFields()
+	{
+		$validateExtraFields = array(
+			'web_url' => array(
+				'url' => array(
+					'rule' => array("url", true),
+					'message' => 'Url must be proper'
+				)
+			),
+			'telephone'=>array(
+				'numeric'=>array(
+					'rule'=>'numeric',
+					'message'=>'Please Enter only number'
+				)
+			),
+			'fax'=>array(
+				'numeric'=>array(
+					'rule'=>'numeric',
+					'message'=>'Please Enter number value only'
+				)
+			),
+			'alias'=>array(
+				'alphabet'=>array(
+					'rule'=>'alphabet',
+					'message'=>'Please enter only text only'
+				)
+			),
+			''
+
+
+
+		);
+		$this->validate = $validateExtraFields;
+		return $this->validates();
+
+	}
 }

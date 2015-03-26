@@ -11,7 +11,12 @@ class Country extends AppModel
 
 	public $useTable = 'countries';
 
-	public $belongsTo = array();
+	public $hasMany = array(
+		'Company'=>array(
+			'className'=>'Company',
+			'foreignKey'=>'country_id'
+		)
+	);
 
 	public function getCountryList()
 	{

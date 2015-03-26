@@ -4267,8 +4267,9 @@ textarea.input-group-sm>.form-control, textarea.input-group-sm>.input-group-addo
 }
 
 .navbar-default {
-    background-color: #f8f8f8;
-    border-color: #e7e7e7
+    background-color: #223343;
+	border-radius: 0px	;
+
 }
 
 .navbar-default .navbar-brand {
@@ -4276,20 +4277,20 @@ textarea.input-group-sm>.form-control, textarea.input-group-sm>.input-group-addo
 }
 
 .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
-    color: #5e5e5e;
+    color: #ffffff;
     background-color: transparent
 }
 
 .navbar-default .navbar-text {
-    color: #777
+    color: #ffffff
 }
 
 .navbar-default .navbar-nav>li>a {
-    color: #777
+    color: #ffffff;
 }
 
 .navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
-    color: #333;
+    color: #fff2f2;
     background-color: transparent
 }
 

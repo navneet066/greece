@@ -1,13 +1,13 @@
 //var HOST = "http://127.0.0.1/greece/";
 var HOST = "http://localhost/greece/";
 jQuery(function() {
-    function getJobFunction(){
+   /* function getJobFunction(){
         jQuery.ajax({
             type:"get",
             url:HOST + "users/getJobFunctionList"
 
         });
-    }
+    }*/
    /* var jobs = getJobFunction();
 	jobs.count
 	var  i = 0;
@@ -48,7 +48,7 @@ jQuery(function() {
         return split( term ).pop();
     }
 
-    $( "#jobFunction" )
+    $( "#catTools" )
         // don't navigate away from the field on tab when selecting an item
         .bind( "keydown", function( event ) {
             if ( event.keyCode === $.ui.keyCode.TAB &&

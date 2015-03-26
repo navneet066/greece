@@ -9,6 +9,18 @@ class User extends AppModel
 
 	public $useTable = "users";
 
+	public $virtualFields = array('full_name' => 'CONCAT(User.first_name, ", ", User.last_name)');
+
+	public $recursive = 2;
+
+	public $belongsTo = array(
+		'Company' => array(
+			'className' => 'Company',
+			'foreignKey' => 'company_id'
+		)
+	);
+
+
 	public $validate = array(
 
 		'prefix' => array(
@@ -79,7 +91,6 @@ class User extends AppModel
 			)
 		),
 
-
 		'is_agree' => array(
 			'mustNotEmpty' => array(
 				'rule' => array('comparison', '!=', 0),
@@ -98,7 +109,7 @@ class User extends AppModel
 					'message' => __("Please enter email."),
 					'last' => true
 				),
-				'minimum' => array(
+				/*'minimum' => array(
 					'rule' => array('minLength', '6'),
 					'message' => __('User Name should be minimum of 6 characters'),
 					"last" => true
@@ -107,7 +118,7 @@ class User extends AppModel
 					'rule' => 'alphanumeric',
 					'message' => __('User name should be a alphabet or numbers'),
 					"last" => true
-				),
+				),*/
 				"validUser" => array(
 					'rule' => 'getValidUser'
 				)
@@ -128,7 +139,77 @@ class User extends AppModel
 		return $this->validates();
 	}
 
+	public function getValidUser($data)
+	{
 
+		$email = array_shift($data);
+		$password = trim($this->data[$this->alias]["password"]);
+		if (!empty($password)) {
+			$conditions = array("User.email" => $email);
+			$fields = array("User.password", "User.status");
+			$result = $this->find("first", array("conditions" => $conditions, "fields" => $fields));
+			if (!empty($result)) {
+				$passwordHasher = new BlowfishPasswordHasher();
+				$storedHash = $result[$this->alias]["password"];
+				$correct = $passwordHasher->check($password, $storedHash);
+				if ($correct) {
+					return true;
+				}
+				return __("User Name & Password do not match");
+			}
+		}
+		return __("User does not exists");
+	}
+
+	public function validateExtraFields()
+	{
+		$validateExtraFields = array(
+			'alias' => array(
+				'minimum' => array(
+					'rule' => array('minLength', '4'),
+					'message' => array('Alias should be minimum of 4 char')
+				)
+			),
+			'external_number' => array(
+				'numeric' => array(
+					'rule' => array('numeric'),
+					'message' => array('Only numeric value allowed')
+				)
+			),
+			'mobile_number' => array(
+				'minimum' => array(
+					'rule' => array('minLength', '8'),
+					'message' => array('Please Enter atleast 8 digit number')
+				),
+				'numeric' => array(
+					'minimum' => array('minLength', '10'),
+					'message' => array('Please enter atleast 10 digit number')
+				)
+			),
+			'skype_id' => array(
+				'alphaNumericDashUnderscore' => array(
+					'rule' => array('alphaNumericDashUnderscore'),
+					'message' => array('Skype id can only be letter numbers, dash and underscore')
+				)
+			),
+			'linkedin_id' => array(
+				'rule' => array('alphaNumericDashUnderscore'),
+				'message' => array('Slug can only be letter numbers, dash and underscore')
+			)
+		);
+		$this->validate = $validateExtraFields;
+		return $this->validates();
+	}
+
+	public function alphaNumericDashUnderscore($check)
+	{
+		// $data array is passed using the form field name as the key
+		// have to extract the value to make the function generic
+		$value = array_values($check);
+		$value = $value[0];
+
+		return preg_match('|^[0-9a-zA-Z_-]*$|', $value);
+	}
 
 	public function checkEmptyFile($data)
 	{
@@ -136,6 +217,57 @@ class User extends AppModel
 			return true;
 		}
 		return false;
+	}
+
+	public function validateUpdateUserPassword($fields)
+	{
+		if (in_array("old_password", $fields)) {
+			$validateUserPassword = array(
+				'old_password' => array(
+					'notEmpty' => array(
+						'rule' => 'notEmpty',
+						'message' => __("Old password should not empty"),
+						'last' => true
+					)
+				),
+				'new_password' => array(
+					'notEmpty' => array(
+						'rule' => 'notEmpty',
+						'message' => __('New password should not empty'),
+						'last' => true
+					),
+					'minimum' => array(
+						'rule' => array('minLength', '6'),
+						'message' => __('New password should be minimum of 6 characters')
+					)
+				)
+			);
+		} else {
+			$validateUserPassword = array(
+				'new_password' => array(
+					'notEmpty' => array(
+						'rule' => 'notEmpty',
+						'message' => __('New password should not empty'),
+						'last' => true
+					),
+					'minimum' => array(
+						'rule' => array('minLength', '6'),
+						'message' => __('New password should be minimum of 6 characters')
+					)
+				)
+			);
+		}
+		$this->validate = $validateUserPassword;
+		return $this->validates();
+	}
+
+
+	public function getUserDetailsByEmail($email)
+	{
+		$conditions = array('User.email' => $email);
+		$result = $this->find('first', array('conditions' => $conditions));
+		return $result;
+
 	}
 
 	public function beforeSave($options = array())
@@ -147,5 +279,49 @@ class User extends AppModel
 		return true;
 	}
 
+	public function companyIdForEmployee($email)
+	{
+		$this->recursive = 1;
+		$conditions = array('User.email' => $email);
+		$fields = array('User.company_id');
+		$result = $this->find('first', array('conditions' => $conditions, 'fields' => $fields));
+		return $result;
+	}
+
+	public function getAuthDetailByEmail($email)
+	{
+		$conditions = array('User.email' => $email);
+		$fields = array('User.id', 'User.first_name', 'User.last_name', 'User.group_id', 'User.company_id');
+		$result = $this->find('first', array('conditions' => $conditions, 'fields' => $fields));
+		return $result;
+
+	}
+
+	public function validPasswordUpdate($id, $oldPassword, $newPassword)
+	{
+		$conditions = array("User.id" => $id);
+		$fields = array("User.password");
+		$list = $this->find("list", array("conditions" => $conditions, "fields" => $fields));
+		if (!empty($list)) {
+			$storedHash = array_shift($list);
+			$passwordHasher = new BlowfishPasswordHasher();
+			$correct = $passwordHasher->check($oldPassword, $storedHash);
+			if ($correct) {
+				$this->id = $id;
+				$flag = $this->saveField('password', $newPassword);
+				if ($flag) {
+					return true;
+				}
+				return false;
+			}
+		}
+	}
+
+	public function getAllEmployeeByGroupAndCompanyId($companyId, $groupId)
+	{
+		$conditions = array('User.group_id' => $groupId, 'User.company_id' => $companyId);
+		$results = $this->find('all', array('conditions' => $conditions));
+		return $results;
+	}
 }
 

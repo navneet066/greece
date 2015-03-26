@@ -2,66 +2,101 @@ div.margin_list ul li {
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
+
 form .error-message {
-    color: #9E2424;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    -ms-box-shadow: none;
-    -o-box-shadow: none;
-    box-shadow: none;
-    text-shadow: none;
+	color: #9E2424;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	-ms-box-shadow: none;
+	-o-box-shadow: none;
+	box-shadow: none;
+	text-shadow: none;
 }
-.social-img-size{
-    width: 21px;
-    height: 21px;
+
+.social-img-size {
+	width: 21px;
+	height: 21px;
 }
+
 div.checker {
-    margin-left: 0;
+	margin-left: 0;
 }
+
 .btn-blue {
-   border: 2px solid #398439;
-   color: #ffffff;
-}
-.btn-hover : hover{
-   color: #ffffff;
-}
-div.social-group-button{
-    margin-bottom: 20px;
-    margin-top: 20px;
-    padding-top: 20px;
-    margin-left: 0px;
-    padding-left: 0px;
-    padding-bottom: 20px;
-}
-div.social-group-button div p{
-    color: #ffffff;
-}
-div.social-group-button div{
-    margin-left: 20px;
+	border: 2px solid #398439;
+	color: #ffffff;
 }
 
-div.footer-body{
-    background:#003d4c
+.btn-hover:hover {
+	color: #ffffff;
 }
-div.footer-link div{
-    margin-left: 50px;
+
+div.social-group-button {
+	margin-bottom: 20px;
+	margin-top: 20px;
+	padding-top: 20px;
+	margin-left: 0px;
+	padding-left: 0px;
+	padding-bottom: 20px;
 }
-div.footer-link div a{
-    text-decoration: none;
-    color: #ffffff;
+
+div.social-group-button div p {
+	color: #ffffff;
 }
+
+div.social-group-button div {
+	margin-left: 20px;
+}
+
+body.ad-log-bg-color {
+	background: #223343;
+}
+ul.list-style{
+	border: 2px solid #223343;
+}
+ul.list-style li{
+	border-right: 1px solid #ffffff;
+	background: #245269;
+	height: 30px;
+
+}
+ul.list-style li a {
+	text-decoration: none;
+margin-top: 20px;
+
+}
+.img-logo1 {
+	width: 110px;
+	height: 130px;
+	margin-left: 30px;
+}
+
+div.footer-body {
+	background: #223343
+}
+
+div.footer-link div {
+	margin-left: 50px;
+}
+
+div.footer-link div a {
+	text-decoration: none;
+	color: #ffffff;
+}
+
 div.footer-link div ul li a {
-    color: #808080;
+	color: #808080;
 }
 
-div.footer-link{
-    margin-bottom: 20px;
-    margin-top: 20px;
-    padding-top: 20px;
-    padding-bottom: 20px;
+div.footer-link {
+	margin-bottom: 20px;
+	margin-top: 20px;
+	padding-top: 20px;
+	padding-bottom: 20px;
 }
-div.footer-link  div  ul  li  {
-    text-decoration: none;
-    margin-bottom: 15px;
-    margin-top: 15px;
+
+div.footer-link div ul li {
+	text-decoration: none;
+	margin-bottom: 15px;
+	margin-top: 15px;
 }

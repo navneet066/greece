@@ -22,7 +22,7 @@
     </div>
     <div>
         <?php echo $this->Session->flash(); ?>
-        <div class="container" style="border: 2px solid #000">
+        <div>
             <?php echo $this->fetch('content'); ?>
         </div>
     </div>

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default" style="background: #000000">
+<nav class="navbar navbar-default" style="background: #223343">
 	<div class="container">
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
