@@ -261,6 +261,12 @@ class User extends AppModel
 		return $this->validates();
 	}
 
+    public function get_forgot_password_code()
+    {
+        $randomCode = '1234567890axzyAxzy';
+        $codeNumber = substr(str_shuffle($randomCode), 0, 15);
+        return 'RP-' . str_pad($codeNumber, 5, STR_PAD_LEFT);
+    }
 
 	public function getUserDetailsByEmail($email)
 	{
@@ -323,5 +329,45 @@ class User extends AppModel
 		$results = $this->find('all', array('conditions' => $conditions));
 		return $results;
 	}
+
+    function validateEmailForForgotPassword()
+    {
+        $validateEmail = array(
+            'email' => array(
+                'notEmpty' => array(
+                    'rule' => 'notEmpty',
+                    'message' => 'Email address should not empty',
+                    'last' => true
+                ),
+                'email' => array(
+                    'rule' => 'email',
+                    'message' => 'Please choose valid email address',
+                    'last' => true
+                ),
+                'validEmail'=>array(
+                    'rule'=>'isPresentEmail',
+
+                )
+            ),
+        ) ;
+        $this->validate = $validateEmail;
+        return $this->validates();
+
+    }
+
+   public function isPresentEmail($data)
+    {
+        $email = array_shift($data);
+        if (!empty($email)) {
+            $conditions = array("User.email" => $email);
+            $result = $this->find("first", array("conditions" => $conditions));
+            if (!empty($result)) {
+               return true;
+            }
+            return __("Email does not exists");
+        }
+
+
+    }
 }
 
