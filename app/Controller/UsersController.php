@@ -13,6 +13,13 @@ class UsersController extends AppController
 
 	public $layout = "users";
 
+	var $components = array(
+		'BotDetect.Captcha' => array(
+			'CaptchaId' => 'ExampleCaptcha', // a unique Id for the Captcha instance
+			'UserInputId' => 'CaptchaCode' // Id of the Captcha code input textbox
+		)
+	);
+
 	public $uses = array("User", "Company", "Country", "JobFunction","Employee");
 
 	public function beforeFilter()
@@ -27,6 +34,10 @@ class UsersController extends AppController
 	{
 		$countries = $this->Country->getCountryList();
 		$this->set('countries', $countries);
+		$this->loadModel('Timezone');
+		$timeZone = $this->Timezone->getTimezoneList();
+		$this->set('timezone', $timeZone);
+		$this->set('captchaHtml', $this->Captcha->Html());
 		if ($this->request->is('post')) {
 			$data = $this->request->data;
 			$this->User->set($data['User']);
@@ -82,7 +93,6 @@ class UsersController extends AppController
 		}
 	}
 
-
 	public function admin_login()
 	{
 		$this->layout = 'admin_login_layout';
@@ -102,6 +112,7 @@ class UsersController extends AppController
 
 		}
 	}
+
 
 	public function dashboard()
 	{
@@ -161,10 +172,6 @@ class UsersController extends AppController
 		}
 	}
 
-	public function user_login()
-	{
-
-	}
 
 	public function forgot_password()
 	{
@@ -181,7 +188,6 @@ class UsersController extends AppController
 			$userEmail = $authUser['User']['email'];
 			$fullName =  $authDetail['User']['first_name'] + $authDetail['User']['last_name'];
 			$data = $this->request->data;
-			CakeLog::error(json_encode($data));
 			$this->User->set($data);
 			$fields = array("new_password", "old_password");
 			$flag = $this->User->validateUpdateUserPassword($fields);
