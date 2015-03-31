@@ -13,41 +13,12 @@ class User extends AppModel
 
 	public $recursive = 2;
 
-	public $actsAs = array('Acl' => array('type' => 'requester', 'enable' => true));
-
 	public $belongsTo = array(
 		'Company' => array(
 			'className' => 'Company',
 			'foreignKey' => 'company_id'
-		),
-		'Group'=>array(
-			'className'=>'Group',
-			'foreignKey' =>'group_id'
 		)
 	);
-
-	public function bindNode($user)
-	{
-		$user = $this->find("first", array("conditions" => array("email_address" => $user["User"]), "fields" => array("User.group_id")));
-		return array('model' => 'Group', 'foreign_key' => $user['User']['group_id']);
-	}
-
-	public function parentNode()
-	{
-		if (!$this->id && empty($this->data)) {
-			return null;
-		}
-		if (isset($this->data['User']['group_id'])) {
-			$groupId = $this->data['User']['group_id'];
-		} else {
-			$groupId = $this->field('group_id');
-		}
-		if (!$groupId) {
-			return null;
-		} else {
-			return array('Group' => array('id' => $groupId));
-		}
-	}
 
 
 	public $validate = array(
@@ -138,6 +109,16 @@ class User extends AppModel
 					'message' => __("Please enter email."),
 					'last' => true
 				),
+				/*'minimum' => array(
+					'rule' => array('minLength', '6'),
+					'message' => __('User Name should be minimum of 6 characters'),
+					"last" => true
+				),
+				'alphanumeric' => array(
+					'rule' => 'alphanumeric',
+					'message' => __('User name should be a alphabet or numbers'),
+					"last" => true
+				),*/
 				"validUser" => array(
 					'rule' => 'getValidUser'
 				)
@@ -160,11 +141,12 @@ class User extends AppModel
 
 	public function getValidUser($data)
 	{
+
 		$email = array_shift($data);
 		$password = trim($this->data[$this->alias]["password"]);
 		if (!empty($password)) {
 			$conditions = array("User.email" => $email);
-			$fields = array("User.password", "User.status","User.group_id");
+			$fields = array("User.password", "User.status");
 			$result = $this->find("first", array("conditions" => $conditions, "fields" => $fields));
 			if (!empty($result)) {
 				$passwordHasher = new BlowfishPasswordHasher();
@@ -246,10 +228,6 @@ class User extends AppModel
 						'rule' => 'notEmpty',
 						'message' => __("Old password should not empty"),
 						'last' => true
-					),
-					'notMatch'=>array(
-						'rule'=>'checkValidOldPassword',
-						'message'=>__('Old password is not correct'),
 					)
 				),
 				'new_password' => array(
@@ -283,26 +261,16 @@ class User extends AppModel
 		return $this->validates();
 	}
 
-	public function checkValidOldPassword($data)
+	public function validPassword($data)
 	{
-		$email = array_shift($data);
-		$oldPassword = trim($this->data[$this->alias]["old_password"]);
-		if (!empty($password)) {
-			$conditions = array("User.email" => $email);
-			$fields = array("User.password", "User.status");
-			$result = $this->find("first", array("conditions" => $conditions, "fields" => $fields));
-			if (!empty($result)) {
-				$passwordHasher = new BlowfishPasswordHasher();
-				$storedHash = $result[$this->alias]["password"];
-				$correct = $passwordHasher->check($oldPassword, $storedHash);
-				if ($correct) {
-					return true;
-				}
-				return __("Password not matched");
-			}
-		}
 
+	}
 
+	public function get_forgot_password_code()
+	{
+		$randomCode = '1234567890axzyAxzy';
+		$codeNumber = substr(str_shuffle($randomCode), 0, 15);
+		return 'RP-' . str_pad($codeNumber, 5, STR_PAD_LEFT);
 	}
 
 	public function getUserDetailsByEmail($email)
@@ -355,7 +323,7 @@ class User extends AppModel
 				if ($flag) {
 					return true;
 				}
-				return false;
+				return "You have entered wrong password Please try again";
 			}
 		}
 	}
@@ -366,5 +334,44 @@ class User extends AppModel
 		$results = $this->find('all', array('conditions' => $conditions));
 		return $results;
 	}
-}
 
+	function validateEmailForForgotPassword()
+	{
+		$validateEmail = array(
+			'email' => array(
+				'notEmpty' => array(
+					'rule' => 'notEmpty',
+					'message' => 'Email address should not empty',
+					'last' => true
+				),
+				'email' => array(
+					'rule' => 'email',
+					'message' => 'Please choose valid email address',
+					'last' => true
+				),
+				'validEmail'=>array(
+					'rule'=>'isPresentEmail',
+
+				)
+			),
+		) ;
+		$this->validate = $validateEmail;
+		return $this->validates();
+
+	}
+
+	public function isPresentEmail($data)
+	{
+		$email = array_shift($data);
+		if (!empty($email)) {
+			$conditions = array("User.email" => $email);
+			$result = $this->find("first", array("conditions" => $conditions));
+			if (!empty($result)) {
+				return true;
+			}
+			return __("Email does not exists");
+		}
+
+
+	}
+}

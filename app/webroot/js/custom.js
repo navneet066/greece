@@ -79,4 +79,9 @@ jQuery(function() {
                 return false;
             }
         });
+//change CAPTCHA on each click or on refreshing page
+		$("#captchaReload").click(function() {
+			$("#img").remove();
+			$('<img id="img" src="../customCaptcha/captcha.php" />').appendTo("#imgdiv");
+		});
 });

@@ -157,6 +157,12 @@ class Company extends AppModel
 					'message'=>'Please Enter number value only'
 				)
 			),
+			'timezone_id'=>array(
+				'numeric'=>array(
+					'rule'=>'numeric',
+					'message'=>'Please Select timezone'
+				)
+			),
 			'alias'=>array(
 				'alphabet'=>array(
 					'rule'=>'alphabet',

@@ -100,3 +100,10 @@ div.footer-link div ul li {
 	margin-bottom: 15px;
 	margin-top: 15px;
 }
+#imgdiv{
+	float:left;
+}
+#captchaReload{
+	/*float:right;*/
+	margin-right:40px;
+}

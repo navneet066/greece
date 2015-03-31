@@ -25,7 +25,7 @@
                </form>-->
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <?php echo $this->Html->link(__('Login'), array('controller'=> 'users', 'action'=>'login'));?>
+                    <?php echo $this->Html->link(__('Login'), array('controller'=> 'users', 'action'=>'admin_login'));?>
                 </li><li>
                     <?php echo $this->Html->link(__('Sign Up'), array('controller'=> 'users', 'action'=>'sign_up'));?>
                 </li>

@@ -37,7 +37,7 @@
 				<?php echo $this->Form->input('Company.industry_id', array(
 					'type' => 'select',
 					'options' => array('1', '2', '3', '4', '5'),
-					'empty' => '(Choose Country)',
+					'empty' => '(Choose Industry)',
 					"class" => 'form-control'
 				));
 				?>
@@ -153,9 +153,9 @@
 
 					<div class="col-sm-5">
 						<?php
-						echo $this->Form->input('Company.timezone', array(
+						echo $this->Form->input('Company.timezone_id', array(
 							'type' => 'select',
-							'options' => array('-12'=>'[UTC - 12] Baker Island Time', '-11'=>'[UTC - 11] Niue Time, Samoa Standard Time', '3', '4', '5'),
+							'options' => $timezones,
 							'empty' => '(Choose Timezone)',
 							"class" => 'form-control'
 						));
@@ -302,10 +302,13 @@
 				<label for="message">Please Enter the code shown here :</label>
 			</div>
 			<div class="col-md-6">
-				<img
-					src="<?php echo $this->webroot; ?>captcha/file/captcha_code_file.php?rand=<?php echo rand(); ?>"
-					id="captchaimg"><br>
-				<input id="6_letters_code" name="6_letters_code" type="text">
+				<h4>
+					<div id="imgdiv">
+						<?php echo $this->Html->image('/customCaptcha/captcha.php', array('id' => 'img')); ?>
+					</div>
+					<?php echo $this->Html->image('/customCaptcha/reload.png', array('id' => 'captchaReload')); ?>
+				</h4><br>
+				<?php echo $this->Form->input("User.captcha", array("type" => "text","id"=>"captcha1")); ?>
 			</div>
 			<div class="clearfix"></div>
 		</div>

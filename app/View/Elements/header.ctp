@@ -14,8 +14,7 @@
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-				<li><a href="#">Link</a></li>
+				<li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
 			</ul>
 			<!--<form class="navbar-form navbar-left" role="search">
 				<div class="form-group">
@@ -24,15 +23,12 @@
 				<button type="submit" class="btn btn-default">Submit</button>
 			</form>-->
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#">Link</a></li>
+				<li><?php echo $this->Html->link('Sign Up',array('controller'=>'users','action'=>'sign_up'))?></li>
 				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Login <span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
-						<li><a href="#">Action</a></li>
-						<li><a href="#">Another action</a></li>
-						<li><a href="#">Something else here</a></li>
-						<li class="divider"></li>
-						<li><a href="#">Separated link</a></li>
+						<li><?php echo $this->Html->link('Admin Login', array('controller'=>'users','admin_login'));?></php></li>
+						<li><?php echo $this->Html->link('User Login', array('controller'=>'users','user_login'));?></php></li>
 					</ul>
 				</li>
 			</ul>
