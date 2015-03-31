@@ -173,6 +173,21 @@ CREATE TABLE `groups` (
 
 insert  into `groups`(`id`,`name`,`permissions`,`description`,`status`,`created`,`updated`) values (1,'SuperAdmin',NULL,'all access',1,NULL,NULL),(2,'Admin',NULL,'sub access',1,NULL,NULL),(3,'CompanyAdmin',NULL,'only company related superior access',1,NULL,NULL),(4,'CompanyEmployee',NULL,'as a employee.',1,NULL,NULL);
 
+/*Table structure for table `industries` */
+
+DROP TABLE IF EXISTS `industries`;
+
+CREATE TABLE `industries` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(200) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `created` datetime DEFAULT NULL,
+  `updated` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `industries` */
+
 /*Table structure for table `job_functions` */
 
 DROP TABLE IF EXISTS `job_functions`;
@@ -250,7 +265,7 @@ CREATE TABLE `users` (
 
 /*Data for the table `users` */
 
-insert  into `users`(`id`,`company_id`,`username`,`password`,`password_reset_code`,`prefix`,`first_name`,`last_name`,`email`,`alias`,`group_id`,`external_number`,`mobile_number`,`skype_id`,`linkedin_id`,`created`,`updated`,`status`,`opening_mails`,`comments`,`is_active`) values (1,1,'navneet066','$2a$10$v5hQ4pG4mRkcmID3JYEX1.tthJGy3RepOKSBKSZIa.FicygXnlxvm',NULL,'Mr','Navneet','jha','nandanjha.navneet@gmail.com','',3,'','','',NULL,'2015-03-22 09:09:45','2015-03-25 19:11:15',1,NULL,NULL,1),(2,1,'navneet123','himanshumishra',NULL,'Mr','Navneet Nandan','Jha','himanshu15990@gmail.com',NULL,4,'9898989898','2323232323','himanshu123','himanshu123','2015-03-22 19:27:09','2015-03-22 19:27:09',1,NULL,NULL,1),(3,1,'himanshu989','$2a$10$DYDntcTajnmNvLvNNYMBSu2Trv9w1/9SgDzfl3CmJ83VUN0FP75Wi',NULL,'Mr','himanshu','Mishra','hmishra1509@gmail.com',NULL,4,'8989898989','9898989898','himansuhminsdj','himanshmishra','2015-03-25 20:48:39','2015-03-25 20:48:39',1,NULL,NULL,1),(4,2,'himanshu123','$2a$10$fhQi3OhMD2BrLolgrTfoEuPt8EbjyFQ1xB7DfKLNdhwYQ6fPUuZl.',NULL,'Mr','Himanshu','Mishra','himanshu8792@gmail.com','jsfhjdfhdjfh',3,'8888888888','8888888888','himanshu123456',NULL,'2015-03-26 18:28:56','2015-03-26 18:28:56',1,NULL,NULL,1),(5,2,'shushira123','$2a$10$dy6b2B5j/pp1g0/sUx8O9OQDan864S7ZrmC1rHOyYFbc0a2hmut26',NULL,'Mrs','Shushira','Singh','himanshu93109@gmail.com',NULL,4,'989898989898','989898989898','shushiradevi123','shishura123','2015-03-26 18:38:15','2015-03-27 18:27:05',1,NULL,NULL,0);
+insert  into `users`(`id`,`company_id`,`username`,`password`,`password_reset_code`,`prefix`,`first_name`,`last_name`,`email`,`alias`,`group_id`,`external_number`,`mobile_number`,`skype_id`,`linkedin_id`,`created`,`updated`,`status`,`opening_mails`,`comments`,`is_active`) values (1,1,'navneet066','$2a$10$FgbTTC9RzfgbfEbkD8Kr3ey8y6m8kz36gLhuitRKF49r6sp3C89oy',NULL,'Mr','Navneet','jha','nandanjha.navneet@gmail.com','',3,'','','',NULL,'2015-03-22 09:09:45','2015-03-30 18:37:14',1,NULL,NULL,1),(2,1,'navneet123','$2a$10$fhQi3OhMD2BrLolgrTfoEuPt8EbjyFQ1xB7DfKLNdhwYQ6fPUuZl.','RP-506xz7Ax82yaz9y','Mr','Navneet Nandan','Jha','himanshu15990@gmail.com',NULL,4,'9898989898','2323232323','himanshu123','himanshu123','2015-03-22 19:27:09','2015-03-30 18:36:02',1,NULL,NULL,1),(3,1,'himanshu989','$2a$10$DYDntcTajnmNvLvNNYMBSu2Trv9w1/9SgDzfl3CmJ83VUN0FP75Wi',NULL,'Mr','himanshu','Mishra','hmishra1509@gmail.com',NULL,4,'8989898989','9898989898','himansuhminsdj','himanshmishra','2015-03-25 20:48:39','2015-03-25 20:48:39',1,NULL,NULL,1),(4,2,'himanshu123','$2a$10$fhQi3OhMD2BrLolgrTfoEuPt8EbjyFQ1xB7DfKLNdhwYQ6fPUuZl.',NULL,'Mr','Himanshu','Mishra','himanshu8792@gmail.com','jsfhjdfhdjfh',3,'8888888888','8888888888','himanshu123456',NULL,'2015-03-26 18:28:56','2015-03-26 18:28:56',1,NULL,NULL,1),(5,2,'shushira123','$2a$10$dy6b2B5j/pp1g0/sUx8O9OQDan864S7ZrmC1rHOyYFbc0a2hmut26',NULL,'Mrs','Shushira','Singh','himanshu93109@gmail.com',NULL,4,'989898989898','989898989898','shushiradevi123','shishura123','2015-03-26 18:38:15','2015-03-27 18:27:05',1,NULL,NULL,0);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
