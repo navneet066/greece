@@ -7,11 +7,14 @@
  */
 App::uses('AppController', 'Controller');
 
+
 class UsersController extends AppController
 {
 	public $name = 'Users';
 
 	public $layout = "users";
+
+	public $components = array('Session', 'Captcha');
 
 	public $uses = array("User", "Company", "Country", "JobFunction", "Employee");
 
@@ -19,9 +22,32 @@ class UsersController extends AppController
 	{
 		parent::beforeFilter();
 		$this->Security->unlockedActions = array("sign_up", "admin_login", "user_login", "change_password",
-			"reset_password", "forgot_password");
+			"reset_password", "forgot_password", "get_captcha");
 		$this->Security->csrfCheck = false;
-		$this->Auth->allow("sign_up", "admin_login", "user_login", "forgot_password", "change_password");
+		$this->Auth->allow("sign_up", "admin_login", "user_login", "forgot_password", "change_password", "get_captcha");
+	}
+
+	public function get_captcha()
+	{
+		$this->autoRender = false;
+		App::import('Component', 'Captcha');
+		$captchanumber = 'ABCDEFGHIJKLMNPQRSTUVWXYZ123456789abcdefghijklmnpqrstuvwxyz';
+		$captchanumber = substr(str_shuffle($captchanumber), 0, 5);
+		$this->Session->write('captcha_code', $captchanumber);
+		$settings = array(
+			'characters' => $captchanumber,
+			'winHeight' => 70,         // captcha image height
+			'winWidth' => 220,           // captcha image width
+			'fontSize' => 25,          // captcha image characters fontsize
+			'fontPath' => WWW_ROOT . 'tahomabd.ttf',    // captcha image font
+			'noiseColor' => '#ccc',
+			'bgColor' => '#fff',
+			'noiseLevel' => '100',
+			'textColor' => '#000'
+		);
+
+		$img = $this->Captcha->ShowImage($settings);
+		echo $img;
 	}
 
 	public function sign_up()
@@ -32,41 +58,43 @@ class UsersController extends AppController
 		$timezones = $this->Timezone->getTimezoneList();
 		$this->set('timezones', $timezones);
 		if ($this->request->is('post')) {
-			//session_start();
 			$data = $this->request->data;
-			/*if ($this->Session->read("code") == $data["User"]["captcha"]) {*/
-			$this->User->set($data['User']);
-			$userFields = array('prefix', 'first_name', 'last_name', 'username', 'email', 'password', "is_agree");
-			$userFlag = $this->User->validates(array('fieldList' => $userFields));
-			$this->Company->set($data['Company']);
-			$companyFields = array('company_name', 'email', 'industry_id', 'vat_id',
-				'address', 'city', 'postal_code', 'state', 'country_id');
-			$companyFlag = $this->Company->validates(array('fieldList' => $companyFields));
-			$userExtraFields = array('alias', 'external_number', 'mobile_number', 'skype_id', 'linkedin_id');
-			if (!empty($data['Company']['web_url'])) {
-				$this->User->validateExtraFields($userExtraFields);
-				$companyExtraFields = array('web_url', 'telephone', 'fax', 'alias', 'timezone_id', 'working_hour', 'cat_tools');
-				$this->Company->validateExtraFields($companyExtraFields);
-			}
-			if ($userFlag && $companyFlag) {
-				$companySaved = $this->Company->save($data['Company']);
-				if ($companySaved) {
-					$companyId = $this->Company->id;
-					$data['User']['company_id'] = $companyId;
-					$data['User']['group_id'] = 3; //this is making User to the company's Admin
-					$userSaved = $this->User->save($data);
-					if ($userSaved) {
-						$adminMailId = $data['User']['email'];
-						$adminPassword = $data['User']['password'];
-						$sendMail = $this->__sendMailToAdmin($adminMailId, $adminPassword);
-						if (!empty($sendMail)) {
-							$this->redirect(array("controller" => 'users', 'action' => 'sign_up'));
-							$message = __("Thanks for registering Verification! request is sent to your mail id");
-							$this->set("message", $message);
+			$sessionCaptcha = $this->Session->read('captcha_code');
+			if ($sessionCaptcha == $data["User"]["captcha_code"]) {
+				$this->User->set($data['User']);
+				$userFields = array('prefix', 'first_name', 'last_name', 'username', 'email', 'password', "is_agree");
+				$userFlag = $this->User->validates(array('fieldList' => $userFields));
+				$this->Company->set($data['Company']);
+				$companyFields = array('company_name', 'email', 'industry_id', 'vat_id',
+					'address', 'city', 'postal_code', 'state', 'country_id');
+				$companyFlag = $this->Company->validates(array('fieldList' => $companyFields));
+				$userExtraFields = array('alias', 'external_number', 'mobile_number', 'skype_id', 'linkedin_id');
+				if (!empty($data['Company']['web_url'])) {
+					$this->User->validateExtraFields($userExtraFields);
+					$companyExtraFields = array('web_url', 'telephone', 'fax', 'alias', 'timezone_id', 'working_hour', 'cat_tools');
+					$this->Company->validateExtraFields($companyExtraFields);
+				}
+				if ($userFlag && $companyFlag) {
+					$companySaved = $this->Company->save($data['Company']);
+					if ($companySaved) {
+						$companyId = $this->Company->id;
+						$data['User']['company_id'] = $companyId;
+						$data['User']['group_id'] = 3; //this is making User to the company's Admin
+						$userSaved = $this->User->save($data);
+						if ($userSaved) {
+							$adminMailId = $data['User']['email'];
+							$adminPassword = $data['User']['password'];
+							$sendMail = $this->__sendMailToAdmin($adminMailId, $adminPassword);
+							if ($sendMail) {
+								$message = __("Your registration made done!");
+								$this->Session->setFlash($message, "default", array('class' => 'alert alert-success'));
+								$this->redirect($this->request->referer());
+							}
 						}
 					}
 				}
-				/*}*/
+			} else {
+				$this->Session->setFlash(__('Captcha code does not match. Please enter right code'));
 			}
 		}
 	}

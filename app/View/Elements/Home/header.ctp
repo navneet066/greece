@@ -25,9 +25,9 @@
                </form>-->
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <?php echo $this->Html->link(__('Login'), array('controller'=> 'users', 'action'=>'admin_login'));?>
+                    <?php echo $this->Html->link('Login', array('controller'=> 'users', 'action'=>'admin_login'));?>
                 </li><li>
-                    <?php echo $this->Html->link(__('Sign Up'), array('controller'=> 'users', 'action'=>'sign_up'));?>
+                    <?php echo $this->Html->link('Sign Up', array('controller'=> 'users', 'action'=>'sign_up'));?>
                 </li>
                <!-- <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>

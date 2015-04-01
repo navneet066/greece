@@ -9,8 +9,7 @@ $captchanumber = 'ABCDEFGHIJKLMNPQRSTUVWXYZ123456789abcdefghijklmnpqrstuvwxyz';
 $captchanumber = substr(str_shuffle($captchanumber), 0, 6);
 
 //Initializing session variable with above generated sub-string
-$_SESSION["code"] = $captchanumber;
-//$this->Session->write("code" ,$captchanumber);
+$_SESSION["captchaCode"] = $captchanumber;
 
 //Generating CAPTCHA
 $image = imagecreatefromjpeg("bj.jpg");

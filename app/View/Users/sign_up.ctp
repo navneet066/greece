@@ -302,13 +302,12 @@
 				<label for="message">Please Enter the code shown here :</label>
 			</div>
 			<div class="col-md-6">
-				<h4>
-					<div id="imgdiv">
-						<?php echo $this->Html->image('/customCaptcha/captcha.php', array('id' => 'img')); ?>
-					</div>
-					<?php echo $this->Html->image('/customCaptcha/reload.png', array('id' => 'captchaReload')); ?>
-				</h4><br>
-				<?php echo $this->Form->input("User.captcha", array("type" => "text","id"=>"captcha1")); ?>
+				<?php echo $this->Html->image(array('controller' => 'users', 'action' => 'get_captcha'),
+					array('id' => 'captcha_image'));?>&nbsp;&nbsp;
+				<?php $text = '<i class="fa fa-3x fa-refresh"></i>';
+				echo $this->Html->link($text, array("controller"=>"users","action"=>" "),
+					array("class" => "text-success", "escape"=> false,'id' => 'reload'));?>
+				<?php echo $this->Form->input('User.captcha_code',array('type'=>'text',"style"=>"margin-top:20px;"));?>
 			</div>
 			<div class="clearfix"></div>
 		</div>

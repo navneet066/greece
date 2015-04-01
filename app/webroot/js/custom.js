@@ -80,8 +80,17 @@ jQuery(function() {
             }
         });
 //change CAPTCHA on each click or on refreshing page
-		$("#captchaReload").click(function() {
+		/*$("#captchaReload").click(function() {
 			$("#img").remove();
 			$('<img id="img" src="../customCaptcha/captcha.php" />').appendTo("#imgdiv");
+		});*/
+	$(document).ready(function(){
+
+		$('#reload').click(function() {
+			var captcha = $("#captcha_image");
+			captcha.attr('src', captcha.attr('src')+'?'+Math.random());
+			return false;
 		});
+
+	});
 });

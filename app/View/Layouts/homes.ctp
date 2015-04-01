@@ -6,6 +6,8 @@
     </title>
     <?php
     echo $this->Html->css('/bootstrap/css/bootstrap.min.css');
+	echo $this->Html->css('/font-awesome/css/font-awesome.css');
+	echo $this->Html->css('/font-awesome/css/font-awesome.min.css');
     echo $this->Html->css('custom.css');
     ?>
     <?php
