@@ -11,6 +11,15 @@ class Engine extends AppModel
 
     public $useTable = 'engines';
 
+    public $belongsTo = array(
+        'User' => array(
+            'className' => 'User',
+            'foreignKey' => 'user_id'
+        )
+    );
+
+    public $recursive = 1;
+
     public $validate = array(
 
         'engine_id' => array(
@@ -108,9 +117,9 @@ class Engine extends AppModel
         return false;
     }
 
-    public function validateExtraFields($extraFields)
+    public function validateExtraFields()
     {
-        $validates = array(
+        $validateExtraFields = array(
             'ad_lm_file' => array(
                 'notEmpty' => array(
                     'rule' => 'checkEmptyFile',
@@ -143,22 +152,35 @@ class Engine extends AppModel
                     "message" => "File size must be less than or equal to 4MB"
                 )
             ),
-            'test_ln'=>array(
+            'test_ln' => array(
 
             ),
-            'tune_ln'=>array(
+            'tune_ln' => array(
 
             ),
-            'fast_track_training'=>array(
+            'fast_track_training' => array(
 
-            ) ,
-            'hybrid'=>array(
+            ),
+            'hybrid' => array(
 
-            ) ,
-            'casing'=>array(
+            ),
+            'casing' => array(
 
             )
         );
+
+        $this->validate = $validateExtraFields;
+        return $this->validates();
+
+    }
+
+    public function getAllEngineByUserId($userId)
+    {
+        $conditions = array('Engine.user_id' => $userId);
+        $fields = array('User.first_name','Engine.id','Engine.name','Engine.domain_name','Engine.created','Engine.s_language',
+            'Engine.t_language', 'Engine.engine_id','Engine.created');
+        $results = $this->find('all', array('conditions' => $conditions,'fields'=>$fields));
+        return $results;
 
     }
 

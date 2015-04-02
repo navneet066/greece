@@ -16,14 +16,12 @@
 				<ul class="dropdown-menu">
 					<li><?php echo $this->Html->link('<i class="icon-list"></i> <span>' . __('All Employee') . '</span>', '/employees/index', array('escape' => false)); ?></li>
 					<li><?php echo $this->Html->link('<i class="icon-list"></i> <span>' . __('Add Employee') . '</span>', '/employees/add_employee', array('escape' => false)); ?></li>
-					<li><?php echo $this->Html->link('<i class="icon-list"></i> <span>' . __('Active Employee') . '</span>', '/employees/active_employee', array('escape' => false)); ?></li>
-					<li><?php echo $this->Html->link('<i class="icon-list"></i> <span>' . __('Inactive Employee') . '</span>', '/employees/inactive_employee', array('escape' => false)); ?></li>
 				</ul>
 			</li>
 			<li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-magnet text-info"></i>&nbsp; Engines</a>
 				<ul class="dropdown-menu">
-					<li><?php echo $this->Html->link( '<i class="icon-gear"></i> <span>'. __('All Engines').'</span>','/engines/index', array('escape'=>false)); ?></li>
+					<li><?php echo $this->Html->link( '<i class="icon-gear"></i> <span>'. __('My Engines').'</span>','/engines/index', array('escape'=>false)); ?></li>
 					<li><?php echo $this->Html->link( '<i class="icon-gear"></i> <span>'. __('Add Engine').'</span>','/engines/create', array('escape'=>false)); ?></li>
 				</ul>
 			</li>

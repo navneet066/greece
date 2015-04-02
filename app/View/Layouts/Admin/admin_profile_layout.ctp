@@ -6,27 +6,26 @@
 	</title>
 	<?php
 	echo $this->Html->css('/bootstrap/css/bootstrap.min.css');
+	echo $this->Html->css('/dataTable/css/dataTables.bootstrap.css');
 	echo $this->Html->css('/jquery/css/jquery-ui.css');
 	echo $this->Html->css('/font-awesome/css/font-awesome.css');
 	echo $this->Html->css('/font-awesome/css/font-awesome.min.css');
-	echo $this->Html->css('stylesheet.css');
+	//echo $this->Html->css('stylesheet.css');
 	echo $this->Html->css('custom.css');
 	?>
 	<?php
 	echo $this->Html->script('/bootstrap/js/jquery.min.js');
 	echo $this->Html->script('/bootstrap/js/bootstrap.min.js');
-	echo $this->Html->script('/datatable/js/jquery.dataTables.min.js');
-	echo $this->Html->script('/datatable/js/jquery.min.js');
-	echo $this->Html->script('/datatable/js/jquery-ui.min.js');
+	echo $this->Html->script('/dataTable/js/dataTables.bootstrap.js');
+	echo $this->Html->script('/dataTable/js/jquery.dataTables.js');
 	echo $this->Html->script('/jquery/js/jquery-1.10.2.js');
 	echo $this->Html->script('/jquery/js/jquery-ui.js');
-	echo $this->Html->script('/captcha/js/gen_validatorv31.js');
 	echo $this->Html->script('custom.js');
 	?>
 	<?php echo $this->fetch('script'); ?>
 </head>
 <body class="ad-log-bg-color">
-<div class="container-fluid" style="color: #ffffff;">
+<div class="container-fluid">
 	<div class="row">
 		<?php echo $this->element('../Admins/elements/top-bar'); ?>
 	</div>

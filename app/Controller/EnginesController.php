@@ -12,6 +12,10 @@ class EnginesController extends AppController
 
     public $layout = 'Admin/admin_profile_layout';
 
+    public $uses = array('User', 'Engine' ,'Timezone');
+
+    public $components = array('Auth');
+
     public function beforeFilter()
     {
         parent::beforeFilter();
@@ -29,6 +33,11 @@ class EnginesController extends AppController
             array('title' => __('Engine Management'), 'slug' => NULL),
             array('title' => __('All Engine'), 'slug' => NULL),
         ));
+
+        $authUser = $this->Auth->user();
+        $userId = $this->User->getAuthDetailByEmail($authUser['User']['email']);
+        $engines = $this->Engine->getAllEngineByUserId($userId['User']['id']);
+        $this->set('engines', $engines);
 
     }
 
@@ -54,6 +63,8 @@ class EnginesController extends AppController
                         $this->Engine->validateExtraFields($extraFields);
                         $adLmFile = $data['Engine']['ad_lm_file'];
                         $data['Engine']['ad_lm_file'] = $adLmFile['name'];
+
+
                     }
                     $data['Engine']['tm_file'] = $tmFile['name'];
                     $data['Engine']['user_id'] = 7;
