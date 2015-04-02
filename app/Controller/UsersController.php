@@ -167,7 +167,7 @@ class UsersController extends AppController
 
 	public function profile()
 	{
-		$this->autoRender = false;
+        $this->layout ='Admin/admin_profile_layout';
 	}
 
 	public function add_employee()

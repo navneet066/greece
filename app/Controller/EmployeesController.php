@@ -106,12 +106,10 @@ class EmployeesController extends AppController
 
 	public function active_employee()
 	{
-		$this->autoRender = false;
 	}
 
 	public function inactive_employee()
 	{
-		$this->autoRender = false;
 	}
 
 	public function change_status($id, $status)
