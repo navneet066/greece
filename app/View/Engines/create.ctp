@@ -15,7 +15,7 @@
 	</div>
 	<div style="color: #ffffff;">
 		<div class="form-group">
-			<label for="first_name" class="col-sm-2 control-label">Engine ID(*)</label>
+			<label class="col-sm-2 control-label">Engine ID(*)</label>
 
 			<div class="col-sm-6">
 				<?php echo $this->Form->input("Engine.engine_id", array("class" => "form-control",
@@ -23,7 +23,7 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="last_name" class="col-sm-2 control-label">Engine Name(*)</label>
+			<label class="col-sm-2 control-label">Engine Name(*)</label>
 
 			<div class="col-sm-6">
 				<?php echo $this->Form->input("Engine.name", array("class" => "form-control",
@@ -31,15 +31,15 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="username" class="col-sm-2 control-label">Domain(*)</label>
+			<label class="col-sm-2 control-label">Domain(*)</label>
 
 			<div class="col-sm-6">
-				<?php echo $this->Form->input("Engine.domain", array("class" => "form-control",
+				<?php echo $this->Form->input("Engine.domain_name", array("class" => "form-control",
 					"placeholder" => "Engine Domain", "type" => "text")); ?>
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="prefix" class="col-sm-2 control-label">Source Language(*)</label>
+			<label class="col-sm-2 control-label">Source Language(*)</label>
 
 			<div class="col-sm-6">
 				<?php
@@ -56,7 +56,7 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="prefix" class="col-sm-2 control-label">Target Language(*)</label>
+			<label class="col-sm-2 control-label">Target Language(*)</label>
 
 			<div class="col-sm-6">
 				<?php
@@ -73,18 +73,18 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="external_number" class="col-sm-2 control-label">TM</label>
+			<label class="col-sm-2 control-label">TM</label>
 
 			<div class="col-sm-6">
 				<?php echo $this->Form->input("Engine.tm_file", array("class" => "form-control", "type" => "file")); ?>
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="mobile_number" class="col-sm-2 control-label">Glossaries</label>
+			<label class="col-sm-2 control-label">Glossaries</label>
 
 			<div class="col-sm-6">
-				<?php echo $this->Form->input("Engine.mobile_number", array("class" => "form-control",
-					"placeholder" => "Mobile Phone", "type" => "text")); ?>
+				<?php echo $this->Form->input("Engine.glossaries", array("class" => "form-control",
+					"placeholder" => "Engine Glossaries", "type" => "text")); ?>
 			</div>
 		</div>
 		<div class="form-group">
@@ -97,25 +97,24 @@
 		</div>
 		<div class="collapse" id="engineInfo">
 			<div class="form-group">
-				<label for="skype_id" class="col-sm-2 control-label">Additional LM Data</label>
+				<label class="col-sm-2 control-label">Additional LM Data</label>
 
 				<div class="col-sm-6">
-					<?php echo $this->Form->input("Engine.additional_lm_data", array("class" => "form-control",
+					<?php echo $this->Form->input("Engine.ad_lm_file", array("class" => "form-control",
 						"type" => "file")); ?>
 				</div>
 			</div>
-			<div class="form-group">
-				<label for="linkedin_id" class="col-sm-2 control-label">Tune Corpus</label>
+			<!--<div class="form-group">
+				<label class="col-sm-2 control-label">Tune Corpus</label>
 
 				<div class="col-sm-6">
-					<?php
-					$options = array('type' => "file", "class" => "form-control", "placeholder" => __('Xml File'));
-					echo $this->Form->input('Engine.tune_corpus', $options);
-					?>
+					<?php /*echo $this->Form->input('Engine.tune_corpus_file', array("class" => "form-control",
+                        "type" => "file"));
+					*/?>
 				</div>
-			</div>
+			</div>-->
 			<div class="form-group">
-				<label for="linkedin_id" class="col-sm-2 control-label">Test Length</label>
+				<label class="col-sm-2 control-label">Test Length</label>
 
 				<div class="col-sm-6">
 					<?php echo $this->Form->input("Engine.test_ln", array("class" => "form-control",
@@ -123,7 +122,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="linkedin_id" class="col-sm-2 control-label">Tune Length</label>
+				<label class="col-sm-2 control-label">Tune Length</label>
 
 				<div class="col-sm-6">
 					<?php echo $this->Form->input("Engine.tune_ln", array("class" => "form-control",
@@ -131,7 +130,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="linkedin_id" class="col-sm-2 control-label">Fast Track Training</label>
+				<label class="col-sm-2 control-label">Fast Track Training</label>
 
 				<div class="col-sm-6">
 					<?php echo $this->Form->input("Engine.fast_track_training", array("class" => "form-control",
@@ -139,7 +138,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="linkedin_id" class="col-sm-2 control-label">Hybrid</label>
+				<label class="col-sm-2 control-label">Hybrid</label>
 
 				<div class="col-sm-6">
 					<?php echo $this->Form->input("Engine.hybrid", array("class" => "form-control",
@@ -147,7 +146,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="linkedin_id" class="col-sm-2 control-label">Casing</label>
+				<label class="col-sm-2 control-label">Casing</label>
 
 				<div class="col-sm-6">
 					<?php echo $this->Form->input("Engine.casing", array("class" => "form-control",
