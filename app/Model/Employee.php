@@ -146,21 +146,30 @@ class Employee extends AppModel
 
 	public function getProfileDetailById($id)
 	{
-		$conditions = array('Employee.id'=>$id);
-		$result = $this->find('first',array('conditions'=>$conditions));
+		$conditions = array('Employee.id' => $id);
+		$result = $this->find('first', array('conditions' => $conditions));
 		return $result;
 	}
 
 	public function getUpdateStatus($id, $status)
 	{
 		$this->id = $id;
-		$this->saveField('is_active' ,$status);
+		$this->saveField('is_active', $status);
 	}
 
-	public  function getDeleteEmployee($id)
+	public function getDeleteEmployee($id)
 	{
 		$this->id = $id;
 		$this->delete($id);
+	}
+
+	public function getLatestAddedEmployee($companyId)
+	{
+		$conditions = array('Employee.company_id' => $companyId);
+		$order = array('Employee.created DESC');
+		$employees = $this->find('all', array('conditions' => $conditions,'order'=>$order));
+		return $employees;
+
 	}
 
 }

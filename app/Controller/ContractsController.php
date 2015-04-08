@@ -10,7 +10,7 @@ class ContractsController extends AppController {
 
 	public $name = 'Contracts';
 
-	public $layout = 'Admin/admin_profile_layout';
+	public $layout = 'Admin/profile_layout';
 
 	public function index(){
 

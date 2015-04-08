@@ -1,21 +1,6 @@
 //var HOST = "http://127.0.0.1/greece/";
 var HOST = "http://localhost/greece/";
 jQuery(function() {
-   /* function getJobFunction(){
-        jQuery.ajax({
-            type:"get",
-            url:HOST + "users/getJobFunctionList"
-
-        });
-    }*/
-   /* var jobs = getJobFunction();
-	jobs.count
-	var  i = 0;
-	for(i=0; i == jobs.length; i++){
-
-		var availableTags = jobs;*/
-
-    //console.log(jobs);
     var availableTags = [
         "ActionScript",
         "AppleScript",
@@ -40,7 +25,6 @@ jQuery(function() {
         "Scala",
         "Scheme"
     ];
-	/*}*/
     function split( val ) {
         return val.split( /,\s*/ );
     }
@@ -48,15 +32,14 @@ jQuery(function() {
         return split( term ).pop();
     }
 
-    $( "#catTools" )
+    jQuery( "#catTools" )
         // don't navigate away from the field on tab when selecting an item
         .bind( "keydown", function( event ) {
             if ( event.keyCode === $.ui.keyCode.TAB &&
                 $( this ).autocomplete( "instance" ).menu.active ) {
                 event.preventDefault();
             }
-        })
-        .autocomplete({
+        }).autocomplete({
             minLength: 0,
             source: function( request, response ) {
                 // delegate back to autocomplete, but extract the last term
@@ -79,14 +62,9 @@ jQuery(function() {
                 return false;
             }
         });
-//change CAPTCHA on each click or on refreshing page
-		/*$("#captchaReload").click(function() {
-			$("#img").remove();
-			$('<img id="img" src="../customCaptcha/captcha.php" />').appendTo("#imgdiv");
-		});*/
-	$(document).ready(function(){
+	jQuery(document).ready(function(){
 
-		$('#reload').click(function() {
+		jQuery('#reload').click(function() {
 			var captcha = $("#captcha_image");
 			captcha.attr('src', captcha.attr('src')+'?'+Math.random());
 			return false;

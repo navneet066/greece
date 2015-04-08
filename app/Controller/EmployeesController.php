@@ -10,7 +10,7 @@ class EmployeesController extends AppController
 
 	public $components = array('Auth');
 
-	public $layout = 'Admin/admin_profile_layout';
+	public $layout = 'Admin/profile_layout';
 
 	public function beforeFilter()
 	{
@@ -22,6 +22,13 @@ class EmployeesController extends AppController
 
 	public function index()
 	{
+		$this->set('sideMenuControl', 'Employee ');
+		$this->set('title_for_layout', __('Employee Management'));
+		$this->set('pageHeader', array(__('Employee Management'), __('Employee Index')));
+		$this->set('breadcrumbs', array(
+			array('title' => __('Employee Management'), 'slug' => NULL),
+			array('title' => __('Employee List'), 'slug' => NULL),
+		));
 		$authUser = $this->Auth->user();
 		$authDetail = $this->User->getAuthDetailByEmail($authUser['User']['email']);//have id,name,gid,cid
 		$companyId = $authDetail['User']['company_id'];
@@ -31,9 +38,15 @@ class EmployeesController extends AppController
 
 	public function add_employee()
 	{
+		$this->set('sideMenuControl', 'Employee ');
+		$this->set('title_for_layout', __('Employee Management'));
+		$this->set('pageHeader', array(__('Employee Management'), __('Employee Index')));
+		$this->set('breadcrumbs', array(
+			array('title' => __('Employee Management'), 'slug' => NULL),
+			array('title' => __('Employee List'), 'slug' => NULL),
+		));
 		$admin = $this->Auth->user();
 		$companyId = $this->User->companyIdForEmployee($admin['User']['email']);
-		$this->layout = 'Admin/admin_profile_layout';
 		if($this->request->is('post')){
 			$data = $this->request->data;
 			$this->Employee->set($data);
@@ -64,6 +77,13 @@ class EmployeesController extends AppController
 
 	public function update_profile($id)
 	{
+		$this->set('sideMenuControl', 'Employee ');
+		$this->set('title_for_layout', __('Employee Management'));
+		$this->set('pageHeader', array(__('Employee Management'), __('Employee Index')));
+		$this->set('breadcrumbs', array(
+			array('title' => __('Employee Management'), 'slug' => NULL),
+			array('title' => __('Employee List'), 'slug' => NULL),
+		));
 		$this->set('eId',$id);
 		if (!empty($id) && empty($this->request->data)) {
 			$data = $this->Employee->getProfileDetailById($id);

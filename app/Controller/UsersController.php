@@ -157,7 +157,7 @@ class UsersController extends AppController
 		$this->set('breadcrumbs', array(
 			array('title' => __('Admin Dashboard'), 'slug' => NULL),
 		));
-		$this->layout = 'Admin/admin_profile_layout';
+		$this->layout = 'Admin/profile_layout';
 		$countries = $this->Country->getCountryList();
 		$this->set('countries', $countries);
 		$userEmail = $this->Auth->user();
@@ -167,40 +167,7 @@ class UsersController extends AppController
 
 	public function profile()
 	{
-        $this->layout ='Admin/admin_profile_layout';
-	}
-
-	public function add_employee()
-	{
-		$admin = $this->Auth->user();
-		$companyId = $this->User->companyIdForEmployee($admin['User']['email']);
-		$this->layout = 'Admin/admin_profile_layout';
-		if ($this->request->is('post')) {
-			$data = $this->request->data;
-			$this->Employee->set($data);
-			if (!empty($data)) {
-				$fields = array('prefix', 'first_name', 'last_name', 'username', 'password', 'email',
-					'external_number', 'mobile_number', 'skype_id', 'linkedin_id');
-				$validates = $this->Employee->validates(array('fieldList' => $fields));
-				if (!empty($validates)) {
-					$data['Employee']['group_id'] = 4;
-					$data['Employee']['company_id'] = $companyId['User']['company_id'];
-					$saved = $this->Employee->save($data);
-					if ($saved) {
-						$message = __("New Employee added successfully !");
-						$this->Session->setFlash($message, "default", array('class' => 'alert alert-warning'));
-						$this->redirect($this->request->referer());
-					} else {
-						$message = __("There is some problem occurred adding New Employee");
-						$this->Session->setFlash($message, "default", array('class' => 'alert alert-warning'));
-						$this->redirect($this->request->referer());
-					}
-				}
-
-			}
-
-		}
-
+        $this->layout ='Admin/profile_layout';
 	}
 
 	public function logout()

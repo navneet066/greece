@@ -31,7 +31,7 @@
  */
 	//Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
 	Router::connect('/users/register', array('controller' => 'users', 'action' => 'sign_up'));
-	Router::connect('/admin', array('controller' => 'users', 'action' => 'dashboard'));
+	Router::connect('/dashboard', array('controller' => 'users', 'action' => 'dashboard'));
 	Router::connect('/userLogin', array('controller' => 'users', 'action' => 'user_login'));
 	Router::connect('/adminLogin', array('controller' => 'users', 'action' => 'admin_login'));
 	Router::connect('/addEmployee', array('controller' => 'employees', 'action' => 'add_employee'));

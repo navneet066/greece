@@ -76,6 +76,7 @@ class AppController extends Controller
 	{
 		parent::beforeFilter();
 		$this->Security->blackHoleCallback = 'black_hole';
+
 	}
 
 	public function black_hole($type)

@@ -184,4 +184,24 @@ class Engine extends AppModel
 
     }
 
+	public function getEngineDetailById($id)
+	{
+		$conditions = array('Engine.id'=>$id);
+		$result = $this->find('first', array('conditions'=>$conditions));
+		return  $result;
+
+	}
+
+	public function getRemoveEngine($id)
+	{
+		$this->id = $id;
+		$result = $this->delete();
+		if($result){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+
 }

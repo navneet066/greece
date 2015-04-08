@@ -46,7 +46,7 @@
 					<label for="password" class="col-sm-2 control-label"></label>
 
 					<div class="col-sm-5">
-						<?php echo $this->Form->submit('Sign In', array('class' => 'btn btn-info btn-block')) ?>
+						<?php echo $this->Form->submit('Sign In', array('class' => 'btn btn-info btn-block btn-border')) ?>
 					</div>
 				</div>
 			</div>

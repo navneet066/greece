@@ -107,3 +107,11 @@ div.footer-link div ul li {
 	/*float:right;*/
 	margin-right:40px;
 }
+ul.dropdown-bg li{
+	background: #225081;
+}
+
+.btn-border{
+	font-weight: bolder;
+border-radius: 16px;
+}

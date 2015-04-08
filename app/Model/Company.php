@@ -178,4 +178,12 @@ class Company extends AppModel
 		return $this->validates();
 
 	}
+
+	public function getCompanyDetailByCompanyId($id)
+	{
+		$conditions = array('Company.id'=>$id);
+		$result = $this->find('first' ,array('conditions'=> $conditions));
+		return $result;
+
+	}
 }

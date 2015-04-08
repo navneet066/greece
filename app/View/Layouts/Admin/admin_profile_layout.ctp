@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>
 		<?php echo $this->fetch('title'); ?>
 	</title>
 	<?php
-	echo $this->Html->css('/bootstrap/css/bootstrap.min.css');
-	echo $this->Html->css('/dataTable/css/dataTables.bootstrap.css');
 	echo $this->Html->css('/jquery/css/jquery-ui.css');
+	echo $this->Html->css('/bootstrap/css/bootstrap.min.css');
+	echo $this->Html->css('/dataTable/js/dataTables.bootstrap.css');
 	echo $this->Html->css('/font-awesome/css/font-awesome.css');
 	echo $this->Html->css('/font-awesome/css/font-awesome.min.css');
-	//echo $this->Html->css('stylesheet.css');
 	echo $this->Html->css('custom.css');
 	?>
 	<?php
@@ -19,8 +20,8 @@
 	echo $this->Html->script('/dataTable/js/dataTables.bootstrap.js');
 	echo $this->Html->script('/dataTable/js/jquery.dataTables.js');
 	echo $this->Html->script('/jquery/js/jquery-1.10.2.js');
-	echo $this->Html->script('/jquery/js/jquery-ui.js');
-	echo $this->Html->script('custom.js');
+	echo $this->Html->script('/jquery/js/jquery-ui');
+	echo $this->Html->script('custom');
 	?>
 	<?php echo $this->fetch('script'); ?>
 </head>

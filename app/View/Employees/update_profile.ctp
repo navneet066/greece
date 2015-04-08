@@ -13,7 +13,7 @@
 	<div style="border-bottom: groove;margin-bottom: 20px; margin-top: 30px">
 		<strong>Employee Information</strong>
 	</div>
-	<div style="color: #ffffff;">
+	<div>
 		<div class="form-group">
 			<label for="prefix" class="col-sm-2 control-label">Prefix</label>
 

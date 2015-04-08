@@ -13,7 +13,7 @@
 	<div style="border-bottom: groove;margin-bottom: 20px; margin-top: 30px">
 		<strong>Engine Information</strong>
 	</div>
-	<div style="color: #ffffff;">
+	<div>
 		<div class="form-group">
 			<label class="col-sm-2 control-label">Engine ID(*)</label>
 
