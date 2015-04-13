@@ -27,6 +27,16 @@ class UsersController extends AppController
 		$this->Auth->allow("sign_up", "admin_login", "user_login", "forgot_password", "change_password", "get_captcha");
 	}
 
+	public function getLastLogin()
+	{
+		$authUser = $this->Auth->user();
+		$conditions  = array('User.email'=>$authUser['User']['email']);
+		$fields = array('User.last_login');
+		$lastLogin = $this->User->find('first',array('conditions'=>$conditions, 'fields'=> $fields));
+		return $lastLogin;
+
+	}
+
 	public function get_captcha()
 	{
 		$this->autoRender = false;
@@ -132,9 +142,13 @@ class UsersController extends AppController
 				if ($this->Auth->login($data)) {
 					$user = $this->User->find('first', array('conditions' => array('User.email' => $email)));
 					if ($user['User']['group_id'] == 4) {
+						$loginTime = date('Y-m-d H:i:s');
+						$this->User->id = $user['User']['id'];
+						$this->User->saveField('last_login', $loginTime);
 						$url = array("controller" => "users", "action" => "user_dashboard", "plugin" => null);
 						return $this->redirect($url);
 					} else {
+
 						$url = array("controller" => "users", "action" => "dashboard", "plugin" => null);
 						return $this->redirect($url);
 					}
@@ -172,6 +186,11 @@ class UsersController extends AppController
 
 	public function logout()
 	{
+		$userEmail = $this->Auth->user();
+		$authUser = $this->User->find('first', array('conditions' => array('User.email' => $userEmail['User']['email'])));
+		$loginTime = date('Y-m-d H:i:s');
+		$this->User->id = $authUser['User']['id'];
+		$this->User->saveField('last_login', $loginTime);
 		$user = $this->Auth->logout();
 		if ($user) {
 			$message = __("Log out Successful");

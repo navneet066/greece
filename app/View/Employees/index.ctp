@@ -19,7 +19,6 @@
 					<th><?php echo __('Name'); ?></th>
 					<th><?php echo __('Username'); ?></th>
 					<th><?php echo __('Email'); ?></th>
-					<th><?php echo __('Is Active'); ?></th>
 					<th><?php echo __('Created At'); ?></th>
 					<th><?php echo __('Last Update'); ?></th>
 					<th><?php echo __('Actions'); ?></th>
@@ -34,17 +33,6 @@
 						</td>
 						<td><?php echo $value['User']['username']; ?></td>
 						<td><?php echo $value['User']['email']; ?></td>
-						<td><?php $status = $value['User']['is_active'];
-							if ($status) {
-								echo $this->Html->link('<i class="fa fa-check-square-o"></i>',
-									array('controller' => "employees", "action" => "change_status", $id, 0),
-									array("class" => "text-success", "escape" => false, "title" => __("Disable It.")));
-							} else {
-								echo $this->Html->link('<i class="fa fa-minus"></i>',
-									array('controller' => "employees", "action" => "change_status", $id, true),
-									array("class" => "text-danger", "escape" => false, "title" => __("Enable It.")));
-							} ?>
-						</td>
 						<td><?php echo $value['User']['created']; ?></td>
 						<td><?php echo $value['User']['updated']; ?></td>
 						<td>
@@ -71,6 +59,17 @@
 									"title" => __("Remove Employee"))
 							);
 							?>
+							|
+							<?php $status = $value['User']['is_active'];
+							if ($status) {
+								echo $this->Html->link('<i class="fa fa-check-square-o"></i>',
+									array('controller' => "employees", "action" => "change_status", $id, 0),
+									array("class" => "text-success", "escape" => false, "title" => __("Make Inactive.")));
+							} else {
+								echo $this->Html->link('<i class="fa fa-minus"></i>',
+									array('controller' => "employees", "action" => "change_status", $id, true),
+									array("class" => "text-danger", "escape" => false, "title" => __("Make Active.")));
+							} ?>
 						</td>
 					</tr>
 				<?php } ?>

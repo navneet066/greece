@@ -166,7 +166,7 @@
 					<label for="working_hours" class="col-sm-2 control-label">Working Hours</label>
 
 					<div class="col-sm-5">
-						<?php echo $this->Form->input("Company.working_hour", array("class" => "form-control",
+						<?php echo $this->Form->input("Company.working_hours", array("class" => "form-control",
 							"placeholder" => "Working Hour", "type" => "text")); ?>
 					</div>
 				</div>

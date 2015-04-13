@@ -10,6 +10,7 @@
 	<?php
 	echo $this->Html->css('/AdminTheme/assets/css/bootstrap.css');
 	echo $this->Html->css('/AdminTheme/assets/css/font-awesome.css');
+	echo $this->Html->css('/AdminTheme/assets/js/morris/morris-0.4.3.min.css');
 	echo $this->Html->css('/AdminTheme/assets/css/custom-styles.css');
 	echo $this->Html->css('/AdminTheme/assets/js/dataTables/dataTables.bootstrap.css');
 	echo $this->Html->css('custom.css');
@@ -18,6 +19,7 @@
 	echo $this->Html->script('/AdminTheme/assets/js/jquery-1.10.2.js');
 	echo $this->Html->script('/AdminTheme/assets/js/bootstrap.min.js');
 	echo $this->Html->script('/AdminTheme/assets/js/jquery.metisMenu.js');
+	echo $this->Html->script('/AdminTheme/assets/js/morris/morris.js');
 	echo $this->Html->script('/AdminTheme/assets/js/dataTables/jquery.dataTables.js');
 	echo $this->Html->script('/AdminTheme/assets/js/dataTables/dataTables.bootstrap.js');
 

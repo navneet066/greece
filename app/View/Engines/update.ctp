@@ -76,7 +76,7 @@
 			<label class="col-sm-2 control-label">TM</label>
 
 			<div class="col-sm-6">
-				<?php echo $this->Form->input("Engine.tm_file", array("class" => "form-control", "type" => "file")); ?>
+				<?php echo $this->Form->input("Engine.tm_file_data", array("class" => "form-control", "type" => "file")); ?>
 			</div>
 		</div>
 		<div class="form-group">
@@ -100,7 +100,7 @@
 				<label class="col-sm-2 control-label">Additional LM Data</label>
 
 				<div class="col-sm-6">
-					<?php echo $this->Form->input("Engine.ad_lm_file", array("class" => "form-control",
+					<?php echo $this->Form->input("Engine.ad_lm_file_data", array("class" => "form-control",
 						"type" => "file")); ?>
 				</div>
 			</div>

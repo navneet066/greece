@@ -29,16 +29,22 @@ class CompaniesController extends AppController
 		$this->loadModel('Timezone');
 		$timezones = $this->Timezone->getTimezoneList();
 		$this->set('timezones', $timezones);
+		$authUser = $this->Auth->user();
+		$company = $this->User->getAuthDetailByEmail($authUser['User']['email']);
 		if (empty($this->request->data)) {
-			$authUser = $this->Auth->user();
-			$companyId = $this->User->getAuthDetailByEmail($authUser['User']['email']);
-			$result = $this->Company->getCompanyDetailByCompanyId($companyId['User']['company_id']);
+			$result = $this->Company->getCompanyDetailByCompanyId($company['User']['company_id']);
 			unset($result['Company']['id']);
 			$this->request->data = $result;
 		}
 		if($this->request->is('post')){
-			$data = $this->request->data;
-
+				$data = $this->request->data;
+				$this->Company->id = $company['User']['company_id'];
+				$flag = $this->Company->save($data);
+				if ($flag) {
+					$message = __("Company's Profile Updated successfully !");
+					$this->Session->setFlash($message, "default", array('class' => 'alert alert-success'));
+					$this->redirect($this->request->referer());
+				}
 
 		}
 
