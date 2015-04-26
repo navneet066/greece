@@ -34,13 +34,8 @@
 			<label for="industry" class="col-sm-2 control-label">Industry(*)</label>
 
 			<div class="col-sm-8">
-				<?php echo $this->Form->input('Company.industry_id', array(
-					'type' => 'select',
-					'options' => array('1', '2', '3', '4', '5'),
-					'empty' => '(Choose Industry)',
-					"class" => 'form-control'
-				));
-				?>
+				<?php echo $this->Form->input('Company.industry', array(
+					'type' => 'text',	"class" => 'form-control','id'=>'Industry'));?>
 			</div>
 		</div>
 
