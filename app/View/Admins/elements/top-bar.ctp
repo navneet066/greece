@@ -12,7 +12,7 @@
 		<ul class="nav navbar-top-links navbar-right text-color">
 			<?php $lastLogin = $this->requestAction(array('controller'=>'users','action'=>'getLastLogin'));?>
 			<li>
-				<span class="text-info" style="color:white ">Last Login : <?php echo $lastLogin['User']['last_login']?></span>
+				<span class="text-info" style="color:white ">Last Login : <?php echo $this->Time->format('l,j F Y, H:i:s',$lastLogin['User']['last_login']);?></span>
 			</li>
 			<li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user "></i>&nbsp;
