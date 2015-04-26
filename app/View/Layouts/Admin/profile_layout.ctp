@@ -19,6 +19,7 @@
 	echo $this->Html->script('/AdminTheme/assets/js/jquery-1.10.2.js');
 	echo $this->Html->script('/AdminTheme/assets/js/bootstrap.min.js');
 	echo $this->Html->script('/AdminTheme/assets/js/jquery.metisMenu.js');
+	echo $this->Html->script('/AdminTheme/assets/js/morris/raphael-2.1.0.min.js');
 	echo $this->Html->script('/AdminTheme/assets/js/morris/morris.js');
 	echo $this->Html->script('/AdminTheme/assets/js/dataTables/jquery.dataTables.js');
 	echo $this->Html->script('/AdminTheme/assets/js/dataTables/dataTables.bootstrap.js');
@@ -35,6 +36,7 @@
 		});
 	</script>
 	<?php echo $this->Html->script('/AdminTheme/assets/js/custom-scripts.js');?>
+	<?php echo $this->Html->script('/AdminTheme/assets/js/custom.js');?>
 	<?php echo $this->Html->script('custom.js');?>
 </head>
 <body class="ad-log-bg-color">
