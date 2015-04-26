@@ -6,8 +6,6 @@
  * Date: 2015-03-13
  */
 App::uses('AppController', 'Controller');
-
-
 class UsersController extends AppController
 {
 	public $name = 'Users';
@@ -311,6 +309,13 @@ class UsersController extends AppController
 		$this->autoRender = false;
 		$results = $this->JobFunction->getList();
 		return $results;
+	}
+
+	public function getAuthDetail()
+	{
+		$authUser = $this->Auth->user();
+		$authDetail = $this->User->getAuthDetailByEmail($authUser['User']['email']);
+		return $authDetail;
 	}
 
 

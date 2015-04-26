@@ -1,11 +1,20 @@
 <nav class="navbar-default navbar-side" role="navigation">
 	<div class="sidebar-collapse">
 		<ul class="nav" id="main-menu">
+			<?php $authUser = $this->requestAction(array("controller"=>"users","action"=> "getAuthDetail"));?>
 			<li>
 				<!--<a href="index.html"><i class="fa fa-dashboard"></i> Dashboard</a>-->
 				<?php echo $this->Html->link('<i class="fa fa-dashboard"></i> <span>' . __('Dashboard') . '</span>', '/users/dashboard', array('escape' => false)); ?>
 			</li>
-
+			<?php if($authUser['User']['group_id'] == 1){?>
+			<li>
+				<a href="#"><i class="fa fa-archive"></i>Packages<span class="fa arrow"></span></a>
+				<ul class="nav nav-second-level">
+					<li><?php echo $this->Html->link('<i class="fa fa-list"></i> <span>' . __('All Packages') . '</span>', '/packages/index', array('escape' => false)); ?></li>
+					<li><?php echo $this->Html->link('<i class="fa fa-plus"></i> <span>' . __('Add Package') . '</span>', '/packages/create', array('escape' => false)); ?></li>
+				</ul>
+			</li>
+			<?php }?>
 			<li>
 				<a href="#"><i class="fa fa-magnet"></i>My Engines<span class="fa arrow"></span></a>
 				<ul class="nav nav-second-level">
