@@ -16,8 +16,8 @@
 			<li>
 				<a href="#"><i class="fa fa-arrow-circle-up"></i>My Translation Jobs<span class="fa arrow"></span></a>
 				<ul class="nav nav-second-level dropdown-bg">
-					<li><?php echo $this->Html->link('<i class="fa fa-list"></i> <span>' . __('All Jobs') . '</span>', '/jobs/index', array('escape' => false)); ?></li>
-					<li><?php echo $this->Html->link('<i class="fa fa-plus"></i> <span>' . __('Add Jobs') . '</span>', '/jobs/create', array('escape' => false)); ?></li>
+					<li><?php echo $this->Html->link('<i class="fa fa-list"></i> <span>' . __('All Jobs') . '</span>', '/translation_jobs/index', array('escape' => false)); ?></li>
+					<li><?php echo $this->Html->link('<i class="fa fa-plus"></i> <span>' . __('Add Jobs') . '</span>', '/translation_jobs/create', array('escape' => false)); ?></li>
 				</ul>
 			</li>
 			<li>

@@ -32,15 +32,24 @@
 							<?php echo $value['User']['full_name'] ?>
 						</td>
 						<td><?php echo $value['User']['username']; ?></td>
-						<td><?php echo $value['User']['email']; ?></td>
+						<td><a data-target="#modal-static"
+									data-toggle="modal">
+								<?php echo $value['User']['email'] ?>
+							</a>
+						</td>
 						<td><?php echo $value['User']['created']; ?></td>
 						<td><?php echo $value['User']['updated']; ?></td>
 						<td>
-							<?php
-							$editText = '<i class="fa fa-tachometer bigger-130"></i>';
-							echo $this->Html->link($editText, array("controller" => "employees", "action" => "update_role",
-								$id), array("class" => "text-primary", "escape" => false, "title" => __("Update Role")));
-							?>
+							<?php $status = $value['User']['is_active'];
+							if ($status) {
+								echo $this->Html->link('<i class="fa fa-plus"></i>',
+									array('controller' => "employees", "action" => "change_status", $id, 0),
+									array("class" => "text-success", "escape" => false, "title" => __("Make Inactive.")));
+							} else {
+								echo $this->Html->link('<i class="fa fa-minus"></i>',
+									array('controller' => "employees", "action" => "change_status", $id, true),
+									array("class" => "text-danger", "escape" => false, "title" => __("Make Active.")));
+							} ?>
 							|
 							<?php
 							$updateProfile = '<i class="fa fa-pencil-square-o bigger-130"></i>';
@@ -59,22 +68,16 @@
 									"title" => __("Remove Employee"))
 							);
 							?>
-							|
-							<?php $status = $value['User']['is_active'];
-							if ($status) {
-								echo $this->Html->link('<i class="fa fa-check-square-o"></i>',
-									array('controller' => "employees", "action" => "change_status", $id, 0),
-									array("class" => "text-success", "escape" => false, "title" => __("Make Inactive.")));
-							} else {
-								echo $this->Html->link('<i class="fa fa-minus"></i>',
-									array('controller' => "employees", "action" => "change_status", $id, true),
-									array("class" => "text-danger", "escape" => false, "title" => __("Make Active.")));
-							} ?>
 						</td>
 					</tr>
 				<?php } ?>
 				</tbody>
 			</table>
 		</div>
+	</div>
+</div>
+<div id="modal-static" tabindex="-1" data-keyboard="false" class="modal">
+	<div class="modal-dialog">
+		<div class="modal-content" id="updateFormBox"></div>
 	</div>
 </div>

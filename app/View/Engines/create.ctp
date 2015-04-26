@@ -13,15 +13,7 @@
 	<div style="border-bottom: groove;margin-bottom: 20px; margin-top: 30px">
 		<strong>Engine Information</strong>
 	</div>
-	<div>
-		<div class="form-group">
-			<label class="col-sm-2 control-label">Engine ID(*)</label>
-
-			<div class="col-sm-6">
-				<?php echo $this->Form->input("Engine.engine_id", array("class" => "form-control",
-					"placeholder" => "Engine ID", "type" => "text")); ?>
-			</div>
-		</div>
+	<div class="text-color">
 		<div class="form-group">
 			<label class="col-sm-2 control-label">Engine Name(*)</label>
 
@@ -80,11 +72,35 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label class="col-sm-2 control-label">Glossaries</label>
+			<label class="col-sm-2 control-label">Description</label>
 
 			<div class="col-sm-6">
-				<?php echo $this->Form->input("Engine.glossaries", array("class" => "form-control",
+				<?php echo $this->Form->input("Engine.description", array("class" => "form-control",
 					"placeholder" => "Engine Glossaries", "type" => "text")); ?>
+			</div>
+		</div>
+		<h4><strong>Training Corpora</strong></h4>
+		<div class="form-group">
+				<label class="col-sm-2 control-label">Training Corpus</label>
+
+				<div class="col-sm-6">
+					<?php echo $this->Form->input('Engine.tune_corpus_file', array("class" => "form-control",
+                        "type" => "file"));?>
+				</div>
+		</div>
+		<h4><strong>Glossaries</strong></h4>
+		<div class="form-group">
+			<label class="col-sm-2 control-label">High Priority Glossaries</label>
+
+			<div class="col-sm-6">
+				<?php echo $this->Form->input("Engine.high_glossary", array("class" => "form-control", "type" => "file")); ?>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label">Low Priority Glossaries</label>
+
+			<div class="col-sm-6">
+				<?php echo $this->Form->input("Engine.low_glossary", array("class" => "form-control", "type" => "file")); ?>
 			</div>
 		</div>
 		<div class="form-group">
@@ -96,6 +112,9 @@
 			</div>
 		</div>
 		<div class="collapse" id="engineInfo">
+			<div style="border-bottom: groove;margin-bottom: 20px;">
+				<strong>Advanced Settings</strong>
+			</div>
 			<div class="form-group">
 				<label class="col-sm-2 control-label">Additional LM Data</label>
 
@@ -104,15 +123,7 @@
 						"type" => "file")); ?>
 				</div>
 			</div>
-			<!--<div class="form-group">
-				<label class="col-sm-2 control-label">Tune Corpus</label>
 
-				<div class="col-sm-6">
-					<?php /*echo $this->Form->input('Engine.tune_corpus_file', array("class" => "form-control",
-                        "type" => "file"));
-					*/?>
-				</div>
-			</div>-->
 			<div class="form-group">
 				<label class="col-sm-2 control-label">Test Length</label>
 
@@ -158,9 +169,16 @@
 			<label class="col-sm-2 control-label"></label>
 
 			<div class="col-md-6">
-				<?php echo $this->Form->button('Submit', array(
-					'class' => ' btn btn-success pull-left',
-					'escape' => false)); ?>
+				<div class="btn-group pull-right" role="group">
+					<?php echo $this->Form->button('RESET', array(
+						'class' => ' btn btn-default',
+						'type'=>'reset',
+						'escape' => false)); ?>
+					<?php echo $this->Form->button('SUBMIT', array(
+						'class' => 'btn btn-success',
+						'type'=>'submit',
+						'escape' => false)); ?>
+				</div>
 			</div>
 			<div class="clearfix"></div>
 		</div>

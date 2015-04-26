@@ -24,7 +24,6 @@
 		</div>
 		<!--<div class="form-group">
         <label for="jobFunction" class="col-sm-2 control-label">Job Function(*)</label>
-
         <div class="col-sm-5">
             <?php /*echo $this->Form->input("Company.job_function", array("class" => "form-control",
             "placeholder" => "Job Function", "size" => "50", "id" => "jobFunction", "type" => "text")); */ ?>
@@ -34,13 +33,8 @@
 			<label for="industry" class="col-sm-2 control-label">Industry(*)</label>
 
 			<div class="col-sm-5">
-				<?php echo $this->Form->input('Company.industry_id', array(
-					'type' => 'select',
-					'options' => array('1', '2', '3', '4', '5'),
-					'empty' => '(Choose Industry)',
-					"class" => 'form-control'
-				));
-				?>
+				<?php echo $this->Form->input('Company.industry', array(
+					'type' => 'text', "class" => 'form-control','id'=>'Industry'));	?>
 			</div>
 		</div>
 

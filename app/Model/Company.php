@@ -56,7 +56,7 @@ class Company extends AppModel
 			),*/
 
 		),
-		'industry_id' => array(
+		'industry' => array(
 			'notEmpty' => array(
 				'rule' => 'notEmpty',
 				'message' => 'Please choose an Industry',

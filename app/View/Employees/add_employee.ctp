@@ -72,6 +72,39 @@
 			</div>
 		</div>
 		<div class="form-group">
+			<label for="status" class="col-sm-2 control-label">Status</label>
+
+			<div class="col-sm-6">
+				<?php
+				echo $this->Form->input('Employee.status', array(
+					'type' => 'select',
+					'options' => array(
+						'Active' => 'Active',
+						'Inactive' => 'Inactive'
+					),
+					'empty' => '(Choose Status)',
+					"class" => 'form-control'
+				));
+				?>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="alias" class="col-sm-2 control-label">Alias</label>
+
+			<div class="col-sm-6">
+				<?php echo $this->Form->input("Employee.alias", array("class" => "form-control",
+					"placeholder" => "Alias", "type" => "text")); ?>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="role" class="col-sm-2 control-label">Role</label>
+
+			<div class="col-sm-6">
+				<?php echo $this->Form->input("Employee.role", array("class" => "form-control",
+					"placeholder" => "Change Role", "type" => "text")); ?>
+			</div>
+		</div>
+		<div class="form-group">
 			<label for="external_number" class="col-sm-2 control-label">External Number</label>
 
 			<div class="col-sm-6">
@@ -107,9 +140,16 @@
 			<label class="col-sm-2 control-label"></label>
 
 			<div class="col-md-6">
-				<?php echo $this->Form->button('Submit', array(
-					'class' => ' btn btn-default pull-right fa fa-arrow-circle-o-right',
-					'escape' => false)); ?>
+				<div class="btn-group pull-right" role="group">
+					<?php echo $this->Form->button('RESET', array(
+						'class' => 'btn btn-default',
+						'type' => 'reset',
+						'escape' => false)); ?>
+					<?php echo $this->Form->button('SUBMIT', array(
+						'class' => 'btn btn-success',
+						'type' => 'submit',
+						'escape' => false)); ?>
+				</div>
 			</div>
 			<div class="clearfix"></div>
 		</div>

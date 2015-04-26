@@ -153,4 +153,11 @@ class EmployeesController extends AppController
 		return $this->redirect($this->referer());
 	}
 
+	public function employee_detail($id)
+	{
+		CakeLog::error("Hello Himanshu");
+		$result = $this->Employee->find('first',array("conditions"=>array("Employee.id"=>$id)));
+		$this->set("employee", $result);
+	}
+
 }

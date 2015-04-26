@@ -64,6 +64,39 @@
 			</div>
 		</div>
 		<div class="form-group">
+			<label for="status" class="col-sm-2 control-label">Status</label>
+
+			<div class="col-sm-6">
+				<?php
+				echo $this->Form->input('Employee.status', array(
+					'type' => 'select',
+					'options' => array(
+						'Active' => 'Active',
+						'Inactive' => 'Inactive'
+					),
+					'empty' => '(Choose Status)',
+					"class" => 'form-control'
+				));
+				?>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="alias" class="col-sm-2 control-label">Alias</label>
+
+			<div class="col-sm-6">
+				<?php echo $this->Form->input("Employee.alias", array("class" => "form-control",
+					"placeholder" => "Alias", "type" => "text")); ?>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="role" class="col-sm-2 control-label">Role</label>
+
+			<div class="col-sm-6">
+				<?php echo $this->Form->input("Employee.role", array("class" => "form-control",
+					"placeholder" => "Edit Role", "type" => "text")); ?>
+			</div>
+		</div>
+		<div class="form-group">
 			<label for="external_number" class="col-sm-2 control-label">External Number</label>
 
 			<div class="col-sm-6">

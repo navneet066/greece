@@ -75,7 +75,7 @@ class UsersController extends AppController
 				$userFields = array('prefix', 'first_name', 'last_name', 'username', 'email', 'password', "is_agree");
 				$userFlag = $this->User->validates(array('fieldList' => $userFields));
 				$this->Company->set($data['Company']);
-				$companyFields = array('company_name', 'email', 'industry_id', 'vat_id',
+				$companyFields = array('company_name', 'email', 'industry', 'vat_id',
 					'address', 'city', 'postal_code', 'state', 'country_id');
 				$companyFlag = $this->Company->validates(array('fieldList' => $companyFields));
 				$userExtraFields = array('alias', 'external_number', 'mobile_number', 'skype_id', 'linkedin_id');

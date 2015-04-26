@@ -7,9 +7,9 @@
 <?php } ?>
 <div>
 	<?php
-	$url = array("controller" => "engines", "action" => "update",$id);
+	$url = array("controller" => "engines", "action" => "update", $id);
 	echo $this->Form->create("Engine", array("url" => $url, "class" => "form-horizontal", "type" => "file",
-		"role" => "form", 'novalidate' => true, 'inputDefaults' => array('label' => false, 'div' => false)));?>
+		"role" => "form", 'novalidate' => true, 'inputDefaults' => array('label' => false, 'div' => false))); ?>
 	<div style="border-bottom: groove;margin-bottom: 20px; margin-top: 30px">
 		<strong>Engine Information</strong>
 	</div>
@@ -88,79 +88,76 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<div class="col-md-offset-8">
-				<button class="btn btn-default" type="button" data-toggle="collapse" data-target="#engineInfo"
-						aria-expanded="false" aria-controls="engineInfo">
-					More Info
-				</button>
+			<label class="col-sm-2 control-label">Additional LM Data</label>
+
+			<div class="col-sm-6">
+				<?php echo $this->Form->input("Engine.ad_lm_file_data", array("class" => "form-control",
+					"type" => "file")); ?>
 			</div>
 		</div>
-		<div class="collapse" id="engineInfo">
-			<div class="form-group">
-				<label class="col-sm-2 control-label">Additional LM Data</label>
-
-				<div class="col-sm-6">
-					<?php echo $this->Form->input("Engine.ad_lm_file_data", array("class" => "form-control",
-						"type" => "file")); ?>
-				</div>
-			</div>
-			<!--<div class="form-group">
+		<!--<div class="form-group">
 				<label class="col-sm-2 control-label">Tune Corpus</label>
 
 				<div class="col-sm-6">
 					<?php /*echo $this->Form->input('Engine.tune_corpus_file', array("class" => "form-control",
                         "type" => "file"));
-					*/?>
+					*/ ?>
 				</div>
 			</div>-->
-			<div class="form-group">
-				<label class="col-sm-2 control-label">Test Length</label>
+		<div class="form-group">
+			<label class="col-sm-2 control-label">Test Length</label>
 
-				<div class="col-sm-6">
-					<?php echo $this->Form->input("Engine.test_ln", array("class" => "form-control",
-						"type" => "text", "placeholder" => "Number Only")); ?>
-				</div>
+			<div class="col-sm-6">
+				<?php echo $this->Form->input("Engine.test_ln", array("class" => "form-control",
+					"type" => "text", "placeholder" => "Number Only")); ?>
 			</div>
-			<div class="form-group">
-				<label class="col-sm-2 control-label">Tune Length</label>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label">Tune Length</label>
 
-				<div class="col-sm-6">
-					<?php echo $this->Form->input("Engine.tune_ln", array("class" => "form-control",
-						"type" => "text", "placeholder" => "Number Only")); ?>
-				</div>
+			<div class="col-sm-6">
+				<?php echo $this->Form->input("Engine.tune_ln", array("class" => "form-control",
+					"type" => "text", "placeholder" => "Number Only")); ?>
 			</div>
-			<div class="form-group">
-				<label class="col-sm-2 control-label">Fast Track Training</label>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label">Fast Track Training</label>
 
-				<div class="col-sm-6">
-					<?php echo $this->Form->input("Engine.fast_track_training", array("class" => "form-control",
-						"type" => "text")); ?>
-				</div>
+			<div class="col-sm-6">
+				<?php echo $this->Form->input("Engine.fast_track_training", array("class" => "form-control",
+					"type" => "text")); ?>
 			</div>
-			<div class="form-group">
-				<label class="col-sm-2 control-label">Hybrid</label>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label">Hybrid</label>
 
-				<div class="col-sm-6">
-					<?php echo $this->Form->input("Engine.hybrid", array("class" => "form-control",
-						"type" => "text")); ?>
-				</div>
+			<div class="col-sm-6">
+				<?php echo $this->Form->input("Engine.hybrid", array("class" => "form-control",
+					"type" => "text")); ?>
 			</div>
-			<div class="form-group">
-				<label class="col-sm-2 control-label">Casing</label>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label">Casing</label>
 
-				<div class="col-sm-6">
-					<?php echo $this->Form->input("Engine.casing", array("class" => "form-control",
-						"type" => "text")); ?>
-				</div>
+			<div class="col-sm-6">
+				<?php echo $this->Form->input("Engine.casing", array("class" => "form-control",
+					"type" => "text")); ?>
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-sm-2 control-label"></label>
 
 			<div class="col-md-6">
-				<?php echo $this->Form->button('Submit', array(
-					'class' => ' btn btn-success pull-left',
-					'escape' => false)); ?>
+				<div class="btn-group pull-right" role="group">
+					<?php echo $this->Form->button('RESET', array(
+						'class' => ' btn btn-default',
+						'type' => 'reset',
+						'escape' => false)); ?>
+					<?php echo $this->Form->button('SUBMIT', array(
+						'class' => 'btn btn-success',
+						'type' => 'submit',
+						'escape' => false)); ?>
+				</div>
 			</div>
 			<div class="clearfix"></div>
 		</div>

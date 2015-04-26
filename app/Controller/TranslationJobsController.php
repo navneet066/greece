@@ -1,9 +1,9 @@
 <?php
-class JobsController extends AppController
+class TranslationJobsController extends AppController
 {
-	public $name = "Jobs";
+	public $name = "TranslationJobs";
 
-	public $uses = array('User', 'Company', 'Employee');
+	public $uses = array('TranslationJob', 'User', 'Company', 'Employee');
 
 	public $layout = 'Admin/profile_layout';
 

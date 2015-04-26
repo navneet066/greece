@@ -22,8 +22,6 @@
 	echo $this->Html->script('/AdminTheme/assets/js/morris/morris.js');
 	echo $this->Html->script('/AdminTheme/assets/js/dataTables/jquery.dataTables.js');
 	echo $this->Html->script('/AdminTheme/assets/js/dataTables/dataTables.bootstrap.js');
-
-
 	?>
 	<script>
 		$(document).ready(function () {
@@ -32,7 +30,9 @@
 		$(document).ready(function () {
 			$('#employee_index').dataTable();
 		});
-
+		$(document).ready(function () {
+			$('#package_index').dataTable();
+		});
 	</script>
 	<?php echo $this->Html->script('/AdminTheme/assets/js/custom-scripts.js');?>
 	<?php echo $this->Html->script('custom.js');?>
