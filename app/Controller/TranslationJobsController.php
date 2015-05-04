@@ -3,7 +3,7 @@ class TranslationJobsController extends AppController
 {
 	public $name = "TranslationJobs";
 
-	public $uses = array('TranslationJob', 'User', 'Company', 'Employee');
+	public $uses = array('TranslationJob', 'User', 'Company', 'Employee','Language');
 
 	public $layout = 'Admin/profile_layout';
 
@@ -14,6 +14,9 @@ class TranslationJobsController extends AppController
 
 	public function create()
 	{
+		$languages = $this->Language->getAllLanguageList();
+		$this->set('languages', $languages);
+
 
 	}
 

@@ -15,7 +15,7 @@
 	</div>
 	<h4><strong><?php echo __("Engine Detail") ?></strong></h4>
 
-	<div class="text-color">
+	<div class="">
 		<div class="form-group">
 			<label class="col-sm-3 control-label"> Name(*)</label>
 
@@ -39,10 +39,7 @@
 				<?php
 				echo $this->Form->input('TranslationJob.s_language', array(
 					'type' => 'select',
-					'options' => array(
-						'Logical' => 'Logical',
-						'Technical' => 'Technical'
-					),
+					'options' => $languages,
 					'empty' => '(Choose Language)',
 					"class" => 'form-control'
 				));
@@ -56,10 +53,7 @@
 				<?php
 				echo $this->Form->input('TranslationJob.t_language', array(
 					'type' => 'select',
-					'options' => array(
-						'Logical' => 'Logical',
-						'Technical' => 'Technical'
-					),
+					'options' =>$languages,
 					'empty' => '(Choose Language)',
 					"class" => 'form-control'
 				));

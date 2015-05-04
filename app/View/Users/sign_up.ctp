@@ -336,8 +336,7 @@
 		<div class="col-md-7">
 			<div class="checkbox">
 				<label>
-					<?php echo $this->Form->input("User.is_agree", array('type' => "checkbox")); ?>
-					Agree with terms and conditions.
+					<?php echo $this->Form->input("User.is_agree", array('type' => "checkbox"));?>Agree with terms and conditions.
 				</label>
 			</div>
 		</div>

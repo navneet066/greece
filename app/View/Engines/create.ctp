@@ -37,10 +37,7 @@
 				<?php
 				echo $this->Form->input('Engine.s_language', array(
 					'type' => 'select',
-					'options' => array(
-						'Logical' => 'Logical',
-						'Technical' => 'Technical'
-					),
+					'options' => $languages,
 					'empty' => '(Choose Language)',
 					"class" => 'form-control'
 				));
@@ -54,23 +51,20 @@
 				<?php
 				echo $this->Form->input('Engine.t_language', array(
 					'type' => 'select',
-					'options' => array(
-						'Logical' => 'Logical',
-						'Technical' => 'Technical'
-					),
+					'options' => $languages,
 					'empty' => '(Choose Language)',
 					"class" => 'form-control'
 				));
 				?>
 			</div>
 		</div>
-		<div class="form-group">
+		<!--<div class="form-group">
 			<label class="col-sm-2 control-label">TM</label>
 
 			<div class="col-sm-6">
-				<?php echo $this->Form->input("Engine.tm_file", array("class" => "form-control", "type" => "file")); ?>
+				<?php /*echo $this->Form->input("Engine.tm_file", array("class" => "form-control", "type" => "file")); */?>
 			</div>
-		</div>
+		</div>-->
 		<div class="form-group">
 			<label class="col-sm-2 control-label">Description</label>
 

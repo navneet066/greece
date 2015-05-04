@@ -70,6 +70,9 @@ class EnginesController extends AppController
 			array('title' => __('Engine Management'), 'slug' => NULL),
 			array('title' => __('Add Engine'), 'slug' => NULL),
 		));
+		$this->loadModel('Language');
+		$languages = $this->Language->getAllLanguageList();
+		$this->set('languages', $languages);
 		if ($this->request->is('post')) {
 			$user = $this->Auth->user();
 			$authUser = $this->User->getAuthDetailByEmail($user['User']['email']);

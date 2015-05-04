@@ -16,8 +16,9 @@ class Language extends AppModel{
 
 	public function getAllLanguageList()
 	{
+		$conditions = array("Language.is_active"=>true);
 		$order = array('Language.name'=>'ASC');
-		$results = $this->find('list',array('order'=>$order));
+		$results = $this->find('list',array('order'=>$order,'conditions'=>$conditions));
 		return $results;
 
 	}
