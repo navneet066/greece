@@ -42,9 +42,9 @@ class Package extends AppModel
 				'rule' => 'notEmpty',
 				'message' => 'Please Fill Domain Name'
 			),
-			'decimal' => array(
-				'rule' => array('decimal', 2),
-				'message' => 'Package Compute Hours should be in decimal'
+			'numeric' => array(
+				'rule' => 'numeric',
+				'message' => 'Package Compute Hours should be numeric'
 			)
 		),
 		'number_of_engines' => array(
@@ -122,8 +122,8 @@ class Package extends AppModel
 				'rule' => 'notEmpty',
 				'message' => 'Please Fill package'
 			),
-			'decimal' => array(
-				'rule' => array('decimal', 2),
+			'numeric' => array(
+				'rule' => 'numeric',
 				'message' => 'Package Extra  word mb rate should be decimal type value'
 			)
 		),
@@ -142,15 +142,15 @@ class Package extends AppModel
 				'rule' => 'notEmpty',
 				'message' => 'Please Fill package'
 			),
-			'decimal' => array(
-				'rule' => array('decimal', 2),
+			'numeric' => array(
+				'rule' => 'numeric',
 				'message' => 'Package extra add engine should be in decimal'
 			)
 		),
 		'price' => array(
 			'mustNotEmpty' => array(
 				'rule' => 'notEmpty',
-				'message' => 'Please Fill package'
+				'message' => 'Please Fill price'
 			),
 			'decimal' => array(
 				'rule' => array('decimal', 2),

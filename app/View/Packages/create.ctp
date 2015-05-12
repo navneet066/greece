@@ -35,7 +35,7 @@
 
 			<div class="col-sm-6">
 				<?php echo $this->Form->input("Package.compute_hours", array("class" => "form-control",
-					"placeholder" => "Compute Hours","type" => "number", "step"=>0.01, "min"=>0)); ?>
+					"placeholder" => "Compute Hours","type" => "number", "min"=>0)); ?>
 			</div>
 		</div>
 		<div class="form-group">

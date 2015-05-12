@@ -1,5 +1,5 @@
-//var HOST = "http://127.0.0.1/greece/";
-var HOST = "http://localhost/greece/";
+var HOST = "http://127.0.0.1/greece/";
+//var HOST = "http://localhost/greece/";
 jQuery(function () {
 	var availableTags = [
 		"SDL Trados",
