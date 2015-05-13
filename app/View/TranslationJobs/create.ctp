@@ -20,18 +20,18 @@
 			<label class="col-sm-3 control-label"> Name(*)</label>
 
 			<div class="col-sm-6">
-				<?php echo $this->Form->input("TranslationJob.name", array("class" => "form-control",
-					"placeholder" => "Engine Name", "type" => "text")); ?>
+				<?php echo $this->Form->input("TranslationJob.engine_id", array("class" => "form-control",
+					"type" => "select","options"=>$engines,"empty"=>"Select Engine's Name")); ?>
 			</div>
 		</div>
-		<div class="form-group">
+		<!--<div class="form-group">
 			<label class="col-sm-3 control-label">Domain(*)</label>
 
 			<div class="col-sm-6">
-				<?php echo $this->Form->input("TranslationJob.domain_name", array("class" => "form-control",
-					"placeholder" => "Engine Domain", "type" => "text")); ?>
+				<?php /*echo $this->Form->input("TranslationJob.domain_name", array("class" => "form-control",
+					"placeholder" => "Engine Domain", "type" => "text")); */?>
 			</div>
-		</div>
+		</div>-->
 		<div class="form-group">
 			<label class="col-sm-3 control-label">Source Language(*)</label>
 
@@ -40,7 +40,7 @@
 				echo $this->Form->input('TranslationJob.s_language', array(
 					'type' => 'select',
 					'options' => $languages,
-					'empty' => '(Choose Language)',
+					'empty' => 'Select Source Language',
 					"class" => 'form-control'
 				));
 				?>
@@ -54,7 +54,7 @@
 				echo $this->Form->input('TranslationJob.t_language', array(
 					'type' => 'select',
 					'options' =>$languages,
-					'empty' => '(Choose Language)',
+					'empty' => 'Select Target Language',
 					"class" => 'form-control'
 				));
 				?>

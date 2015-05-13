@@ -203,5 +203,11 @@ class Engine extends AppModel
 		}
 	}
 
+	public function getEngineListCompanyId($companyId){
+		$conditions = array('Engine.company_id'=>$companyId);
+		$results = $this->find('list',array('conditions'=>$conditions));
+		return $results;
+	}
+
 
 }
