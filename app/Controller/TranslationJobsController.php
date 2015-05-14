@@ -23,6 +23,9 @@ class TranslationJobsController extends AppController
 		if($this->request->is('post')){
 			$data = $this->request->data;
 			CakeLog::error(json_encode($data));
+			$fields = array("engine_id","s_language","t_language"."translation_file","high_gloss","low_gloss");
+			$this->TranslationJob->set($data);
+
 		}
 
 

@@ -76,14 +76,14 @@
 			<label class="col-sm-3 control-label">High Priority Glossaries</label>
 
 			<div class="col-sm-6">
-				<?php echo $this->Form->input("TranslationJob.high_glossary", array("class" => "form-control", "type" => "file")); ?>
+				<?php echo $this->Form->input("TranslationJob.high_gloss", array("class" => "form-control", "type" => "file")); ?>
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-sm-3 control-label">Low Priority Glossaries</label>
 
 			<div class="col-sm-6">
-				<?php echo $this->Form->input("TranslationJob.low_glossary", array("class" => "form-control", "type" => "file")); ?>
+				<?php echo $this->Form->input("TranslationJob.low_gloss", array("class" => "form-control", "type" => "file")); ?>
 			</div>
 		</div>
 		<div class="form-group">
@@ -108,13 +108,13 @@
 			</div>
 			<div class="checkbox">
 				<label>
-					<?php echo $this->Form->input("TranslationJob.engine_high_glossary", array('type' => "checkbox")); ?>
+					<?php echo $this->Form->input("TranslationJob.engine_high_gloss", array('type' => "checkbox")); ?>
 					Use Engine High Glossary.
 				</label>
 			</div>
 			<div class="checkbox">
 				<label>
-					<?php echo $this->Form->input("TranslationJob.engine_low_glossary", array('type' => "checkbox")); ?>
+					<?php echo $this->Form->input("TranslationJob.engine_low_gloss", array('type' => "checkbox")); ?>
 					Use Engine Low Glossary
 				</label>
 			</div>

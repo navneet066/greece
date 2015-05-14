@@ -90,7 +90,6 @@ class User extends AppModel
 				'message' => 'Password should be minimum of 6 characters'
 			)
 		),
-
 		'is_agree' => array(
 			'mustNotEmpty' => array(
 				'rule' => array('comparison', '!=', 0),
