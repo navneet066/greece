@@ -5,7 +5,6 @@
  * Date: 24-04-2015
  * Time: PM 09:19
  */
-
 class TranslationJob extends AppModel
 {
 
@@ -14,22 +13,22 @@ class TranslationJob extends AppModel
 	public $useTable = 'jobs';
 
 	public $belongsTo = array(
-		"User"=>array(
-			"className"=>"User",
-			"foreignKey"=>"user_id"
+		"User" => array(
+			"className" => "User",
+			"foreignKey" => "user_id"
 		),
-		"Engine"=>array(
-			"className"=>"Engine",
-			"foreignKey"=>"engine_id"
+		"Engine" => array(
+			"className" => "Engine",
+			"foreignKey" => "engine_id"
 		)
 	);
 
 	public $validate = array(
-		"engine_id"=>array(
-			'notEmpty'=>array(
-				'rule'=>'checkEmptyFile',
-				'message'=>'Please Select Engine',
-				'last'=>true
+		"engine_id" => array(
+			'mustNotEmpty' => array(
+				'rule' => 'notEmpty',
+				'message' => 'Please Select Engine',
+				'last' => true
 			)
 		),
 		"translation_file" => array(
@@ -100,11 +99,22 @@ class TranslationJob extends AppModel
 				'message' => 'Target Language should be a alphabet or numbers'
 			)
 		),
-		'hybrid'=>array(
-
-		),
-
-
 	);
+
+	public function alphaNumericDashUnderscore($check)
+	{
+		$value = array_values($check);
+		$value = $value[0];
+
+		return preg_match('|^[0-9a-zA-Z_-]*$|', $value);
+	}
+
+	public function checkEmptyFile($data)
+	{
+		if (empty($data["file"]["error"])) {
+			return true;
+		}
+		return false;
+	}
 
 }

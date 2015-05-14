@@ -27,22 +27,13 @@ class TranslationJobsController extends AppController
 			if (!empty($data)) {
 				$fields = array("engine_id", "s_language", "t_language" . "translation_file", "high_gloss", "low_gloss");
 				$this->TranslationJob->set($data);
-				$this->TranslationJob->validates($fields);
+				if($this->TranslationJob->validates($fields)){}
 			}
 
 		}
-
-
 	}
 
-	public function update()
-	{
-
-	}
-
-	public function remove()
-	{
-
-	}
+	public function update(){}
+	public function remove(){}
 }
 
