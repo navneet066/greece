@@ -1,9 +1,10 @@
 <?php
+
 class TranslationJobsController extends AppController
 {
 	public $name = "TranslationJobs";
 
-	public $uses = array('TranslationJob', 'User', 'Company','Engine', 'Employee','Language');
+	public $uses = array('TranslationJob', 'User', 'Company', 'Engine', 'Employee', 'Language');
 
 	public $layout = 'Admin/profile_layout';
 
@@ -20,11 +21,12 @@ class TranslationJobsController extends AppController
 		$userId = $this->User->getAuthDetailByEmail($authUser['User']['email']);
 		$engines = $this->Engine->getEngineListCompanyId($userId['User']['company_id']);
 		$this->set('engines', $engines);
-		if($this->request->is('post')){
+		if ($this->request->is('post')) {
 			$data = $this->request->data;
 			CakeLog::error(json_encode($data));
-			$fields = array("engine_id","s_language","t_language"."translation_file","high_gloss","low_gloss");
+			$fields = array("engine_id", "s_language", "t_language" . "translation_file", "high_gloss", "low_gloss");
 			$this->TranslationJob->set($data);
+			$this->TranslationJob->validates($fields);
 
 		}
 
