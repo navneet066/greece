@@ -77,35 +77,46 @@ class EnginesController extends AppController
 			$user = $this->Auth->user();
 			$authUser = $this->User->getAuthDetailByEmail($user['User']['email']);
 			$data = $this->request->data;
+			CakeLog::error(json_encode($data));
 			if (!empty($data)) {
 				$this->Engine->set($data);
-				$fields = array('engine_id', 'name', 'domain_name', 's_language', 't_language', 'tm_file', 'glossaries');
+				$fields = array('name', 'domain_name', 's_language', 't_language', 'tune_corpus_file',
+					'description','high_glossary_file','low_glossary_file');
 				if ($this->Engine->validates($fields)) {
-					$tmFile = $data['Engine']['tm_file'];
-					if (!empty($data['Engine']['ad_lm_file'])) {
-						$extraFields = array('ad_lm_file', 'tune_corpus_file', 'test_ln', 'tune_ln', 'fast_track_training',
-							'hybrid', 'casing');
+					if (!empty($data['Engine']['tune_file']) || !empty($data['Engine']['lingual_file'])) {
+						$extraFields = array('test_ln', 'tune_ln', 'hybrid', 'casing','tune_file','lingual_file');
 						$this->Engine->validateExtraFields($extraFields);
-						$adLmFile = $data['Engine']['ad_lm_file'];
-						$data['Engine']['ad_lm_file'] = $adLmFile['name'];
+						$tuneFile = $data['Engine']['tune_file'];
+						$data['Engine']['tune_file'] = $tuneFile['name'];
+						$lingualFile = $data['Engine']['lingual_file'];
+						$data['Engine']['lingual_file'] = $lingualFile['name'];
 					}
-					$data['Engine']['tm_file'] = $tmFile['name'];
+					$highGlossFile = $data['Engine']['high_glossary_file'];
+					$data['Engine']['high_glossary_file'] = $highGlossFile['name'];
+					$lowGlossFile = $data['Engine']['low_glossary_file'];
+					$data['Engine']['low_glossary_file'] = $lowGlossFile['name'];
+					$tuneCorpusFile = $data['Engine']['tune_corpus_file'];
+					$data['Engine']['tune_corpus_file'] = $tuneCorpusFile['name'];
 					$data['Engine']['user_id'] = $authUser['User']['id'];
 					$data['Engine']['company_id'] = $authUser['User']['company_id'];
 					$saved = $this->Engine->save($data, false);
 					if ($saved) {
 						$id = $this->Engine->id;
 						if (!empty($tmFile)) {
-							$fileCat = "tmFiles";
+							$fileCat = "tuneCorpus";
 							$this->__writeFile($tmFile, $fileCat, $id);
 						}
-						if (!empty($adLmFile)) {
-							$fileCat = "lmFiles";
-							$this->__writeFile($adLmFile, $fileCat, $id);
+						if (!empty($tuneFile)) {
+							$fileCat = "tuneFile";
+							$this->__writeFile($tuneFile, $fileCat, $id);
 						}
 						if (!empty($tuneCorpusFile)) {
 							$fileCat = "tcFiles";
 							$this->__writeFile($tuneCorpusFile, $fileCat, $id);
+						}
+						if (!empty($lingualFile)) {
+							$fileCat = "lingualFile";
+							$this->__writeFile($lingualFile, $fileCat, $id);
 						}
 						$message = __("New Engine added successfully !");
 						$this->Session->setFlash($message, "default", array('class' => 'alert alert-success'));

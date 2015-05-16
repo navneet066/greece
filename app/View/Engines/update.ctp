@@ -15,14 +15,6 @@
 	</div>
 	<div>
 		<div class="form-group">
-			<label class="col-sm-2 control-label">Engine ID(*)</label>
-
-			<div class="col-sm-6">
-				<?php echo $this->Form->input("Engine.engine_id", array("class" => "form-control",
-					"placeholder" => "Engine ID", "type" => "text")); ?>
-			</div>
-		</div>
-		<div class="form-group">
 			<label class="col-sm-2 control-label">Engine Name(*)</label>
 
 			<div class="col-sm-6">

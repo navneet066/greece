@@ -7,7 +7,6 @@
 			<table class="table table-striped table-bordered table-hover" id="engine_index">
 				<thead>
 				<tr>
-					<th>ENGINE ID</th>
 					<th>ENGINE NAME</th>
 					<th>DOMAIN NAME</th>
 					<th>CREATED BY</th>
@@ -21,7 +20,6 @@
 				<?php foreach ($engines as $key => $value) {
 					$id = $value["Engine"]["id"];?>
 					<tr>
-						<td><?php echo $value['Engine']['engine_id']?></td>
 						<td><?php echo $value['Engine']['name'];?></td>
 						<td><?php echo $value['Engine']['domain_name'];?></td>
 						<td><?php echo $value['User']['first_name'];?></td>

@@ -72,6 +72,22 @@ class Engine extends AppModel
                 'message' => 'Target Language should be a alphabet or numbers'
             )
         ),
+		"tune_corpus_file" => array(
+			'notEmpty' => array(
+				'rule' => 'checkEmptyFile',
+				'message' => 'Please choose an file',
+				'last' => true
+			),
+			"image" => array(
+				"rule" => array("extension", array("tmx")),
+				"message" => "Please choose valid file.",
+				"last" => true
+			),
+			"size" => array(
+				"rule" => array("fileSize", "<=", "4MB"),
+				"message" => "File size must be less than or equal to 4MB"
+			)
+		),
         "tm_file" => array(
             'notEmpty' => array(
                 'rule' => 'checkEmptyFile',
@@ -88,15 +104,37 @@ class Engine extends AppModel
                 "message" => "File size must be less than or equal to 4MB"
             )
         ),
-        'glossaries' => array(
-            'mustNotEmpty' => array(
-                'rule' => 'notEmpty',
-                'message' => 'Please Fill Glossaries'
-            ),
-            'alphabet' => array(
-                'rule' => 'alphanumeric',
-                'message' => 'Glossaries should be a alphabet or numbers'
-            )
+        'high_glossary' => array(
+			'notEmpty' => array(
+				'rule' => 'checkEmptyFile',
+				'message' => 'Please choose an file',
+				'last' => true
+			),
+			"image" => array(
+				"rule" => array("extension", array("csv","txt")),
+				"message" => "Please choose valid file.",
+				"last" => true
+			),
+			"size" => array(
+				"rule" => array("fileSize", "<=", "4MB"),
+				"message" => "File size must be less than or equal to 4MB"
+			)
+        ),
+		'low_glossary' => array(
+			'notEmpty' => array(
+				'rule' => 'checkEmptyFile',
+				'message' => 'Please choose an file',
+				'last' => true
+			),
+			"image" => array(
+				"rule" => array("extension", array("txt","csv")),
+				"message" => "Please choose valid file.",
+				"last" => true
+			),
+			"size" => array(
+				"rule" => array("fileSize", "<=", "4MB"),
+				"message" => "File size must be less than or equal to 4MB"
+			)
         ),
 
     );
@@ -178,7 +216,7 @@ class Engine extends AppModel
     {
         $conditions = array('Engine.user_id' => $userId);
         $fields = array('User.first_name','Engine.id','Engine.name','Engine.domain_name','Engine.created','Engine.s_language',
-            'Engine.t_language', 'Engine.engine_id','Engine.created');
+            'Engine.t_language','Engine.created');
         $results = $this->find('all', array('conditions' => $conditions,'fields'=>$fields));
         return $results;
 
