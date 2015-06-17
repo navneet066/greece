@@ -38,7 +38,7 @@ class TranslationJob extends AppModel
 				'last' => true
 			),
 			"image" => array(
-				"rule" => array("extension", array("pdf", "txt", "doc", "docx")),
+				"rule" => array("extension", array("tmx", "xlf", "txt")),
 				"message" => "Please choose valid file.",
 				"last" => true
 			),
@@ -54,7 +54,7 @@ class TranslationJob extends AppModel
 				'last' => true
 			),
 			"image" => array(
-				"rule" => array("extension", array("pdf", "txt", "doc", "docx")),
+				"rule" => array("extension", array("csv", "txt")),
 				"message" => "Please choose valid file.",
 				"last" => true
 			),
@@ -70,7 +70,7 @@ class TranslationJob extends AppModel
 				'last' => true
 			),
 			"image" => array(
-				"rule" => array("extension", array("pdf", "txt", "doc", "docx")),
+				"rule" => array("extension", array("csv", "txt")),
 				"message" => "Please choose valid file.",
 				"last" => true
 			),
@@ -82,7 +82,7 @@ class TranslationJob extends AppModel
 		's_language' => array(
 			'mustNotEmpty' => array(
 				'rule' => 'notEmpty',
-				'message' => 'Please Fill Source Language'
+				'message' => 'Please Select Source Language'
 			),
 			'alphabet' => array(
 				'rule' => 'alphanumeric',
@@ -92,7 +92,7 @@ class TranslationJob extends AppModel
 		't_language' => array(
 			'mustNotEmpty' => array(
 				'rule' => 'notEmpty',
-				'message' => 'Please Fill Target Language'
+				'message' => 'Please Select Target Language'
 			),
 			'alphabet' => array(
 				'rule' => 'alphanumeric',

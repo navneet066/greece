@@ -22,4 +22,13 @@ class Language extends AppModel{
 		return $results;
 
 	}
+
+	public function getNameById($id){
+		$result = $this->find('first',array('conditions'=>array('Language.id'=>$id)));
+		if(!empty($result)){
+			return $result['Language']['name'];
+		}else{
+			return false;
+		}
+	}
 }

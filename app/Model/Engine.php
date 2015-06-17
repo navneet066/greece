@@ -196,9 +196,6 @@ class Engine extends AppModel
             'tune_ln' => array(
 
             ),
-            'fast_track_training' => array(
-
-            ),
             'hybrid' => array(
 
             ),

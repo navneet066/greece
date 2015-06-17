@@ -21,7 +21,7 @@
 
 			<div class="col-sm-6">
 				<?php echo $this->Form->input("TranslationJob.engine_id", array("class" => "form-control",
-					"type" => "select","options"=>$engines,"empty"=>"Select Engine's Name")); ?>
+					"type" => "select", "options"=>$engines, "empty"=>"Select Engine's Name", "id"=>"engineId")); ?>
 			</div>
 		</div>
 		<!--<div class="form-group">

@@ -144,3 +144,16 @@ jQuery(function (data) {
 	var formObjectBox = jQuery("div#updateFormBox");
 	jQuery(formObjectBox).html(data);
 });
+if (jQuery('#engineId').length > 0) {
+	console.log("Himanshu MIshra");
+	var e = document.getElementById("engineId");
+	var engineId = e.options[e.selectedIndex].value;
+	console.log(engineId);
+	var url = "engines/get_hybrid_value_by_id/";
+	jQuery.get(HOST + url + engineId, function (responseText) {
+		console.log(responseText);
+		jQuery("#hybrid").html(responseText);
+	})
+}
+
+

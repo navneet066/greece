@@ -12,7 +12,7 @@ class EnginesController extends AppController
 
 	public $layout = 'Admin/profile_layout';
 
-	public $uses = array('User', 'Engine', 'Timezone');
+	public $uses = array('User', 'Engine', 'Timezone','Language');
 
 	public $components = array('Auth');
 
@@ -47,6 +47,14 @@ class EnginesController extends AppController
 		$authUser = $this->Auth->user();
 		$userId = $this->User->getAuthDetailByEmail($authUser['User']['email']);
 		$engines = $this->Engine->getAllEngineByUserId($userId['User']['id']);
+		/*if(!empty($engines)){
+			$slangId = $engines['Engine']['s_language'];
+			$slangName = $this->Language->getNameById($slangId);
+			$engines['Engine']['s_language'] = $slangName;
+			$tlangId = $engines['Engine']['t_language'];
+			$tlangName = $this->Language->getNameById($tlangId);
+			$engines['Engine']['t_language'] = $tlangName;
+		}*/
 		$this->set('engines', $engines);
 
 	}
@@ -128,7 +136,6 @@ class EnginesController extends AppController
 		}
 
 	}
-
 
 	private function __writeFile($file, $fileCat, $id)
 	{

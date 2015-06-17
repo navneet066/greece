@@ -117,7 +117,7 @@
 
 				<div class="col-sm-7 radio">
 					<label>
-						<input type="radio" name="Engine.auto_tune" id="autoTune" value="auto_tune" checked>
+						<input type="radio" name="Engine.auto_tune" id="" value="1" checked>
 						Auto Selection (default)
 					</label>
 				</div>
@@ -127,8 +127,9 @@
 
 				<div class="col-sm-7 radio">
 					<label>
-						<input type="radio" name="Engine.auto_tune" id="autoTune" value="file_tune">Upload File
-						<?php echo $this->Form->input("Engine.tune_file", array("class" => "form-control", "type" => "file")); ?>
+						<input type="radio" name="Engine.auto_tune" id="autoTune" value="auto_tune">Upload File
+						<?php echo $this->Form->input("Engine.tune_file", array("class" => "form-control", "id"=>"content",
+							"type" => "file")); ?>
 					</label>
 
 				</div>
@@ -235,3 +236,21 @@
 		<?php echo $this->Form->end(); ?>
 	</div>
 </div>
+<script>
+	$(document).ready(function() {
+		$('input[type="radio"]').click(function() {
+			if($(this).attr('id') == 'autoTune') {
+				$('#content').show();
+			}
+
+			else {
+				$('#content').hide();
+			}
+		});
+	});
+</script>
+<style>
+	.content {
+		visibility: hidden;
+	}
+</style>

@@ -124,8 +124,7 @@
 			<label class="col-sm-2 control-label">Hybrid</label>
 
 			<div class="col-sm-6">
-				<?php echo $this->Form->input("Engine.hybrid", array("class" => "form-control",
-					"type" => "text")); ?>
+				<?php echo $this->Form->input("Engine.hybrid", array("type" => "checkbox")); ?>
 			</div>
 		</div>
 		<div class="form-group">
