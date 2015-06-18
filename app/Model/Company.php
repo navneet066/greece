@@ -164,8 +164,8 @@ class Company extends AppModel
 				)
 			),
 			'alias'=>array(
-				'alphabet'=>array(
-					'rule'=>'alphabet',
+				'alphanumeric'=>array(
+					'rule'=>'alphanumeric',
 					'message'=>'Please enter only text only'
 				)
 			),

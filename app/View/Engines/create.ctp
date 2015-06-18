@@ -238,7 +238,7 @@
 </div>
 <script>
 	$(document).ready(function() {
-		$('input[type="radio"]').click(function() {
+		$('input[type="radio"]#autoTune').click(function() {
 			if($(this).attr('id') == 'autoTune') {
 				$('#content').show();
 			}

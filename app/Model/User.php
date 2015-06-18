@@ -179,10 +179,6 @@ class User extends AppModel
 				'minimum' => array(
 					'rule' => array('minLength', '8'),
 					'message' => array('Please Enter atleast 8 digit number')
-				),
-				'numeric' => array(
-					'minimum' => array('minLength', '10'),
-					'message' => array('Please enter atleast 10 digit number')
 				)
 			),
 			'skype_id' => array(

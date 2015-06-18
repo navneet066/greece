@@ -26,13 +26,6 @@ class EnginesController extends AppController
 
 	public function index()
 	{
-		$this->set('sideMenuControl', 'Engine ');
-		$this->set('title_for_layout', __('Engine Management'));
-		$this->set('pageHeader', array(__('Engine Management'), __('Engine Index')));
-		$this->set('breadcrumbs', array(
-			array('title' => __('Engine Management'), 'slug' => NULL),
-			array('title' => __('Engine List'), 'slug' => NULL),
-		));
 		if (!($this->Auth->loggedIn())) {
 			return $this->redirect(array('controller' => 'users', 'action' => 'admin_login'));
 		}
@@ -47,14 +40,6 @@ class EnginesController extends AppController
 		$authUser = $this->Auth->user();
 		$userId = $this->User->getAuthDetailByEmail($authUser['User']['email']);
 		$engines = $this->Engine->getAllEngineByUserId($userId['User']['id']);
-		/*if(!empty($engines)){
-			$slangId = $engines['Engine']['s_language'];
-			$slangName = $this->Language->getNameById($slangId);
-			$engines['Engine']['s_language'] = $slangName;
-			$tlangId = $engines['Engine']['t_language'];
-			$tlangName = $this->Language->getNameById($tlangId);
-			$engines['Engine']['t_language'] = $tlangName;
-		}*/
 		$this->set('engines', $engines);
 
 	}

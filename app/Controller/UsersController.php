@@ -83,7 +83,7 @@ class UsersController extends AppController
 					$this->Company->validateExtraFields($companyExtraFields);
 				}
 				if ($userFlag && $companyFlag) {
-					$companySaved = $this->Company->save($data['Company']);
+					$companySaved = $this->Company->save($data);
 					if ($companySaved) {
 						$companyId = $this->Company->id;
 						$data['User']['company_id'] = $companyId;

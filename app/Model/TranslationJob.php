@@ -83,22 +83,14 @@ class TranslationJob extends AppModel
 			'mustNotEmpty' => array(
 				'rule' => 'notEmpty',
 				'message' => 'Please Select Source Language'
-			),
-			'alphabet' => array(
-				'rule' => 'alphanumeric',
-				'message' => 'Source Language should be a alphabet or numbers'
 			)
 		),
 		't_language' => array(
 			'mustNotEmpty' => array(
 				'rule' => 'notEmpty',
 				'message' => 'Please Select Target Language'
-			),
-			'alphabet' => array(
-				'rule' => 'alphanumeric',
-				'message' => 'Target Language should be a alphabet or numbers'
 			)
-		),
+		)
 	);
 
 	public function alphaNumericDashUnderscore($check)
@@ -115,6 +107,22 @@ class TranslationJob extends AppModel
 			return true;
 		}
 		return false;
+	}
+
+	public function getAllJobsByUserId($userId){
+		$conditions = array('TranslationJob.user_id'=>$userId);
+		$results = $this->find('all',array('conditions'=>$conditions));
+		return $results;
+	}
+
+	public function getDeleteById($id){
+		$this->id = $id;
+		$result = $this->delete();
+		if($result){
+			return true;
+		}else{
+			return false;
+		}
 	}
 
 }

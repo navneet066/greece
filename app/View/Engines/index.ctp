@@ -24,8 +24,14 @@
 						<td><?php echo $value['Engine']['domain_name'];?></td>
 						<td><?php echo $value['User']['first_name'];?></td>
 						<td><?php echo $value['Engine']['created'];?></td>
-						<td><?php echo $value['Engine']['s_language']?>
-						<td><?php echo $value['Engine']['t_language']?>
+						<td><?php $sLn = $value['Engine']['s_language'];
+							$sLName = $this->requestAction(array("controller"=>"translation_jobs",
+								"action"=>"getLanguageName",$sLn,"plugin"=>null));
+							echo $sLName;?>
+						<td><?php $tLn = $value['Engine']['t_language'];
+							$tLName = $this->requestAction(array("controller"=>"translation_jobs",
+								"action"=>"getLanguageName",$tLn,"plugin"=>null));
+							echo $tLName;?>
 						</td>
 						<td>
 							<?php

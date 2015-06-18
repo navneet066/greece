@@ -67,7 +67,8 @@
 
 			<div class="col-sm-6">
 				<?php echo $this->Form->input('TranslationJob.translation_file', array("class" => "form-control",
-					"type" => "file")); ?>
+					"type" => "file"));
+				echo "( *.tmx, *.xlf, *.txt )";?>
 			</div>
 		</div>
 		<h4><strong>Glossaries</strong></h4>
@@ -76,14 +77,16 @@
 			<label class="col-sm-3 control-label">High Priority Glossaries</label>
 
 			<div class="col-sm-6">
-				<?php echo $this->Form->input("TranslationJob.high_gloss", array("class" => "form-control", "type" => "file")); ?>
+				<?php echo $this->Form->input("TranslationJob.high_gloss", array("class" => "form-control", "type" => "file"));
+				echo "( *.csv, *.txt )";?>
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-sm-3 control-label">Low Priority Glossaries</label>
 
 			<div class="col-sm-6">
-				<?php echo $this->Form->input("TranslationJob.low_gloss", array("class" => "form-control", "type" => "file")); ?>
+				<?php echo $this->Form->input("TranslationJob.low_gloss", array("class" => "form-control", "type" => "file"));
+				echo "( *.csv, *.txt )";?>
 			</div>
 		</div>
 		<div class="form-group">
