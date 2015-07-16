@@ -34,7 +34,7 @@
 
 			<div class="col-sm-5">
 				<?php echo $this->Form->input('Company.industry', array(
-					'type' => 'text', "class" => 'form-control','id'=>'Industry'));	?>
+					'type' => 'text', "class" => 'form-control', 'id'=>'Industry'));	?>
 			</div>
 		</div>
 

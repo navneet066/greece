@@ -8,7 +8,7 @@
 <div>
 	<?php
 	$url = array("controller" => "companies", "action" => "update", "plugin" => null);
-	echo $this->Form->create("Company", array("url" => $url, "class" => "form-horizontal", "autocomplete" => "off", "type" => 'file',
+	echo $this->Form->create("Company", array("url" => $url, "class" => "form-horizontal", "type" => 'file',
 		"inputDefaults" => array("label" => false, "div" => true), "role" => "form", "novalidate" => true)); ?>
 	<div style="border-bottom: groove; margin-bottom:20px; margin-top: 30px">
 		<strong>Company Information</strong>
@@ -23,11 +23,11 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="industry" class="col-sm-2 control-label">Industry(*)</label>
+			<label for="Industry" class="col-sm-2 control-label">Industry(*)</label>
 
 			<div class="col-sm-8">
 				<?php echo $this->Form->input('Company.industry', array(
-					'type' => 'text', "class" => 'form-control', 'id' => 'Industry')); ?>
+					'type' => 'text', "class" => 'form-control', "id" => "Industry")); ?>
 			</div>
 		</div>
 

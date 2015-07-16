@@ -6,6 +6,7 @@
  * Date: 2015-03-13
  */
 App::uses('AppController', 'Controller');
+
 class UsersController extends AppController
 {
 	public $name = 'Users';
@@ -28,9 +29,9 @@ class UsersController extends AppController
 	public function getLastLogin()
 	{
 		$authUser = $this->Auth->user();
-		$conditions  = array('User.email'=>$authUser['User']['email']);
+		$conditions = array('User.email' => $authUser['User']['email']);
 		$fields = array('User.last_login');
-		$lastLogin = $this->User->find('first',array('conditions'=>$conditions, 'fields'=> $fields));
+		$lastLogin = $this->User->find('first', array('conditions' => $conditions, 'fields' => $fields));
 		return $lastLogin;
 
 	}
@@ -179,7 +180,32 @@ class UsersController extends AppController
 
 	public function profile()
 	{
-        $this->layout ='Admin/profile_layout';
+		$this->layout = 'Admin/profile_layout';
+		$userEmail = $this->Auth->user();
+		$userData = $this->User->getUserDetailsByEmail($userEmail['User']['email']);
+		if (!empty($userEmail) && empty($this->request->data)) {
+			$data = $this->User->getUserDetailsByEmail($userEmail['User']['email']);
+			unset($data['User']['id']);
+			$this->request->data = $data;
+		}
+		if($this->request->is('post')){
+			$data = $this->request->data;
+			$this->User->set($data);
+			$validates = array('prefix', 'first_name', 'last_name', 'alias' ,'external_number', 'mobile_number'
+			,'skype_id', 'linkedin_id');
+			$flag = $this->User->validates(array('fieldList' => $validates));
+			if($flag){
+				$this->User->id = $userData['User']['id'];
+				$update = $this->User->save($data);
+				if($update){
+					$message = __("Your Profile update Successfully!");
+					$this->Session->setFlash($message, "default", array('class' => 'alert alert-success'));
+					$this->redirect($this->request->referer());
+				}
+
+			}
+
+		}
 	}
 
 	public function logout()

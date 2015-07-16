@@ -172,7 +172,7 @@ class EnginesController extends AppController
 		}
 		$flag = $this->Engine->getRemoveEngine($id);
 		if ($flag) {
-			$message = __(" Engine Deleted now! ");
+			$message = __("Engine Deleted now! ");
 			$this->Session->setFlash($message, "default", array('class' => 'alert alert-success'));
 			$this->redirect($this->request->referer());
 		} else {

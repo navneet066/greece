@@ -82,10 +82,25 @@
 						'Active' => 'Active',
 						'Inactive' => 'Inactive'
 					),
-					'empty' => '(Choose Status)',
 					"class" => 'form-control'
 				));
 				?>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="alias" class="col-sm-2 control-label">Opening Email</label>
+
+			<div class="col-sm-6">
+				<?php echo $this->Form->input("Employee.opening_mails", array("class" => "form-control",
+					"placeholder" => "Opening Mails", "type" => "text")); ?>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="alias" class="col-sm-2 control-label">Comments</label>
+
+			<div class="col-sm-6">
+				<?php echo $this->Form->input("Employee.comments", array("class" => "form-control",
+					"placeholder" => "Comments", "type" => "text")); ?>
 			</div>
 		</div>
 		<div class="form-group">

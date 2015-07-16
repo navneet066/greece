@@ -17,6 +17,7 @@
 	?>
 	<?php
 	echo $this->Html->script('/AdminTheme/assets/js/jquery-1.10.2.js');
+	echo $this->Html->script('/jquery/js/jquery-ui.js');
 	echo $this->Html->script('/AdminTheme/assets/js/bootstrap.min.js');
 	echo $this->Html->script('/AdminTheme/assets/js/jquery.metisMenu.js');
 	echo $this->Html->script('/AdminTheme/assets/js/morris/raphael-2.1.0.min.js');
