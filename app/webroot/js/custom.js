@@ -57,7 +57,7 @@ jQuery(function () {
 				// remove the current input
 				terms.pop();
 				// add the selected item
-				terms.push(ui.item.value).style.background="white";
+				terms.push(ui.item.value);
 				// add placeholder to get the comma-and-space at the end
 				terms.push("");
 				this.value = terms.join(", ");
