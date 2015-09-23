@@ -19,7 +19,6 @@ class TranslationJobsController extends AppController
     public function getLanguageName($languageId)
     {
         $result = $this->Language->getNameById($languageId);
-        CakeLog::error(json_encode($result));
         return $result;
     }
 

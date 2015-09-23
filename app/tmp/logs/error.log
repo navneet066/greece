@@ -1,60 +1,45 @@
-2015-09-23 11:12:26 Error: "English (Australia)"
-2015-09-23 11:12:26 Error: "German (Worldwide)"
-2015-09-23 11:12:51 Error: "English (Australia)"
-2015-09-23 11:12:51 Error: "German (Worldwide)"
-2015-09-23 11:13:19 Error: false
-2015-09-23 11:13:19 Error: false
-2015-09-23 11:13:19 Error: false
-2015-09-23 11:13:19 Error: false
-2015-09-23 11:13:19 Error: false
-2015-09-23 11:13:19 Error: false
-2015-09-23 11:13:19 Error: false
-2015-09-23 11:13:19 Error: false
-2015-09-23 11:13:19 Error: false
-2015-09-23 11:13:19 Error: false
-2015-09-23 11:13:19 Error: "English (Canada)"
-2015-09-23 11:13:19 Error: "Italian (Switzerland)"
-2015-09-23 11:13:19 Error: "\tFrench (Canada)"
-2015-09-23 11:13:19 Error: "Danish"
-2015-09-23 11:13:19 Error: "English (Australia)"
-2015-09-23 11:13:19 Error: "German (Worldwide)"
-2015-09-23 11:13:20 Error: "\tFrench (Belgium)"
-2015-09-23 11:13:20 Error: "English (Australia)"
-2015-09-23 11:13:20 Error: [MissingControllerException] Controller class AdminThemeController could not be found.
+2015-09-23 12:06:00 Error: [MissingControllerException] Controller class CaptchaController could not be found.
 Exception Attributes: array (
-  'class' => 'AdminThemeController',
+  'class' => 'CaptchaController',
   'plugin' => NULL,
 )
-Request URL: /greece/AdminTheme/assets/js/images/sort_both.png
+Request URL: /greece/captcha/js/gen_validatorv31.js
 Stack Trace:
 #0 D:\XAMPP\htdocs\greece\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
-2015-09-23 11:13:20 Error: [MissingControllerException] Controller class AdminThemeController could not be found.
+2015-09-23 12:06:09 Error: [MissingControllerException] Controller class CaptchaController could not be found.
 Exception Attributes: array (
-  'class' => 'AdminThemeController',
+  'class' => 'CaptchaController',
   'plugin' => NULL,
 )
-Request URL: /greece/AdminTheme/assets/js/images/sort_asc.png
+Request URL: /greece/captcha/js/gen_validatorv31.js
 Stack Trace:
 #0 D:\XAMPP\htdocs\greece\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
-2015-09-23 11:13:23 Error: false
-2015-09-23 11:13:24 Error: false
-2015-09-23 11:13:29 Error: false
-2015-09-23 11:13:29 Error: false
-2015-09-23 11:13:29 Error: false
-2015-09-23 11:13:29 Error: false
-2015-09-23 11:13:29 Error: false
-2015-09-23 11:13:29 Error: false
-2015-09-23 11:13:29 Error: false
-2015-09-23 11:13:29 Error: false
-2015-09-23 11:13:29 Error: false
-2015-09-23 11:13:29 Error: false
-2015-09-23 11:13:29 Error: "English (Canada)"
-2015-09-23 11:13:29 Error: "Italian (Switzerland)"
-2015-09-23 11:13:29 Error: "\tFrench (Canada)"
-2015-09-23 11:13:29 Error: "Danish"
-2015-09-23 11:13:29 Error: "English (Australia)"
-2015-09-23 11:13:29 Error: "German (Worldwide)"
-2015-09-23 11:13:29 Error: "\tFrench (Belgium)"
-2015-09-23 11:13:29 Error: "English (Australia)"
+2015-09-23 12:06:09 Error: [MissingControllerException] Controller class JqueryController could not be found.
+Exception Attributes: array (
+  'class' => 'JqueryController',
+  'plugin' => NULL,
+)
+Request URL: /greece/jquery/css/images/ui-bg_flat_75_ffffff_40x100.png
+Stack Trace:
+#0 D:\XAMPP\htdocs\greece\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-09-23 12:06:13 Error: [MissingControllerException] Controller class JqueryController could not be found.
+Exception Attributes: array (
+  'class' => 'JqueryController',
+  'plugin' => NULL,
+)
+Request URL: /greece/jquery/css/images/ui-bg_glass_75_dadada_1x400.png
+Stack Trace:
+#0 D:\XAMPP\htdocs\greece\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-09-23 12:07:07 Error: [MissingControllerException] Controller class CaptchaController could not be found.
+Exception Attributes: array (
+  'class' => 'CaptchaController',
+  'plugin' => NULL,
+)
+Request URL: /greece/captcha/js/gen_validatorv31.js
+Stack Trace:
+#0 D:\XAMPP\htdocs\greece\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}

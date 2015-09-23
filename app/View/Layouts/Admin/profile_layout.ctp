@@ -10,6 +10,7 @@
 	<?php
 	echo $this->Html->css('/AdminTheme/assets/css/bootstrap.css');
 	echo $this->Html->css('/AdminTheme/assets/css/font-awesome.css');
+	echo $this->Html->css('/jquery/css/jquery-ui.css');
 	echo $this->Html->css('/AdminTheme/assets/js/morris/morris-0.4.3.min.css');
 	echo $this->Html->css('/AdminTheme/assets/css/custom-styles.css');
 	echo $this->Html->css('/AdminTheme/assets/js/dataTables/dataTables.bootstrap.css');
@@ -36,9 +37,10 @@
 			$('#package_index').dataTable();
 		});
 	</script>
+	<?php echo $this->Html->script('custom.js');?>
 	<?php echo $this->Html->script('/AdminTheme/assets/js/custom-scripts.js');?>
 	<?php echo $this->Html->script('/AdminTheme/assets/js/custom.js');?>
-	<?php echo $this->Html->script('custom.js');?>
+
 </head>
 <body class="ad-log-bg-color">
 <div id="wrapper">
