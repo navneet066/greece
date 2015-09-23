@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by IntelliJ IDEA.
  * User: hp
@@ -72,22 +73,22 @@ class Engine extends AppModel
                 'message' => 'Target Language should be a alphabet or numbers'
             )
         ),
-		"tune_corpus_file" => array(
-			'notEmpty' => array(
-				'rule' => 'checkEmptyFile',
-				'message' => 'Please choose an file',
-				'last' => true
-			),
-			"image" => array(
-				"rule" => array("extension", array("tmx")),
-				"message" => "Please choose valid file.",
-				"last" => true
-			),
-			"size" => array(
-				"rule" => array("fileSize", "<=", "4MB"),
-				"message" => "File size must be less than or equal to 4MB"
-			)
-		),
+        "tune_corpus_file" => array(
+            'notEmpty' => array(
+                'rule' => 'checkEmptyFile',
+                'message' => 'Please choose an file',
+                'last' => true
+            ),
+            "image" => array(
+                "rule" => array("extension", array("tmx")),
+                "message" => "Please choose valid file.",
+                "last" => true
+            ),
+            "size" => array(
+                "rule" => array("fileSize", "<=", "4MB"),
+                "message" => "File size must be less than or equal to 4MB"
+            )
+        ),
         "tm_file" => array(
             'notEmpty' => array(
                 'rule' => 'checkEmptyFile',
@@ -105,36 +106,36 @@ class Engine extends AppModel
             )
         ),
         'high_glossary' => array(
-			'notEmpty' => array(
-				'rule' => 'checkEmptyFile',
-				'message' => 'Please choose an file',
-				'last' => true
-			),
-			"image" => array(
-				"rule" => array("extension", array("csv","txt")),
-				"message" => "Please choose valid file.",
-				"last" => true
-			),
-			"size" => array(
-				"rule" => array("fileSize", "<=", "4MB"),
-				"message" => "File size must be less than or equal to 4MB"
-			)
+            'notEmpty' => array(
+                'rule' => 'checkEmptyFile',
+                'message' => 'Please choose an file',
+                'last' => true
+            ),
+            "image" => array(
+                "rule" => array("extension", array("csv", "txt")),
+                "message" => "Please choose valid file.",
+                "last" => true
+            ),
+            "size" => array(
+                "rule" => array("fileSize", "<=", "4MB"),
+                "message" => "File size must be less than or equal to 4MB"
+            )
         ),
-		'low_glossary' => array(
-			'notEmpty' => array(
-				'rule' => 'checkEmptyFile',
-				'message' => 'Please choose an file',
-				'last' => true
-			),
-			"image" => array(
-				"rule" => array("extension", array("txt","csv")),
-				"message" => "Please choose valid file.",
-				"last" => true
-			),
-			"size" => array(
-				"rule" => array("fileSize", "<=", "4MB"),
-				"message" => "File size must be less than or equal to 4MB"
-			)
+        'low_glossary' => array(
+            'notEmpty' => array(
+                'rule' => 'checkEmptyFile',
+                'message' => 'Please choose an file',
+                'last' => true
+            ),
+            "image" => array(
+                "rule" => array("extension", array("txt", "csv")),
+                "message" => "Please choose valid file.",
+                "last" => true
+            ),
+            "size" => array(
+                "rule" => array("fileSize", "<=", "4MB"),
+                "message" => "File size must be less than or equal to 4MB"
+            )
         ),
 
     );
@@ -190,18 +191,10 @@ class Engine extends AppModel
                     "message" => "File size must be less than or equal to 4MB"
                 )
             ),
-            'test_ln' => array(
-
-            ),
-            'tune_ln' => array(
-
-            ),
-            'hybrid' => array(
-
-            ),
-            'casing' => array(
-
-            )
+            'test_ln' => array(),
+            'tune_ln' => array(),
+            'hybrid' => array(),
+            'casing' => array()
         );
 
         $this->validate = $validateExtraFields;
@@ -212,37 +205,43 @@ class Engine extends AppModel
     public function getAllEngineByUserId($userId)
     {
         $conditions = array('Engine.user_id' => $userId);
-        $fields = array('User.first_name','Engine.id','Engine.name','Engine.domain_name','Engine.created','Engine.s_language',
-            'Engine.t_language','Engine.created');
-        $results = $this->find('all', array('conditions' => $conditions,'fields'=>$fields));
+        $fields = array('User.first_name', 'Engine.id', 'Engine.name', 'Engine.domain_name', 'Engine.created', 'Engine.s_language',
+            'Engine.t_language', 'Engine.created');
+        $results = $this->find('all', array('conditions' => $conditions, 'fields' => $fields));
         return $results;
 
     }
 
-	public function getEngineDetailById($id)
-	{
-		$conditions = array('Engine.id'=>$id);
-		$result = $this->find('first', array('conditions'=>$conditions));
-		return  $result;
+    public function getEngineDetailById($id)
+    {
+        $conditions = array('Engine.id' => $id);
+        $result = $this->find('first', array('conditions' => $conditions));
+        return $result;
 
-	}
+    }
 
-	public function getRemoveEngine($id)
-	{
-		$this->id = $id;
-		$result = $this->delete();
-		if($result){
-			return true;
-		}else{
-			return false;
-		}
-	}
+    public function getRemoveEngine($id)
+    {
+        $this->id = $id;
+        $result = $this->delete();
+        if ($result) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
-	public function getEngineListCompanyId($companyId){
-		$conditions = array('Engine.company_id'=>$companyId);
-		$results = $this->find('list',array('conditions'=>$conditions));
-		return $results;
-	}
+    public function getEngineListCompanyId($companyId)
+    {
+        $conditions = array('Engine.company_id' => $companyId);
+        $results = $this->find('list', array('conditions' => $conditions));
+        return $results;
+    }
 
-
+    public function getEngineDetailByEngineIdForJob($id)
+    {
+        $conditions = array('Engine.id' => $id);
+        $result = $this->find('first', array('conditions' => $conditions));
+        return $result;
+    }
 }

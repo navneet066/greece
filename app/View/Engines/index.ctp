@@ -43,6 +43,14 @@
 							?>
 							|
 							<?php
+							$updateProfile = '<i class="fa fa-plus bigger-130"></i>';
+							echo $this->Html->link(
+								$updateProfile,
+								array("controller"=>"translation_jobs","action" => "create_by_engine", $id),
+								array("class" => "text-success", "escape"=> false,'title'=>__('Crete job')));
+							?>
+							|
+							<?php
 							$removeText = '<i class="glyphicon glyphicon-remove-circle"></i>';
 							echo $this->Form->postLink(
 								$removeText,
