@@ -147,7 +147,7 @@ class EmployeesController extends AppController
 		$this->autoRender = false;
 		$flag = $this->Employee->getDeleteEmployee($id);
 		if (!empty($flag)) {
-			$this->Session->setFlash(__('Region is deleted successfully.'), "default",
+			$this->Session->setFlash(__('Employee is deleted successfully.'), "default",
 				array('class' => 'alert alert-success'));
 		}
 		return $this->redirect($this->referer());
@@ -155,7 +155,6 @@ class EmployeesController extends AppController
 
 	public function employee_detail($id)
 	{
-		CakeLog::error("Hello Himanshu");
 		$result = $this->Employee->find('first',array("conditions"=>array("Employee.id"=>$id)));
 		$this->set("employee", $result);
 	}

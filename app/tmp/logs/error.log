@@ -1,4 +1,40 @@
-2015-09-23 12:06:00 Error: [MissingControllerException] Controller class CaptchaController could not be found.
+2015-11-16 14:24:49 Error: [MissingControllerException] Controller class AdminThemeController could not be found.
+Exception Attributes: array (
+  'class' => 'AdminThemeController',
+  'plugin' => NULL,
+)
+Request URL: /greece/AdminTheme/assets/css/bootstrap.css.map
+Stack Trace:
+#0 D:\XAMPP\htdocs\greece\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-11-16 14:49:55 Error: [MissingControllerException] Controller class AdminThemeController could not be found.
+Exception Attributes: array (
+  'class' => 'AdminThemeController',
+  'plugin' => NULL,
+)
+Request URL: /greece/AdminTheme/assets/js/images/sort_both.png
+Stack Trace:
+#0 D:\XAMPP\htdocs\greece\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-11-16 14:49:56 Error: [MissingControllerException] Controller class AdminThemeController could not be found.
+Exception Attributes: array (
+  'class' => 'AdminThemeController',
+  'plugin' => NULL,
+)
+Request URL: /greece/AdminTheme/assets/js/images/sort_asc.png
+Stack Trace:
+#0 D:\XAMPP\htdocs\greece\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-11-16 14:49:56 Error: [MissingControllerException] Controller class AdminThemeController could not be found.
+Exception Attributes: array (
+  'class' => 'AdminThemeController',
+  'plugin' => NULL,
+)
+Request URL: /greece/AdminTheme/assets/css/bootstrap.css.map
+Stack Trace:
+#0 D:\XAMPP\htdocs\greece\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-11-16 17:01:47 Error: [MissingControllerException] Controller class CaptchaController could not be found.
 Exception Attributes: array (
   'class' => 'CaptchaController',
   'plugin' => NULL,
@@ -7,39 +43,21 @@ Request URL: /greece/captcha/js/gen_validatorv31.js
 Stack Trace:
 #0 D:\XAMPP\htdocs\greece\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
-2015-09-23 12:06:09 Error: [MissingControllerException] Controller class CaptchaController could not be found.
+2015-11-16 17:03:07 Error: [MissingControllerException] Controller class AdminThemeController could not be found.
 Exception Attributes: array (
-  'class' => 'CaptchaController',
+  'class' => 'AdminThemeController',
   'plugin' => NULL,
 )
-Request URL: /greece/captcha/js/gen_validatorv31.js
+Request URL: /greece/AdminTheme/assets/js/images/sort_both.png
 Stack Trace:
 #0 D:\XAMPP\htdocs\greece\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
-2015-09-23 12:06:09 Error: [MissingControllerException] Controller class JqueryController could not be found.
+2015-11-16 17:03:07 Error: [MissingControllerException] Controller class AdminThemeController could not be found.
 Exception Attributes: array (
-  'class' => 'JqueryController',
+  'class' => 'AdminThemeController',
   'plugin' => NULL,
 )
-Request URL: /greece/jquery/css/images/ui-bg_flat_75_ffffff_40x100.png
-Stack Trace:
-#0 D:\XAMPP\htdocs\greece\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
-#1 {main}
-2015-09-23 12:06:13 Error: [MissingControllerException] Controller class JqueryController could not be found.
-Exception Attributes: array (
-  'class' => 'JqueryController',
-  'plugin' => NULL,
-)
-Request URL: /greece/jquery/css/images/ui-bg_glass_75_dadada_1x400.png
-Stack Trace:
-#0 D:\XAMPP\htdocs\greece\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
-#1 {main}
-2015-09-23 12:07:07 Error: [MissingControllerException] Controller class CaptchaController could not be found.
-Exception Attributes: array (
-  'class' => 'CaptchaController',
-  'plugin' => NULL,
-)
-Request URL: /greece/captcha/js/gen_validatorv31.js
+Request URL: /greece/AdminTheme/assets/js/images/sort_asc.png
 Stack Trace:
 #0 D:\XAMPP\htdocs\greece\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}

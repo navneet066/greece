@@ -77,4 +77,10 @@ class PackagesController extends AppController
 
 	}
 
+	public function select_package()
+	{
+		$packages = $this->Package->getAllActivePackageForUser();
+		$this->set('packages', $packages);
+	}
+
 }

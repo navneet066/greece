@@ -46,20 +46,7 @@ class EmailConfig {
 		'headerCharset' => 'utf-8',
 	);*/
 
-	/*public $smtp = array(
-		'transport' => 'Smtp',
-		'from' => array('himanshu15990@gmail.com' => 'greece Project'),
-		'host' => 'ssl://smtp.gmail.com',
-		'port' => 465,
-		'timeout' => 100,
-		'emailFormat' => 'html',
-		'username' => 'himanshu15990@gmail.com',
-		'password' => 'Hmishra.1509',
-		'tls' => false,
-		'log' => false,
-		'charset' => 'utf-8',
-		'headerCharset' => 'utf-8',
-	);*/
+
 
 	public $gmail = array(
 		'host' => 'ssl://smtp.gmail.com',

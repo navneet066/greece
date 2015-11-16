@@ -140,6 +140,12 @@ class UsersController extends AppController
 				$email = $data["User"]["email"];
 				if ($this->Auth->login($data)) {
 					$user = $this->User->find('first', array('conditions' => array('User.email' => $email)));
+					if(!empty($user)){
+						$this->Session->write('userId', $user['User']['id']);
+						$this->Session->write('groupId', $user['User']['group_id']);
+						$this->Session->write('userEmail', $user['User']['email']);
+						$this->Session->write('companyId', $user['User']['company_id']);
+					}
 					if ($user['User']['group_id'] == 4) {
 						$loginTime = date('Y-m-d H:i:s');
 						$this->User->id = $user['User']['id'];
@@ -147,7 +153,6 @@ class UsersController extends AppController
 						$url = array("controller" => "users", "action" => "user_dashboard", "plugin" => null);
 						return $this->redirect($url);
 					} else {
-
 						$url = array("controller" => "users", "action" => "dashboard", "plugin" => null);
 						return $this->redirect($url);
 					}
@@ -217,6 +222,10 @@ class UsersController extends AppController
 		$this->User->saveField('last_login', $loginTime);
 		$user = $this->Auth->logout();
 		if ($user) {
+			$this->Session->delete('userId');
+			$this->Session->delete('groupId');
+			$this->Session->delete('userEmail');
+			$this->Session->delete('companyId');
 			$message = __("Log out Successful");
 			$this->Session->setFlash($message, "default", array('class' => 'alert alert-warning'));
 			$url = array('controller' => 'users', 'action' => 'admin_login', 'plugin' => null);

@@ -173,7 +173,6 @@ class Package extends AppModel
 	{
 		$value = array_values($check);
 		$value = $value[0];
-
 		return preg_match('|^[0-9a-zA-Z_-]*$|', $value);
 	}
 
@@ -182,7 +181,6 @@ class Package extends AppModel
 		$order = array("Package.updated" => "DESC");
 		$results = $this->find('all', array('order' => $order));
 		return $results;
-
 	}
 
 	public function getPackageForUpdate($id)
@@ -190,7 +188,12 @@ class Package extends AppModel
 		$conditions = array("Package.id" => $id);
 		$result = $this->find('first', array("conditions" => $conditions));
 		return $result;
+	}
 
+	public function getAllActivePackageForUser()
+	{
+		$results = $this->find('all');
+		return $results;
 	}
 
 
