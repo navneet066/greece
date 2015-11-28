@@ -66,11 +66,17 @@ class EnginesController extends AppController
 		$this->loadModel('Language');
 		$languages = $this->Language->getAllLanguageList();
 		$this->set('languages', $languages);
+		$authCompanyId = $this->Session->read('companyId');
+		$this->loadModel('UserPackage');
+		$companyPackage = $this->UserPackage->getUserPackageByCompanyIdForValidate($authCompanyId);
+		if(empty($companyPackage)){
+			$message = __("You Don't have any Package Selected Please Select any !");
+			$this->Session->setFlash($message, "default", array('class' => 'alert alert-danger'));
+		}
 		if ($this->request->is('post')) {
-			$user = $this->Auth->user();
-			$authUser = $this->User->getAuthDetailByEmail($user['User']['email']);
+			$authUserId = $this->Session->read('userId');
+			$authEmailId = $this->Session->read('emailId');
 			$data = $this->request->data;
-			CakeLog::error(json_encode($data));
 			if (!empty($data)) {
 				$this->Engine->set($data);
 				$fields = array('name', 'domain_name', 's_language', 't_language', 'tune_corpus_file',
@@ -90,8 +96,8 @@ class EnginesController extends AppController
 					$data['Engine']['low_glossary_file'] = $lowGlossFile['name'];
 					$tuneCorpusFile = $data['Engine']['tune_corpus_file'];
 					$data['Engine']['tune_corpus_file'] = $tuneCorpusFile['name'];
-					$data['Engine']['user_id'] = $authUser['User']['id'];
-					$data['Engine']['company_id'] = $authUser['User']['company_id'];
+					$data['Engine']['user_id'] = $authUserId;
+					$data['Engine']['company_id'] = $authEmailId;
 					$saved = $this->Engine->save($data, false);
 					if ($saved) {
 						$id = $this->Engine->id;

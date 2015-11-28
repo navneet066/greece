@@ -196,5 +196,12 @@ class Package extends AppModel
 		return $results;
 	}
 
+	public function getPackageDetailsById($id)
+	{
+		$conditions = array("Package.id" => $id);
+		$result = $this->find('first', array("conditions" => $conditions));
+		return $result;
+	}
+
 
 }

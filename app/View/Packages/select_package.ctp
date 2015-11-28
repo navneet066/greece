@@ -1,5 +1,6 @@
 <?php if(!empty($packages)){
-    foreach($packages as $key => $value){?>
+    foreach($packages as $key => $value){
+        $id = $value['Package']['id'];?>
         <div class="col-md-6 col-sm-6 text-center" style="border: dashed">
             <h1><?php echo $value['Package']['name']; ?></h1>
             <p><?php echo "Disk Capacity : " .$value['Package']['disk_storage']?></p>
@@ -16,7 +17,10 @@
             <p><?php echo "Extra rate add engine : " .$value['Package']['extra_rate_add_engine']?></p>
             <p><?php echo "Valid Days : " .$value['Package']['valid_days']?></p>
             <p><?php echo "Price : " .$value['Package']['price']?></p>
-            <p><?php echo $this->Html->link('Select this', "#", array('class' => "btn btn-success"));?></p>
+            <p>
+                <?php echo $this->Html->link('Select this', array("controller" =>"packages", "action" =>"select_package",
+                    $id), array('type' => 'submit', 'class' => "btn btn-success"));?>
+            </p>
         </div>
    <?php }?>
     <div class="clearfix"></div>

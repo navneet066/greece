@@ -150,9 +150,12 @@ class UsersController extends AppController
 						$loginTime = date('Y-m-d H:i:s');
 						$this->User->id = $user['User']['id'];
 						$this->User->saveField('last_login', $loginTime);
-						$url = array("controller" => "users", "action" => "user_dashboard", "plugin" => null);
+						$url = array("controller" => "users", "action" => "dashboard", "plugin" => null);
 						return $this->redirect($url);
 					} else {
+						$loginTime = date('Y-m-d H:i:s');
+						$this->User->id = $user['User']['id'];
+						$this->User->saveField('last_login', $loginTime);
 						$url = array("controller" => "users", "action" => "dashboard", "plugin" => null);
 						return $this->redirect($url);
 					}

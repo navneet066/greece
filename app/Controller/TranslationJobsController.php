@@ -24,10 +24,8 @@ class TranslationJobsController extends AppController
 
     public function index()
     {
-        $authUser = $this->Auth->user();
-        $userDetail = $this->User->getAuthDetailByEmail($authUser['User']['email']);
-        $userId = $userDetail['User']['id'];
-        $results = $this->TranslationJob->getAllJobsByUserId($userId);
+        $authUserId = $this->Session->read('userId');
+        $results = $this->TranslationJob->getAllJobsByUserId($authUserId);
         $this->set('results', $results);
 
     }
@@ -36,12 +34,16 @@ class TranslationJobsController extends AppController
     {
         $languages = $this->Language->getAllLanguageList();
         $this->set('languages', $languages);
-        $authUser = $this->Auth->user();
-        $userDetail = $this->User->getAuthDetailByEmail($authUser['User']['email']);
-        $userId = $userDetail['User']['id'];
-        $companyId = $userDetail['User']['company_id'];
-        $engines = $this->Engine->getEngineListCompanyId($userDetail['User']['company_id']);
+        $authUserId = $this->Session->read('userId');
+        $authCompanyId = $this->Session->read('companyId');
+        $engines = $this->Engine->getEngineListCompanyId($authCompanyId);
         $this->set('engines', $engines);
+        $this->loadModel('UserPackage');
+        $companyPackage = $this->UserPackage->getUserPackageByCompanyIdForValidate($authCompanyId);
+        if(empty($companyPackage)){
+            $message = __("You Don't have any Package Selected Please Select any !");
+            $this->Session->setFlash($message, "default", array('class' => 'alert alert-danger'));
+        }
         if ($this->request->is('post')) {
             $data = $this->request->data;
             if (!empty($data)) {
@@ -58,8 +60,8 @@ class TranslationJobsController extends AppController
                         $data['TranslationJob']['translation_file'] = $translationFileName;
                         $data['TranslationJob']['high_gloss'] = $highGlossaryFileName;
                         $data['TranslationJob']['low_gloss'] = $lowGlossaryFileName;
-                        $data['TranslationJob']['user_id'] = $userId;
-                        $data['TranslationJob']['company_id'] = $companyId;
+                        $data['TranslationJob']['user_id'] = $authUserId;
+                        $data['TranslationJob']['company_id'] = $authCompanyId;
                         $result = $this->TranslationJob->save($data, false);
                         if ($result) {
                             $id = $this->TranslationJob->id;
@@ -126,10 +128,8 @@ class TranslationJobsController extends AppController
     public function create_by_engine($engineId)
     {
         $this->set('id', $engineId);
-        $authUser = $this->Auth->user();
-        $userDetail = $this->User->getAuthDetailByEmail($authUser['User']['email']);
-        $userId = $userDetail['User']['id'];
-        $companyId = $userDetail['User']['company_id'];
+        $authUserId = $this->Session->read('userId');
+        $authCompanyId = $this->Session->read('companyId');
         $engine = $this->Engine->getEngineDetailByEngineIdForJob($engineId);
         $this->set('engine', $engine);
         if ($this->request->is('post')) {
@@ -148,8 +148,8 @@ class TranslationJobsController extends AppController
                         $data['TranslationJob']['translation_file'] = $translationFileName;
                         $data['TranslationJob']['high_gloss'] = $highGlossaryFileName;
                         $data['TranslationJob']['low_gloss'] = $lowGlossaryFileName;
-                        $data['TranslationJob']['user_id'] = $userId;
-                        $data['TranslationJob']['company_id'] = $companyId;
+                        $data['TranslationJob']['user_id'] = $authUserId;
+                        $data['TranslationJob']['company_id'] = $authCompanyId;
                         $data['TranslationJob']['engine_id'] = $engineId;
                         $data['TranslationJob']['s_language'] = $engine['Engine']['s_language'];
                         $data['TranslationJob']['t_language'] = $engine['Engine']['t_language'];

@@ -29,9 +29,7 @@ class EmployeesController extends AppController
 			array('title' => __('Employee Management'), 'slug' => NULL),
 			array('title' => __('Employee List'), 'slug' => NULL),
 		));
-		$authUser = $this->Auth->user();
-		$authDetail = $this->User->getAuthDetailByEmail($authUser['User']['email']);//have id,name,gid,cid
-		$companyId = $authDetail['User']['company_id'];
+		$companyId = $this->Session->read('companyId');
 		$employees = $this->User->getAllEmployeeByGroupAndCompanyId($companyId, $groupId = 4);
 		$this->set('employees', $employees);
 	}
@@ -45,8 +43,7 @@ class EmployeesController extends AppController
 			array('title' => __('Employee Management'), 'slug' => NULL),
 			array('title' => __('Employee List'), 'slug' => NULL),
 		));
-		$admin = $this->Auth->user();
-		$companyId = $this->User->companyIdForEmployee($admin['User']['email']);
+		$companyId = $this->Session->read('companyId');
 		if($this->request->is('post')){
 			$data = $this->request->data;
 			$this->Employee->set($data);
@@ -56,7 +53,7 @@ class EmployeesController extends AppController
 				$validates = $this->Employee->validates(array('fieldList' => $fields));
 				if(!empty($validates)){
 					$data['Employee']['group_id'] = 4;
-					$data['Employee']['company_id'] = $companyId['User']['company_id'];
+					$data['Employee']['company_id'] = $companyId;
 					$saved = $this->Employee->save($data);
 					if($saved){
 						$message = __("New Employee added successfully !");
@@ -155,7 +152,7 @@ class EmployeesController extends AppController
 
 	public function employee_detail($id)
 	{
-		$result = $this->Employee->find('first',array("conditions"=>array("Employee.id"=>$id)));
+		$result = $this->Employee->find('first',array("conditions"=>array("Employee.id"=> $id)));
 		$this->set("employee", $result);
 	}
 
