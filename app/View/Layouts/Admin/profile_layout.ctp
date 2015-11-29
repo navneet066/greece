@@ -36,6 +36,9 @@
 		$(document).ready(function () {
 			$('#package_index').dataTable();
 		});
+		$(document).ready(function(){
+			$("#createFormok :input").prop("disabled", true);
+		});
 	</script>
 	<?php echo $this->Html->script('custom.js');?>
 	<?php echo $this->Html->script('/AdminTheme/assets/js/custom-scripts.js');?>

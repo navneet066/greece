@@ -48,14 +48,10 @@ class EnginesController extends AppController
 	{
 		$this->set('sideMenuControl', 'Engine ');
 		$this->set('title_for_layout', __('Engine Management'));
-		$this->set('pageHeader', array(__('Engine Management'), __('Engine Index')));
-		$this->set('breadcrumbs', array(
-			array('title' => __('Engine Management'), 'slug' => NULL),
-			array('title' => __('Engine List'), 'slug' => NULL),
-		));
 		if (!($this->Auth->loggedIn())) {
 			return $this->redirect(array('controller' => 'users', 'action' => 'admin_login'));
 		}
+		$this->set('formDisable', 'no');
 		$this->set('sideMenuControl', 'index');
 		$this->set('title_for_layout', __('Engine Management :: Create'));
 		$this->set('pageHeader', array(__('Engine'), __('Add Engine')));
@@ -72,6 +68,7 @@ class EnginesController extends AppController
 		if(empty($companyPackage)){
 			$message = __("You Don't have any Package Selected Please Select any !");
 			$this->Session->setFlash($message, "default", array('class' => 'alert alert-danger'));
+			$this->set('formDisable', 'ok');
 		}
 		if ($this->request->is('post')) {
 			$authUserId = $this->Session->read('userId');

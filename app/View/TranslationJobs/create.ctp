@@ -5,11 +5,15 @@
 		<?php echo $message; ?>
 	</div>
 <?php } ?>
+<?php if($formDisable == "ok"){
+	echo $this->Html->link("Select Package", array("controller" => "packages", "action"=> "select_package",
+		"plugin" =>null), array("class" => "btn btn-info", "style" => "float:right"));
+}?>
 <div>
 	<?php
 	$url = array("controller" => "translation_jobs", "action" => "create");
 	echo $this->Form->create("TranslationJob", array("url" => $url, "class" => "form-horizontal", "type" => "file",
-		"role" => "form", 'novalidate' => true, 'inputDefaults' => array('label' => false, 'div' => false))); ?>
+		"role" => "form", 'novalidate' => true,"id" => "createForm".$formDisable, 'inputDefaults' => array('label' => false, 'div' => false))); ?>
 	<div style="border-bottom: groove;margin-bottom: 20px; margin-top: 30px">
 		<h4><strong>Translation SetUp</strong></h4>
 	</div>
@@ -21,7 +25,7 @@
 
 			<div class="col-sm-6">
 				<?php echo $this->Form->input("TranslationJob.engine_id", array("class" => "form-control",
-					"type" => "select", "options"=>$engines, "empty"=>"Select Engine's Name", "id"=>"engineId")); ?>
+					"type" => "select", "options"=> $engines, "empty"=>"Select Engine's Name", "id"=>"engineId")); ?>
 			</div>
 		</div>
 		<!--<div class="form-group">

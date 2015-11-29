@@ -34,6 +34,7 @@ class TranslationJobsController extends AppController
     {
         $languages = $this->Language->getAllLanguageList();
         $this->set('languages', $languages);
+        $this->set('formDisable', 'no');
         $authUserId = $this->Session->read('userId');
         $authCompanyId = $this->Session->read('companyId');
         $engines = $this->Engine->getEngineListCompanyId($authCompanyId);
@@ -43,6 +44,7 @@ class TranslationJobsController extends AppController
         if(empty($companyPackage)){
             $message = __("You Don't have any Package Selected Please Select any !");
             $this->Session->setFlash($message, "default", array('class' => 'alert alert-danger'));
+            $this->set('formDisable', 'ok');
         }
         if ($this->request->is('post')) {
             $data = $this->request->data;
