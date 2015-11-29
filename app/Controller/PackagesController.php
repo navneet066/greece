@@ -112,4 +112,19 @@ class PackagesController extends AppController
         $this->request->data = $result;
     }
 
+    public function remove($id)
+    {
+        $this->Package->id = $id;
+        $flag = $this->Package->delete($id);
+        if ($flag) {
+            $message = __("Engine Deleted now! ");
+            $this->Session->setFlash($message, "default", array('class' => 'alert alert-success'));
+            $this->redirect($this->request->referer());
+        } else {
+            $message = __(" Engine Can't Deleted now, Please try lator ");
+            $this->Session->setFlash($message, "default", array('class' => 'alert alert-info'));
+            $this->redirect($this->request->referer());
+        }
+    }
+
 }
