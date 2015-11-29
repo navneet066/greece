@@ -15,7 +15,7 @@
                 </li>
             <?php }else{?>
                 <li>
-                    <a href="#"><i class="fa fa-archive"></i>Packages<span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-archive"></i>Contract<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li><?php echo $this->Html->link('<i class="fa fa-list"></i> <span>' . __('Packages') . '</span>', '/packages/company_package', array('escape' => false)); ?></li>
                         <li><?php echo $this->Html->link('<i class="fa fa-plus"></i> <span>' . __('Select Package') . '</span>', '/packages/select_package', array('escape' => false)); ?></li>
@@ -37,14 +37,6 @@
                     <li><?php echo $this->Html->link('<i class="fa fa-plus"></i> <span>' . __('Add Jobs') . '</span>', '/translation_jobs/create', array('escape' => false)); ?></li>
                 </ul>
             </li>
-            <li>
-                <a href="#"><i class="fa fa-bookmark-o"></i>My Contracts<span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level">
-                    <li><?php echo $this->Html->link('<i class="fa fa-list"></i> <span>' . __('My Contracts') . '</span>', '/contracts/index', array('escape' => false)); ?></li>
-                    <li><?php echo $this->Html->link('<i class="fa fa-plus"></i> <span>' . __('Add Contracts') . '</span>', '/contracts/create', array('escape' => false)); ?></li>
-                </ul>
-            </li>
-
             <li>
                 <a href="#"><i class="fa fa-paperclip"></i>My Reports<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
